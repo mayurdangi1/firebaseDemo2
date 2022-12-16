@@ -26,8 +26,8 @@ const Drawer = createDrawerNavigator();
 
 function App() {
 
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  const [isDisabled, setIsDisabled] = useState(false);
+  const toggleSwitch = () => setIsDisabled(false);
 
   // functions
   function HomeScreen({navigation}) {
@@ -132,10 +132,10 @@ function App() {
               </View>
               <Switch
                     trackColor={{ false: "#767577", true: "#81b0ff" }}
-                    thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+                    thumbColor={isDisabled ? "#737373" : "#f4f3f4"}
                     ios_backgroundColor="#3e3e3e"
                     onValueChange={toggleSwitch}
-                    value={isEnabled}
+                    value={isDisabled}
                   />
           </View>
 
@@ -144,21 +144,103 @@ function App() {
       </NativeBaseProvider>
     );
   }
-  function WorkScreen() {
+  function EmployeeList() {
+    return (
+      <NativeBaseProvider>
+          <View style={externalStyles.setttingsEmplistContainer}>
+            <View style={externalStyles.settingsEmpListSearchBox}>
+              <TextInput
+                placeholder="Enter Email / Mobile Number"
+                style={externalStyles.Settingsinput}
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
+            </View>
+            <View style={externalStyles.settingsEmpListHeader}>
+                <Text style={externalStyles.settingsEmpNameHeading}>Employee Name</Text>
+                <Text style={externalStyles.settingsEmpLastUpdatedText}>Updated On</Text>
+            </View>
+            <ScrollView>
+              <View style={externalStyles.settingsEmpData}>
+                  <View style={externalStyles.settingsEmpDetails}>
+                        <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
+                            <Text style={externalStyles.settingsEmpNameFirstText}>J</Text>
+                            <View style={{marginLeft:12}}>
+                               <Text style={externalStyles.settingsEmpName}>John Doe</Text>
+                               <Text style={externalStyles.settingsEmpId}>ID: 1212121</Text>
+                            </View>
+                        </View>
+                        <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
+                            <Image source={require('./src/assets/icons/clock.png')} style={{marginRight:4}} />
+                            <Text style={externalStyles.settingsEmpUpdatedDay}>10:00am, 22 Sep</Text>
+                        </View>
+                  </View>
+                  <View style={externalStyles.settingsEmpDetails}>
+                        <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
+                            <Text style={externalStyles.settingsEmpNameFirstText}>J</Text>
+                            <View style={{marginLeft:12}}>
+                               <Text style={externalStyles.settingsEmpName}>John Doe</Text>
+                               <Text style={externalStyles.settingsEmpId}>ID: 1212121</Text>
+                            </View>
+                        </View>
+                        <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
+                            <Image source={require('./src/assets/icons/clock.png')} style={{marginRight:4}} />
+                            <Text style={externalStyles.settingsEmpUpdatedDay}>10:00am, 22 Sep</Text>
+                        </View>
+                  </View>
+                  <View style={externalStyles.settingsEmpDetails}>
+                        <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
+                            <Text style={externalStyles.settingsEmpNameFirstText}>M</Text>
+                            <View style={{marginLeft:12}}>
+                               <Text style={externalStyles.settingsEmpName}>Manoj Dey</Text>
+                               <Text style={externalStyles.settingsEmpId}>ID: 1212121</Text>
+                            </View>
+                        </View>
+                        <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
+                            <Image source={require('./src/assets/icons/clock.png')} style={{marginRight:4}} />
+                            <Text style={externalStyles.settingsEmpUpdatedDay}>10:00am, 22 Sep</Text>
+                        </View>
+                  </View>
+                  <View style={externalStyles.settingsEmpDetails}>
+                        <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
+                            <Text style={externalStyles.settingsEmpNameFirstText}>J</Text>
+                            <View style={{marginLeft:12}}>
+                               <Text style={externalStyles.settingsEmpName}>John Doe</Text>
+                               <Text style={externalStyles.settingsEmpId}>ID: 1212121</Text>
+                            </View>
+                        </View>
+                        <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
+                            <Image source={require('./src/assets/icons/clock.png')} style={{marginRight:4}} />
+                            <Text style={externalStyles.settingsEmpUpdatedDay}>10:00am, 22 Sep</Text>
+                        </View>
+                  </View>
+                  <View style={externalStyles.settingsEmpDetails}>
+                        <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
+                            <Text style={externalStyles.settingsEmpNameFirstText}>R</Text>
+                            <View style={{marginLeft:12}}>
+                               <Text style={externalStyles.settingsEmpName}>Ravi Kumar</Text>
+                               <Text style={externalStyles.settingsEmpId}>ID: 1212121</Text>
+                            </View>
+                        </View>
+                        <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
+                            <Image source={require('./src/assets/icons/clock.png')} style={{marginRight:4}} />
+                            <Text style={externalStyles.settingsEmpUpdatedDay}>10:00am, 22 Sep</Text>
+                        </View>
+                  </View>
+              </View>
+            </ScrollView>
+          </View>
+      </NativeBaseProvider>
+    );
+  }
+  function OfflineSync() {
     return (
       <View style={externalStyles.body}>
         <Text style={externalStyles.text}>Work Screen</Text>
       </View>
     );
   }
-  function ServiceScreen() {
-    return (
-      <View style={externalStyles.body}>
-        <Text style={externalStyles.text}>Services</Text>
-      </View>
-    );
-  }
-  function ContactScreen() {
+  function LogOut() {
     return (
       <View style={externalStyles.body}>
         <Text style={externalStyles.text}>Contact us</Text>
@@ -233,10 +315,9 @@ function App() {
       <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Settings" component={SettingsScreen} />
-        <Drawer.Screen name="Work" component={WorkScreen} />
-        <Drawer.Screen name="Service" component={ServiceScreen} />
-        <Drawer.Screen name="Contact" component={ContactScreen} />
-        <Drawer.Screen name="Login" component={LoginScreen} />
+        <Drawer.Screen name="OfflineSync" component={OfflineSync} />
+        <Drawer.Screen name="EmpList" component={EmployeeList} />
+        <Drawer.Screen name="Logout" component={LogOut} />
         <Drawer.Screen name="Registered" component={SuccessFullyRegistered} />
       </Drawer.Navigator>
     </NavigationContainer>
