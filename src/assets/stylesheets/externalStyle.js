@@ -1,10 +1,12 @@
 
-import { StyleSheet } from "react-native"
+import { StyleSheet,Dimensions } from "react-native"
 const externalStyles = StyleSheet.create({
   homeBody: {
     flex: 1,
     backgroundColor: '#FFFFFF',
-    flexDirection: 'column',
+    flexDirection: 'column',    
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
   },
   homeWelcomeImg: {
     marginBottom: 30,
@@ -171,7 +173,40 @@ const externalStyles = StyleSheet.create({
     width: '100%',
     paddingLeft: 12,
     borderColor: '#8a8886'
+  },
+  // Settings screen 
+  settingsContainer:{
+    flex: 1,
+    backgroundColor: '#fff',
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
+    paddingHorizontal: 20,
+    paddingTop: 20
+  },
+  settingsItem:{
+    flexDirection: 'column'
+  },
+  settingsItemHeader:{
+    flexDirection: 'row',
+    alignItems: 'center'
+    
+  },
+  SwitchWraper:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 15,
+    justifyContent: 'space-between'
+  },
+  settingsHeaderText:{
+    fontSize: 18,
+    color: '#000000',
+    fontWeight: '500',
+    marginLeft: 10
+  },
+  checkOptions: {
+    marginLeft: 25
   }
+  // Settings screen 
 })
 
 export default externalStyles
