@@ -1,5 +1,6 @@
-import React, {useEffect} from 'react';
+import React, {useState} from 'react';
 import SplashScreen from 'react-native-splash-screen';
+import { Divider,NativeBaseProvider, Radio } from "native-base";
 import {
   View,
   Text,
@@ -7,6 +8,7 @@ import {
   ScrollView,
   SafeAreaView,
   TextInput,
+  Switch
 } from 'react-native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
@@ -17,12 +19,15 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import externalStyles from './src/assets/stylesheets/externalStyle';
 import LoginScreen from './src/screens/LoginScreen';
 
+import EntryModeOption from './src/components/Settings/EntryModeOption';
+import CameraDirectionOption from './src/components/Settings/CameraDirecionOption'
+
 const Drawer = createDrawerNavigator();
 
 function App() {
-  useEffect(() => {
-    SplashScreen.hide();
-  },[]);
+
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
   // functions
   function HomeScreen({navigation}) {
@@ -92,14 +97,51 @@ function App() {
       </View>
     );
   }
-  function AboutScreen({navigation}) {
+  function SettingsScreen({navigation}) {
     return (
-      <View style={externalStyles.body}>
-        <Text style={externalStyles.text}>About</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-          <Text style={externalStyles.primaryTextButton}>Back to Home</Text>
-        </TouchableOpacity>
-      </View>
+      <NativeBaseProvider>
+        <View style={externalStyles.settingsContainer}>
+         
+          <View style={externalStyles.settingsItem}>
+            <View style={externalStyles.settingsItemHeader}>
+              <Image source={require("./src/assets/icons/entry_mode.png")} />
+              <Text style={externalStyles.settingsHeaderText}>Entery Mode</Text>
+            </View>
+            <View style={externalStyles.checkOptions}>
+              <EntryModeOption />
+            </View>
+          </View>
+
+          <Divider my="2" _light={{ bg: "#E1DFDD" }} _dark={{ bg: "#E1DFDD"}} />
+         
+          <View style={externalStyles.settingsItem}>
+              <View style={externalStyles.settingsItemHeader}>
+                <Image source={require("./src/assets/icons/camera_detection.png")} />
+                <Text style={externalStyles.settingsHeaderText}>Camera Direction</Text>
+              </View>
+              <View style={externalStyles.checkOptions}>
+              <CameraDirectionOption />
+            </View>
+          </View>
+          <Divider />
+          
+          <View style={[externalStyles.SwitchWraper]}>
+              <View style={externalStyles.settingsItemHeader}>
+                <Image source={require("./src/assets/icons/screen_pinning.png")} />
+                <Text style={externalStyles.settingsHeaderText}>Sceen Pinning</Text>
+              </View>
+              <Switch
+                    trackColor={{ false: "#767577", true: "#81b0ff" }}
+                    thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+                    ios_backgroundColor="#3e3e3e"
+                    onValueChange={toggleSwitch}
+                    value={isEnabled}
+                  />
+          </View>
+
+          <Divider />
+        </View>
+      </NativeBaseProvider>
     );
   }
   function WorkScreen() {
@@ -124,7 +166,7 @@ function App() {
     );
   }
 
-  function SuccessFullyRegistered() {
+  function SuccessFullyRegistered({navigation}) {
     return (
       <View style={externalStyles.greenScreenHome}>
         <View style={externalStyles.homeWelcomeImg}>
@@ -175,7 +217,7 @@ function App() {
                   </Text>
                 </View>
               </View>
-              <TouchableOpacity style={externalStyles.homeButtonWraper}>
+              <TouchableOpacity style={externalStyles.homeButtonWraper} onPress={() => navigation.navigate('Settings')}>
                 <Text style={externalStyles.primaryButton}>
                   Continue with Selfie
                 </Text>
@@ -190,7 +232,7 @@ function App() {
     <NavigationContainer>
       <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
         <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="About" component={AboutScreen} />
+        <Drawer.Screen name="Settings" component={SettingsScreen} />
         <Drawer.Screen name="Work" component={WorkScreen} />
         <Drawer.Screen name="Service" component={ServiceScreen} />
         <Drawer.Screen name="Contact" component={ContactScreen} />
