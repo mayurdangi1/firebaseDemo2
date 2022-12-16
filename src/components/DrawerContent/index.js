@@ -44,7 +44,7 @@ const DrawerContent = props => {
               label="Employee List"
               style={sidebarStyle.drawerItem}
               onPress={() => {
-                props.navigation.navigate('Work');
+                props.navigation.navigate('EmpList');
               }}
             />
             <DrawerItem

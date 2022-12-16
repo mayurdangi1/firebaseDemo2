@@ -69,8 +69,8 @@ const externalStyles = StyleSheet.create({
     fontSize: 18,
     paddingVertical: 14,
   },
-  // Registred SuccessFully Css
 
+    // Registred SuccessFully start
   greenScreenHome: {
     flex: 1,
     backgroundColor: '#FFFFFF',
@@ -120,7 +120,8 @@ const externalStyles = StyleSheet.create({
 
     elevation: 8,
   },
-  // Registred SuccessFully Css
+  // Registred SuccessFully end
+
   primaryTextButton: {
     color: '#0069DB',
     fontSize: 18,
@@ -174,7 +175,7 @@ const externalStyles = StyleSheet.create({
     paddingLeft: 12,
     borderColor: '#8a8886'
   },
-  // Settings screen 
+  // Settings screen Start
   settingsContainer:{
     flex: 1,
     backgroundColor: '#fff',
@@ -205,8 +206,107 @@ const externalStyles = StyleSheet.create({
   },
   checkOptions: {
     marginLeft: 25
+  },
+  // Settings screen end
+  // Settings EmployeeList Screen
+  setttingsEmplistContainer:{
+    backgroundColor: '#DFDFDF',
+    flex: 1,
+    flexDirection: 'column',    
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
+  },
+  settingsEmpListSearchBox:{
+    paddingHorizontal: 16,
+    paddingVertical: 9,
+  },
+  Settingsinput:{
+    height: 40,
+    borderWidth: 1,
+    padding: 10,
+    paddingLeft: 12,
+    borderColor: '#D4D4D4',
+    borderRadius: 5,
+    color: '#A19F9D',
+    backgroundColor: '#ffffff'
+  },
+  settingsEmpListHeader:{
+    backgroundColor: '#ffffff',
+    paddingVertical: 12,
+    paddingLeft: 24,
+    paddingRight: 18,
+    marginBottom:1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+  settingsEmpNameHeading:{
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#000000',
+    fontStyle: 'normal',
+    lineHeight: 22
+  },
+  settingsEmpLastUpdatedText:{
+    fontSize : 12,
+    color: '#A19F9D',
+    fontWeight: '500',
+    lineHeight: 22,
+    fontStyle: 'normal',
+  },
+  settingsEmpData:{
+    backgroundColor: '#ffffff',
+    paddingVertical: 12,
+    paddingLeft: 24,
+    paddingRight: 16,
+    borderBottomColor: '#E1DFDD',
+    borderBottomWidth: 1
+  },
+  settingsEmpDetails:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 12
+
+  },
+  settingsEmpNameFirstText:{
+    height: 40,
+    width: 40,
+    backgroundColor: '#587BC4',
+    color: '#FAFAFA',
+    borderRadius: 20,
+    textAlign: 'center',
+    alignSelf: 'center',
+    lineHeight: 40,
+    fontSize: 14,
+    fontWeight: '500'
+
+  },
+  settingsEmpName:{
+    color: '#090A0A',
+    lineHeight: 20,
+    fontWeight: '400',
+    fontStyle: 'normal',
+    lineHeight: 20,
+    fontSize: 16
+  },
+  settingsEmpId:{
+    color: '#A19F9D',
+    lineHeight: 20,
+    fontWeight: '400',
+    fontStyle: 'normal',
+    lineHeight: 20,
+    fontSize: 14
+  },
+  settingsEmpUpdatedDay:{
+    color: '#090A0A',
+    lineHeight: 20,
+    fontWeight: '400',
+    fontStyle: 'normal',
+    lineHeight: 20,
+    fontSize: 12
   }
-  // Settings screen 
+  // Settings EmployeeList Screen
 })
 
 export default externalStyles
