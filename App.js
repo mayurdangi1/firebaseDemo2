@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import SplashScreen from 'react-native-splash-screen';
 import { Divider,NativeBaseProvider, Radio } from "native-base";
+import axios from 'axios';
 import {
   View,
   Text,
@@ -23,11 +24,12 @@ import EntryModeOption from './src/components/Settings/EntryModeOption';
 import CameraDirectionOption from './src/components/Settings/CameraDirecionOption'
 
 const Drawer = createDrawerNavigator();
+const baseUrl = 'https://mewurk-attendance.azurewebsites.net/api/v1/attendanceservice/';
+
 
 function App() {
 
-  const [isDisabled, setIsDisabled] = useState(false);
-  const toggleSwitch = () => setIsDisabled(false);
+
 
   // functions
   function HomeScreen({navigation}) {
@@ -98,17 +100,31 @@ function App() {
     );
   }
   function SettingsScreen({navigation}) {
+
+    // const [isDisabled, setIsDisabled] = useState(false);
+    // const toggleSwitch = () => setIsDisabled(!isDisabled);
+    const [kioskSettingsData, setKioskSettingsData] = useState({});
+    useEffect(() => {
+      getKioskSettingsData();
+    }, []);
+
+    const getKioskSettingsData = () => {
+      axios.get(`${baseUrl}kiosk/getkiosksettings/80`).then((response) => {
+        console.log(response.data.data);
+        setKioskSettingsData(response.data.data);
+      });
+    };
+    
     return (
       <NativeBaseProvider>
         <View style={externalStyles.settingsContainer}>
-         
           <View style={externalStyles.settingsItem}>
             <View style={externalStyles.settingsItemHeader}>
               <Image source={require("./src/assets/icons/entry_mode.png")} />
               <Text style={externalStyles.settingsHeaderText}>Entery Mode</Text>
             </View>
             <View style={externalStyles.checkOptions}>
-              <EntryModeOption />
+              <EntryModeOption option={kioskSettingsData.entryMode} />
             </View>
           </View>
 
@@ -120,22 +136,49 @@ function App() {
                 <Text style={externalStyles.settingsHeaderText}>Camera Direction</Text>
               </View>
               <View style={externalStyles.checkOptions}>
-              <CameraDirectionOption />
+              <CameraDirectionOption option={kioskSettingsData.cameraDirection} />
             </View>
           </View>
+
           <Divider />
-          
+
+          <View style={[externalStyles.SwitchWraper]}>
+              <View style={externalStyles.settingsItemHeader}>
+                <Image source={require("./src/assets/icons/screen_pinning.png")} />
+                <Text style={externalStyles.settingsHeaderText}>Offline mode</Text>
+              </View>
+              <Switch disabled
+                    trackColor={{ false: "#767577", true: "#81b0ff" }}
+                    thumbColor={kioskSettingsData.offlineMode ? "#f4f3f4" : "#737373"}
+                    ios_backgroundColor="#3e3e3e"
+                    //onValueChange={toggleSwitch}
+                    value={kioskSettingsData.offlineMode}
+                  />
+          </View>
           <View style={[externalStyles.SwitchWraper]}>
               <View style={externalStyles.settingsItemHeader}>
                 <Image source={require("./src/assets/icons/screen_pinning.png")} />
                 <Text style={externalStyles.settingsHeaderText}>Sceen Pinning</Text>
               </View>
-              <Switch
+              <Switch disabled
                     trackColor={{ false: "#767577", true: "#81b0ff" }}
-                    thumbColor={isDisabled ? "#737373" : "#f4f3f4"}
+                    thumbColor={kioskSettingsData.screenPinning ? "#f4f3f4" : "#737373"}
                     ios_backgroundColor="#3e3e3e"
-                    onValueChange={toggleSwitch}
-                    value={isDisabled}
+                    //onValueChange={toggleSwitch}
+                    value={kioskSettingsData.screenPinning}
+                  />
+          </View>
+          <View style={[externalStyles.SwitchWraper]}>
+              <View style={externalStyles.settingsItemHeader}>
+                <Image source={require("./src/assets/icons/screen_pinning.png")} />
+                <Text style={externalStyles.settingsHeaderText}>Device GPS tracking</Text>
+              </View>
+              <Switch disabled
+                    trackColor={{ false: "#767577", true: "#81b0ff" }}
+                    thumbColor={kioskSettingsData.gpsTracking ? "#f4f3f4" : "#737373"}
+                    ios_backgroundColor="#3e3e3e"
+                    //onValueChange={toggleSwitch}
+                    value={kioskSettingsData.gpsTracking}
                   />
           </View>
 
@@ -235,150 +278,9 @@ function App() {
   }
   function OfflineSync() {
     return (
-      <NativeBaseProvider>
-          <View style={externalStyles.offSyncContainer}>
-            <View style={externalStyles.offSyncSearchDataBox}>
-              <View style={externalStyles.offSyncSelectInput}>
-                <TextInput
-                placeholder="Combo Box"
-                style={externalStyles.Settingsinput}
-                autoCapitalize="none"
-                autoCorrect={false}
-                />
-              </View>
-              <View style={externalStyles.offSyncSelectInput}>
-                <TextInput
-                placeholder="Select Date"
-                style={externalStyles.Settingsinput}
-                autoCapitalize="none"
-                autoCorrect={false}
-                />
-              </View>
-              <Image source={require('./src/assets/icons/offline_sync_download.png')} />
-            </View>
-            
-            <ScrollView>
-                <View style={externalStyles.offSyncDateCard}>
-                  <View style={externalStyles.offSyncDateCardHeader}>
-                      <Image source={require('./src/assets/icons/selected_date.png')} style={{marginRight:4}} />
-                      <Text style={externalStyles.offSyncDateCardHeading}>13 October 2022</Text>
-                  </View>
-                  <View style={externalStyles.offSyncDateCardEmpDetails}>
-                      <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
-                          <Text style={externalStyles.settingsEmpNameFirstText}>J</Text>
-                          <View style={{marginLeft:12}}>
-                            <Text style={externalStyles.settingsEmpName}>John Doe</Text>
-                            <Text style={externalStyles.settingsEmpId}>ID: 1212121</Text>
-                          </View>
-                      </View>
-                      <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
-                          <Text style={externalStyles.inText}>In</Text>
-                          <Image source={require('./src/assets/icons/clock.png')} style={{marginRight:4}} />
-                          <Text style={externalStyles.settingsEmpUpdatedDay}>10:00am, 22 Sep</Text>
-                      </View>
-                  </View>
-                </View>
-                <View style={externalStyles.offSyncDateCard}>
-                  <View style={externalStyles.offSyncDateCardHeader}>
-                      <Image source={require('./src/assets/icons/selected_date.png')} style={{marginRight:4}} />
-                      <Text style={externalStyles.offSyncDateCardHeading}>14 October 2022</Text>
-                  </View>
-                  <View style={externalStyles.offSyncDateCardEmpDetails}>
-                      <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
-                          <Text style={externalStyles.settingsEmpNameFirstText}>J</Text>
-                          <View style={{marginLeft:12}}>
-                            <Text style={externalStyles.settingsEmpName}>John Doe</Text>
-                            <Text style={externalStyles.settingsEmpId}>ID: 1212121</Text>
-                          </View>
-                      </View>
-                      <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
-                          <Text style={externalStyles.outText}>Out</Text>
-                          <Image source={require('./src/assets/icons/clock.png')} style={{marginRight:4}} />
-                          <Text style={externalStyles.settingsEmpUpdatedDay}>10:00am, 22 Sep</Text>
-                      </View>
-                  </View>
-                  <View style={externalStyles.offSyncDateCardEmpDetails}>
-                      <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
-                          <Text style={externalStyles.settingsEmpNameFirstText}>J</Text>
-                          <View style={{marginLeft:12}}>
-                            <Text style={externalStyles.settingsEmpName}>John Doe</Text>
-                            <Text style={externalStyles.settingsEmpId}>ID: 1212121</Text>
-                          </View>
-                      </View>
-                      <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
-                          <Text style={externalStyles.inText}>In</Text>
-                          <Image source={require('./src/assets/icons/clock.png')} style={{marginRight:4}} />
-                          <Text style={externalStyles.settingsEmpUpdatedDay}>10:00am, 22 Sep</Text>
-                      </View>
-                  </View>
-                  <View style={externalStyles.offSyncDateCardEmpDetails}>
-                      <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
-                          <Text style={externalStyles.settingsEmpNameFirstText}>J</Text>
-                          <View style={{marginLeft:12}}>
-                            <Text style={externalStyles.settingsEmpName}>John Doe</Text>
-                            <Text style={externalStyles.settingsEmpId}>ID: 1212121</Text>
-                          </View>
-                      </View>
-                      <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
-                          <Text style={externalStyles.inText}>In</Text>
-                          <Image source={require('./src/assets/icons/clock.png')} style={{marginRight:4}} />
-                          <Text style={externalStyles.settingsEmpUpdatedDay}>10:00am, 22 Sep</Text>
-                      </View>
-                  </View>
-                </View>
-
-                <View style={externalStyles.offSyncDateCard}>
-                  <View style={externalStyles.offSyncDateCardHeader}>
-                      <Image source={require('./src/assets/icons/selected_date.png')} style={{marginRight:4}} />
-                      <Text style={externalStyles.offSyncDateCardHeading}>15 October 2022</Text>
-                  </View>
-                  <View style={externalStyles.offSyncDateCardEmpDetails}>
-                      <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
-                          <Text style={externalStyles.settingsEmpNameFirstText}>J</Text>
-                          <View style={{marginLeft:12}}>
-                            <Text style={externalStyles.settingsEmpName}>John Doe</Text>
-                            <Text style={externalStyles.settingsEmpId}>ID: 1212121</Text>
-                          </View>
-                      </View>
-                      <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
-                          <Text style={externalStyles.outText}>Out</Text>
-                          <Image source={require('./src/assets/icons/clock.png')} style={{marginRight:4}} />
-                          <Text style={externalStyles.settingsEmpUpdatedDay}>10:00am, 22 Sep</Text>
-                      </View>
-                  </View>
-                  <View style={externalStyles.offSyncDateCardEmpDetails}>
-                      <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
-                          <Text style={externalStyles.settingsEmpNameFirstText}>J</Text>
-                          <View style={{marginLeft:12}}>
-                            <Text style={externalStyles.settingsEmpName}>John Doe</Text>
-                            <Text style={externalStyles.settingsEmpId}>ID: 1212121</Text>
-                          </View>
-                      </View>
-                      <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
-                          <Text style={externalStyles.inText}>In</Text>
-                          <Image source={require('./src/assets/icons/clock.png')} style={{marginRight:4}} />
-                          <Text style={externalStyles.settingsEmpUpdatedDay}>10:00am, 22 Sep</Text>
-                      </View>
-                  </View>
-                  <View style={externalStyles.offSyncDateCardEmpDetails}>
-                      <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
-                          <Text style={externalStyles.settingsEmpNameFirstText}>J</Text>
-                          <View style={{marginLeft:12}}>
-                            <Text style={externalStyles.settingsEmpName}>John Doe</Text>
-                            <Text style={externalStyles.settingsEmpId}>ID: 1212121</Text>
-                          </View>
-                      </View>
-                      <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
-                          <Text style={externalStyles.outText}>Out</Text>
-                          <Image source={require('./src/assets/icons/clock.png')} style={{marginRight:4}} />
-                          <Text style={externalStyles.settingsEmpUpdatedDay}>10:00am, 22 Sep</Text>
-                      </View>
-                  </View>
-                </View>
-              </ScrollView>
-
-          </View>
-      </NativeBaseProvider>
+      <View style={externalStyles.body}>
+        <Text style={externalStyles.text}>Work Screen</Text>
+      </View>
     );
   }
   function LogOut() {
@@ -388,7 +290,6 @@ function App() {
       </View>
     );
   }
-
   function SuccessFullyRegistered({navigation}) {
     return (
       <View style={externalStyles.greenScreenHome}>
