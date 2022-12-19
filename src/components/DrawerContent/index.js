@@ -30,7 +30,7 @@ const DrawerContent = props => {
               label="Settings"
               style={sidebarStyle.drawerItem}
               onPress={() => {
-                props.navigation.navigate('Home');
+                props.navigation.navigate('Settings');
               }}
             />
             <DrawerItem
