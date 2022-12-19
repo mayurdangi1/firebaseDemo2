@@ -37,7 +37,7 @@ const DrawerContent = props => {
               label="Offline Sync"
               style={sidebarStyle.drawerItem}
               onPress={() => {
-                props.navigation.navigate('About');
+                props.navigation.navigate('OfflineSync');
               }}
             />
             <DrawerItem

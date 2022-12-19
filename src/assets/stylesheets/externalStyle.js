@@ -228,7 +228,8 @@ const externalStyles = StyleSheet.create({
     borderColor: '#D4D4D4',
     borderRadius: 5,
     color: '#A19F9D',
-    backgroundColor: '#ffffff'
+    backgroundColor: '#ffffff',
+    width: '100%'
   },
   settingsEmpListHeader:{
     backgroundColor: '#ffffff',
@@ -305,8 +306,73 @@ const externalStyles = StyleSheet.create({
     fontStyle: 'normal',
     lineHeight: 20,
     fontSize: 12
+  },
+  // Settings EmployeeList Screen End
+
+  // Settings Offline sync Screen Start
+  setttingsEmplistContainer:{
+    backgroundColor: '#DFDFDF',
+    flex: 1,
+    flexDirection: 'column',    
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
+  },
+  offSyncSearchDataBox:{
+    paddingVertical: 9,
+    paddingHorizontal: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent:'space-around',
+    width: '100%'
+  },
+  offSyncSelectInput:{
+    width: 160
+  },
+  offSyncDateCard:{
+    backgroundColor: '#ffffff',
+    borderBottomColor: '#E1DFDD',
+    borderBottomWidth: 1,
+    marginBottom: 16
+  },
+  offSyncDateCardHeader:{
+    paddingHorizontal: 28,
+    paddingVertical: 16,
+    flexDirection: "row",
+    alignItems: 'center',
+    borderBottomColor: '#E1DFDD',
+    borderBottomWidth: 1
+  },
+  offSyncDateCardHeading:{
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#000000',
+    fontStyle: 'normal',
+    lineHeight: 22
+  },
+  offSyncDateCardEmpDetails:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 12,
+    paddingLeft: 24,
+    paddingRight: 16,
+  },
+  inText:{
+    color: '#34C759',
+    lineHeight: 16,
+    fontSize: 14,
+    fontWeight: '400',
+    marginRight: 5
+  },
+  outText:{
+    color: '#FF3B30',
+    lineHeight: 16,
+    fontSize: 14,
+    fontWeight: '400',
+    marginRight: 5
   }
-  // Settings EmployeeList Screen
+  // Settings Offline sync Screen End
+
 })
 
 export default externalStyles
