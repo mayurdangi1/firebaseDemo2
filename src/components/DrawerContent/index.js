@@ -18,50 +18,9 @@ const DrawerContent = ({navigation, ...props}) => {
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
 
   return (
-    // <View style={{flex: 1}}>
-    //   <DrawerContentScrollView {...props}>
-    //     <View style={sidebarStyle.drawerContainer}>
-    //       <View>
-    //         <Caption style={sidebarStyle.caption}>Select Destination</Caption>
-    //       </View>
-
-    //       <Drawer.Section style={sidebarStyle.drawerSection}>
-    //         <DrawerItem
-    //           label="Settings"
-    //           style={sidebarStyle.drawerItem}
-    //           onPress={() => {
-    //             props.navigation.navigate('Settings');
-    //           }}
-    //         />
-    //         <DrawerItem
-    //           label="Offline Sync"
-    //           style={sidebarStyle.drawerItem}
-    //           onPress={() => {
-    //             props.navigation.navigate('OfflineSync');
-    //           }}
-    //         />
-    //         <DrawerItem
-    //           label="Employee List"
-    //           style={sidebarStyle.drawerItem}
-    //           onPress={() => {
-    //             props.navigation.navigate('EmpList');
-    //           }}
-    //         />
-    //         <DrawerItem
-    //           label="Log Out"
-    //           style={sidebarStyle.drawerItem}
-    //           onPress={() => {
-    //             props.navigation.navigate('Home');
-    //           }}
-    //         />
-    //       </Drawer.Section>
-    //     </View>
-    //   </DrawerContentScrollView>
-    // </View>
     <View style={{ flex: 1 }}>
       <DrawerContentScrollView {...props}>
         <View style={sidebarStyle.drawerContainer}>
-
           <View>
             <Caption style={sidebarStyle.caption}>Select Destination</Caption>
           </View>
@@ -91,16 +50,6 @@ const DrawerContent = ({navigation, ...props}) => {
             </View>
             </TouchableOpacity>
           </View>
-
-
-
-          {/* <Drawer.Section style={sidebarStyle.drawerSection}>
-              <DrawerItem label="Settings" style={sidebarStyle.drawerItem} onPress={() => {props.navigation.navigate('Settings')} }/>
-              <DrawerItem label="Offline Sync" style={sidebarStyle.drawerItem} onPress={() => {props.navigation.navigate('OfflineSync')}} />
-              <DrawerItem label="Employee List" style={sidebarStyle.drawerItem} onPress={() => {props.navigation.navigate('EmployeeList')}} />
-              <DrawerItem label="Log Out" style={sidebarStyle.drawerItem} onPress={() => {props.navigation.navigate('Home')}} />
-          </Drawer.Section> */}
-
         </View>
       </DrawerContentScrollView>
     </View>
