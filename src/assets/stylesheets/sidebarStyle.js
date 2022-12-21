@@ -1,5 +1,5 @@
 
-import { StyleSheet } from "react-native"
+import { StyleSheet, Dimensions } from "react-native"
 
 const sidebarStyle = StyleSheet.create({
     userinfoSection: {
@@ -38,10 +38,15 @@ const sidebarStyle = StyleSheet.create({
       borderColor: "#ffffff"
     },
     drawerItem:{
-      color: "#090A0A",
-      fontWeight: '400',
       fontSize: 16,
-      paddingHorizontal: 10
+      paddingHorizontal: 10,
+      display: 'flex',
+      flexDirection: 'row',
+      paddingHorizontal: 22
+    },
+    drawerItemText:{
+      color: "#090A0A",
+      fontWeight: '500',
     },
     bottomDrawerSection:{
       marginBottom: 15,

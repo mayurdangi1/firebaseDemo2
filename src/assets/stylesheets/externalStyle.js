@@ -11,7 +11,6 @@ const externalStyles = StyleSheet.create({
   homeWelcomeImg: {
     marginBottom: 30,
     alignItems: 'center',
-    width: '100%',
   },
   kisokActivation: {
     alignItems: 'center',
@@ -77,9 +76,11 @@ const externalStyles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: '#EAF7ED',
     paddingBottom: 10,
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
   },
   kioskRegisteredDevice: {
-    flex: 2,
+    flex: 1,
     justifyContent: 'space-between',
     flexDirection: 'column',
     paddingHorizontal: 20,

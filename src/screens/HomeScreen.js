@@ -1,15 +1,6 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  Image,
-  ScrollView,
-  SafeAreaView,
-  TextInput,
-} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import { View, Text, Image, TouchableOpacity} from 'react-native';
 import externalStyles from '../assets/stylesheets/externalStyle';
-import ScanButton from '../components/Home/ScanButton';
 
 function HomeScreen({navigation}) {
   return (
@@ -64,7 +55,18 @@ function HomeScreen({navigation}) {
           </View>
         </View>
       </View>
-      <ScanButton />
+      <View style={externalStyles.scanButtonBox}>
+        <TouchableOpacity
+          style={externalStyles.homeButtonWraper}
+          onPress={() => navigation.navigate('ConnectSuccessfully')}>
+          <Image
+            source={require('../assets/icons/barcode.png')}
+            style={{marginRight: 5}}
+          />
+          <Text style={externalStyles.primaryButton}>Scan QR</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
+export default HomeScreen
