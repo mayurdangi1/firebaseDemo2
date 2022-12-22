@@ -7,34 +7,36 @@ import externalStyles from '../assets/stylesheets/externalStyle';
 import EntryModeOption from '../components/Settings/EntryModeOption';
 import CameraDirectionOption from '../components/Settings/CameraDirecionOption'
 
-const baseUrl = 'https://mewurk-attendance.azurewebsites.net/api/v1/attendanceservice/';
+import {
+  GET_KIOSK_SETTINGS
+} from "../services/CONSTANT"
+import { DEVICE_ID } from '../config/CONSTANT';
 
 const SettingsScreen = () => {
 
     // const [isDisabled, setIsDisabled] = useState(false);
     // const toggleSwitch = () => setIsDisabled(!isDisabled);
-    const [kioskSettingsData, setKioskSettingsData] = useState({});
+    const [kioskSettingsData, setKioskSettingsData] = useState(null);
     useEffect(() => {
       getKioskSettingsData();
     }, []);
 
     const getKioskSettingsData = () => {
-      axios.get(`${baseUrl}kiosk/getkiosksettings/80`).then((response) => {
-        console.log(response.data.data);
+      axios.get(`${GET_KIOSK_SETTINGS(DEVICE_ID)}`).then((response) => {
         setKioskSettingsData(response.data.data);
       });
     };
 
     return (
       <NativeBaseProvider>
-        <View style={externalStyles.settingsContainer}>
+      { kioskSettingsData ? <View style={externalStyles.settingsContainer}>
           <View style={externalStyles.settingsItem}>
             <View style={externalStyles.settingsItemHeader}>
               <Image source={require("../assets/icons/entry_mode.png")} />
               <Text style={externalStyles.settingsHeaderText}>Entery Mode</Text>
             </View>
-            <View style={externalStyles.checkOptions}>
-              <EntryModeOption option={kioskSettingsData.entryMode} />
+           <View style={externalStyles.checkOptions}>
+               <EntryModeOption option={kioskSettingsData.entryMode}  /> 
             </View>
           </View>
 
@@ -46,7 +48,7 @@ const SettingsScreen = () => {
               <Text style={externalStyles.settingsHeaderText}>Camera Direction</Text>
             </View>
             <View style={externalStyles.checkOptions}>
-              <CameraDirectionOption option={kioskSettingsData.cameraDirection} />
+             <CameraDirectionOption option={kioskSettingsData.cameraDirection} /> 
             </View>
           </View>
 
@@ -54,7 +56,7 @@ const SettingsScreen = () => {
 
           <View style={[externalStyles.SwitchWraper]}>
             <View style={externalStyles.settingsItemHeader}>
-              <Image source={require("../assets/icons/screen_pinning.png")} />
+              <Image source={require("../assets/icons/offline_mode.png")} />
               <Text style={externalStyles.settingsHeaderText}>Offline mode</Text>
             </View>
             <Switch disabled
@@ -63,6 +65,19 @@ const SettingsScreen = () => {
               ios_backgroundColor="#3e3e3e"
               //onValueChange={toggleSwitch}
               value={kioskSettingsData.offlineMode}
+            />
+          </View>
+          <View style={[externalStyles.SwitchWraper]}>
+            <View style={externalStyles.settingsItemHeader}>
+              <Image source={require("../assets/icons/gps.png")} />
+              <Text style={externalStyles.settingsHeaderText}>Device GPS tracking</Text>
+            </View>
+            <Switch disabled
+              trackColor={{ false: "#767577", true: "#81b0ff" }}
+              thumbColor={kioskSettingsData.gpsTracking ? "#f4f3f4" : "#737373"}
+              ios_backgroundColor="#3e3e3e"
+              //onValueChange={toggleSwitch}
+              value={kioskSettingsData.gpsTracking}
             />
           </View>
           <View style={[externalStyles.SwitchWraper]}>
@@ -78,22 +93,9 @@ const SettingsScreen = () => {
               value={kioskSettingsData.screenPinning}
             />
           </View>
-          <View style={[externalStyles.SwitchWraper]}>
-            <View style={externalStyles.settingsItemHeader}>
-              <Image source={require("../assets/icons/screen_pinning.png")} />
-              <Text style={externalStyles.settingsHeaderText}>Device GPS tracking</Text>
-            </View>
-            <Switch disabled
-              trackColor={{ false: "#767577", true: "#81b0ff" }}
-              thumbColor={kioskSettingsData.gpsTracking ? "#f4f3f4" : "#737373"}
-              ios_backgroundColor="#3e3e3e"
-              //onValueChange={toggleSwitch}
-              value={kioskSettingsData.gpsTracking}
-            />
-          </View>
-
           <Divider />
-        </View>
+        </View> : <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}><Text> Lodding... </Text></View> }
+
       </NativeBaseProvider>
     );
 }

@@ -4,7 +4,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import radioButtonStyle from "../../assets/stylesheets/radioButtonStyle";
 
 const CameraDirecionOption = ({ option }) => {
-    const cameraDirection = ['Front', 'Rear', 'Both'];
+    const cameraDirection = ['Front', 'Rear'];
     return(
        <View style={radioButtonStyle.radioCircleWrapper}>
             {cameraDirection.map(entry => (
@@ -13,7 +13,7 @@ const CameraDirecionOption = ({ option }) => {
                         style={radioButtonStyle.outerRadio}
                         //onPress={() => setOption(entry)}
                         >
-                        {option === entry && <View style={radioButtonStyle.innerRadio}></View>}
+                        { option.toLowerCase() === entry.toLowerCase() && <View style={radioButtonStyle.innerRadio}></View>}
                     </TouchableOpacity>
                     <Text style={radioButtonStyle.radioLabel}>{entry}</Text>
                 </View>

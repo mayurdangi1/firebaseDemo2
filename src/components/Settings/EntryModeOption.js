@@ -13,7 +13,7 @@ const EntryModeOption = ({ option }) => {
                         style={radioButtonStyle.outerRadio}
                         //onPress={() => setOption(entry)}
                         >
-                        {option === entry && <View style={radioButtonStyle.innerRadio}></View>}
+                        {option.toLowerCase() === entry.toLowerCase() && <View style={radioButtonStyle.innerRadio}></View>}
                     </TouchableOpacity>
                     <Text style={radioButtonStyle.radioLabel}>{entry}</Text>
                 </View>
