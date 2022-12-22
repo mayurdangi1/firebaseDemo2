@@ -69,10 +69,41 @@ const externalStyles = StyleSheet.create({
     paddingVertical: 14,
   },
 
+  // Connect Loading Screen start
+  connectLoadingScreen:{
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: '#ffffff',
+    paddingBottom: 10,
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
+  },
+  loadingActivity:{
+    flex: 1,
+    flexDirection: 'column',
+    paddingHorizontal: 20,
+    alignItems: 'center',
+    marginTop: 150,
+  },
+  loaderTextBox:{
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  loaderBox:{
+    marginBottom: 25
+  },
+  loaderText:{
+    fontSize: 16,
+    lineHeight: 18,
+    fontWeight: '400',
+    color: '#605E5C',
+    marginLeft: 8,
+  },
+  // Connect Loading Screen End
+
     // Registred SuccessFully start
   greenScreenHome: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
     flexDirection: 'column',
     backgroundColor: '#EAF7ED',
     paddingBottom: 10,
@@ -91,20 +122,30 @@ const externalStyles = StyleSheet.create({
     alignItems: 'center'
   },
   kioskSuccessText: {
-    color: '#008605',
+    color: '#605E5C',
     fontSize: 16,
-    fontWeight: "500",
-    marginBottom: 8
+    fontWeight: "400",
+    marginBottom: 8,
+    lineHeight: 24
   },
   deviceLocation: {
     paddingHorizontal: 16,
     paddingVertical: 10,
-    borderRadius: 16,
+    borderRadius: 8,
     backgroundColor: '#ffffff',
     color: '#024B12',
     fontSize: 24,
     fontWeight: "500",
-    marginTop: 0
+    marginTop: 0,
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.30,
+    shadowRadius: 4.65,
+
+    elevation: 8,
   },
   connectedSuccessTextbox: {
     padding: 12,
