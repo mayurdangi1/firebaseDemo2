@@ -16,7 +16,7 @@ function ConnectedSuccessfully({ navigation }) {
                 <View style={externalStyles.kioskRegisteredDevice}>
                     <View style={externalStyles.kisokSuccess}>
                         <Text style={externalStyles.kioskSuccessText}>
-                            Successfully registered Kiosk Device
+                        Dunzo Private Limited
                         </Text>
                         <View>
                             <Image source={require('../assets/icons/device_img.png')} />
@@ -54,7 +54,7 @@ function ConnectedSuccessfully({ navigation }) {
                                     </Text>
                                 </View>
                             </View>
-                            <TouchableOpacity style={externalStyles.homeButtonWraper} onPress={() => navigation.navigate('DeviceAuth')}>
+                            <TouchableOpacity style={externalStyles.homeButtonWraper} onPress={() => navigation.navigate('ConnectingScreen')}>
                                 <Text style={externalStyles.primaryButton}>
                                     Continue with Selfie
                                 </Text>

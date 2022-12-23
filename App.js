@@ -7,6 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/screens/HomeScreen';
 import ConnectedSuccessfully from './src/screens/ConnectedSuccessfully';
 import DeviceAuthenticated from './src/screens/DeviceAuthenticated';
+import DeviceConnectLoadingScreen from './src/screens/DeviceConnectLoadingScreen';
 
 
 const Stack = createStackNavigator();
@@ -18,6 +19,7 @@ const App = () => {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="ConnectSuccessfully" component={ConnectedSuccessfully} />
         <Stack.Screen name="DeviceAuth" component={DeviceAuthenticated} />
+        <Stack.Screen name="ConnectingScreen" component={DeviceConnectLoadingScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
