@@ -14,7 +14,8 @@ const sidebarStyle = StyleSheet.create({
       color: "#090A0A",
       paddingHorizontal:24,
       paddingTop: 24,
-      marginBottom:5
+      marginBottom:5,
+      fontFamily: 'Inter'
     },
     userinfoProfileImg: {
       marginTop: 15,
@@ -42,7 +43,8 @@ const sidebarStyle = StyleSheet.create({
       paddingHorizontal: 10,
       display: 'flex',
       flexDirection: 'row',
-      paddingHorizontal: 22
+      paddingHorizontal: 22,
+      fontFamily: 'Inter'
     },
     drawerItemText:{
       color: "#090A0A",
