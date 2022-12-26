@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity} from 'react-native';
 import externalStyles from '../assets/stylesheets/externalStyle';
 
+import DsmIconButton from '../components/DsmComponent/DsmIconButtonComponent';
+
 function HomeScreen({navigation}) {
   return (
     <View style={externalStyles.homeBody}>
@@ -56,15 +58,9 @@ function HomeScreen({navigation}) {
         </View>
       </View>
       <View style={externalStyles.scanButtonBox}>
-        <TouchableOpacity
-          style={externalStyles.homeButtonWraper}
-          onPress={() => navigation.navigate('ConnectSuccessfully')}>
-          <Image
-            source={require('../assets/icons/barcode.png')}
-            style={{marginRight: 5}}
-          />
-          <Text style={externalStyles.primaryButton}>Scan QR</Text>
-        </TouchableOpacity>
+        <DsmIconButton btnVariant={'dsmBtnPrimary'} title={'Scan QR'} size={'lg'}
+        btnIconSource={require('../assets/icons/barcode.png')}
+        onPress={() => navigation.navigate('ConnectSuccessfully')}/>
       </View>
     </View>
   );

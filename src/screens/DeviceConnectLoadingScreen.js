@@ -2,6 +2,8 @@ import { NativeBaseProvider } from 'native-base';
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
 import externalStyles from '../assets/stylesheets/externalStyle';
+import DsmButton from '../components/DsmComponent/DsmButtonComponent';
+import DeviceAuthenticationModal from '../components/Modals/DeviceAuthenticationModal';
 
 const DeviceConnectLoadingScreen = () => {
     return (
@@ -33,7 +35,11 @@ const DeviceConnectLoadingScreen = () => {
                         <Text style={externalStyles.loaderText}>Kiosk config. in progress</Text>
                     </View>
                 </View>
+                <View style={{marginVertical: 12, paddingHorizontal: 20}}>
+                    <DeviceAuthenticationModal />
+                </View>
             </View>
+            
         </NativeBaseProvider>
     )
 }

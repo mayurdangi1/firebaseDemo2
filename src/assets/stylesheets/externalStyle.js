@@ -20,7 +20,8 @@ const externalStyles = StyleSheet.create({
     fontSize: 28,
     fontWeight: "600",
     color: '#003D80',
-    marginTop: 10
+    marginTop: 10,
+    fontFamily: 'Inter'
   },
   helpMandatorySection: {
     padding: 12,
@@ -32,7 +33,8 @@ const externalStyles = StyleSheet.create({
   forRegistorUser: {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    marginBottom: 5
   },
   forRegistorBoxText: {
     color: '#171717',
@@ -41,32 +43,19 @@ const externalStyles = StyleSheet.create({
     fontStyle: 'normal',
     fontWeight: "500",
     fontSize: 16,
-    marginBottom: 5
+    marginBottom: 5,
+    fontFamily: 'Inter'
   },
   registerUserParagraph: {
     fontStyle: 'normal',
     fontWeight: "400",
     fontSize: 16,
-    lineHeight: 22
+    lineHeight: 22,
+    fontFamily: 'Inter'
   },
   scanButtonBox: {
     marginHorizontal: 25,
     padding: 12,
-  },
-  homeButtonWraper: {
-    display: 'flex',
-    marginHorizontal: 5,
-    justifyContent: "center",
-    backgroundColor: '#0069DB',
-    alignItems: 'center',
-    flexDirection: 'row',
-    borderRadius: 6,
-    marginTop: 15,
-  },
-  primaryButton: {
-    color: '#ffffff',
-    fontSize: 18,
-    paddingVertical: 14,
   },
 
   // Connect Loading Screen start
@@ -84,6 +73,7 @@ const externalStyles = StyleSheet.create({
     paddingHorizontal: 20,
     alignItems: 'center',
     marginTop: 150,
+    width: "100%"
   },
   loaderTextBox:{
     flexDirection: 'row',
@@ -98,6 +88,7 @@ const externalStyles = StyleSheet.create({
     fontWeight: '400',
     color: '#605E5C',
     marginLeft: 8,
+    fontFamily: 'Inter'
   },
   // Connect Loading Screen End
 
@@ -126,7 +117,8 @@ const externalStyles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "400",
     marginBottom: 8,
-    lineHeight: 24
+    lineHeight: 24,
+    fontFamily: 'Inter'
   },
   deviceLocation: {
     paddingHorizontal: 16,
@@ -137,6 +129,7 @@ const externalStyles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "500",
     marginTop: 0,
+    fontFamily: 'Inter',
     shadowColor: "#000000",
     shadowOffset: {
       width: 0,
@@ -172,6 +165,7 @@ const externalStyles = StyleSheet.create({
     borderRadius: 4,
     backgroundColor: '#ffffff',
     marginTop: 20,
+    fontFamily: 'Inter',
     textAlign: 'center'
   },
   loginContainer: {
@@ -193,11 +187,12 @@ const externalStyles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "600",
     color: '#323130',
-    marginBottom: 20
+    marginBottom: 20,
+    fontFamily: 'Inter'
   },
   labels: {
     fontSize: 20,
-    color: '#3D3D3D',
+    color: '#3D3D3D', 
     marginTop: 10,
     marginBottom: 6,
     lineHeight: 25,
@@ -205,6 +200,7 @@ const externalStyles = StyleSheet.create({
     width: '100%',
     fontWeight: "600",
     fontSize: 14,
+    fontFamily: 'Inter'
   },
   inputStyle: {
     borderWidth: 1,
@@ -215,7 +211,8 @@ const externalStyles = StyleSheet.create({
     fontSize: 18,
     width: '100%',
     paddingLeft: 12,
-    borderColor: '#8a8886'
+    borderColor: '#8a8886',
+    fontFamily: 'Inter'
   },
   // Settings screen Start
   settingsContainer:{
@@ -244,7 +241,8 @@ const externalStyles = StyleSheet.create({
     fontSize: 18,
     color: '#000000',
     fontWeight: '500',
-    marginLeft: 10
+    marginLeft: 10,
+    fontFamily: 'Inter'
   },
   checkOptions: {
     marginLeft: 25
@@ -288,7 +286,8 @@ const externalStyles = StyleSheet.create({
     fontWeight: '500',
     color: '#000000',
     fontStyle: 'normal',
-    lineHeight: 22
+    lineHeight: 22,
+    fontFamily: 'Inter'
   },
   settingsEmpLastUpdatedText:{
     fontSize : 12,
@@ -296,6 +295,7 @@ const externalStyles = StyleSheet.create({
     fontWeight: '500',
     lineHeight: 22,
     fontStyle: 'normal',
+    fontFamily: 'Inter'
   },
   settingsEmpData:{
     backgroundColor: '#ffffff',
@@ -331,7 +331,8 @@ const externalStyles = StyleSheet.create({
     fontWeight: '400',
     fontStyle: 'normal',
     lineHeight: 20,
-    fontSize: 16
+    fontSize: 16,
+    fontFamily: 'Inter'
   },
   settingsEmpId:{
     color: '#A19F9D',
@@ -347,7 +348,8 @@ const externalStyles = StyleSheet.create({
     fontWeight: '400',
     fontStyle: 'normal',
     lineHeight: 20,
-    fontSize: 12
+    fontSize: 12,
+    fontFamily: 'Inter'
   },
   // Settings EmployeeList Screen End
 
@@ -389,7 +391,8 @@ const externalStyles = StyleSheet.create({
     fontWeight: '500',
     color: '#000000',
     fontStyle: 'normal',
-    lineHeight: 22
+    lineHeight: 22,
+    fontFamily: 'Inter'
   },
   offSyncDateCardEmpDetails:{
     flexDirection: 'row',
@@ -411,9 +414,19 @@ const externalStyles = StyleSheet.create({
     lineHeight: 16,
     fontSize: 14,
     fontWeight: '400',
-    marginRight: 5
-  }
+    marginRight: 5,
+    fontFamily: 'Inter'
+  },
   // Settings Offline sync Screen End
+
+  // Device Authentication Modal
+  // Device Authentication Modal
+  deviceAuthenticationMessagePopup: {
+    justifyContent: 'center',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: 8
+  }
 
 })
 

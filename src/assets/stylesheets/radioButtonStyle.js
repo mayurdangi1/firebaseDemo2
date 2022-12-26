@@ -10,7 +10,8 @@ const radioButtonStyle = StyleSheet.create({
         fontSize: 16,
         fontWeight: "400",
         color: '#171717',
-        marginLeft: 10
+        marginLeft: 10,
+        fontFamily: 'Inter'
     },
     entryMode:{
         marginVertical: 10,
