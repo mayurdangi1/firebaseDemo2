@@ -1,10 +1,10 @@
 import React from "react";
 import { Modal } from "native-base";
 import { Image, View, Text } from "react-native";
-import DsmButton from "../DsmComponent/DsmButtonComponent";
 
 import externalStyles from "../../assets/stylesheets/externalStyle";
-import dsmFontStyle from "../../assets/stylesheets/dsmStyles/dsmFontStyle";
+import DsmButton from "../DsmComponent/DsmButtonComponent";
+import dsmTypographyStyle from '../../assets/stylesheets/dsmStyles/dsmTypographyStyle'
 
 const  DeviceAuthenticationModal = ({navigation}) => {
   const [modalVisible, setModalVisible] = React.useState(false);
@@ -16,14 +16,14 @@ const  DeviceAuthenticationModal = ({navigation}) => {
           <Modal.Body>
             <View style={externalStyles.deviceAuthenticationMessagePopup}>
                 <Image source={require('../../assets/icons/success_circle.png')} style={{marginBottom: 5}} />
-                <Text style={dsmFontStyle.mDsmTitle3}>Device Authenticated!</Text>
-                <Text style={[dsmFontStyle.mDsmMediumText, style={marginBottom: 5}]} >Thanks for completing device authentication. Kiosk is ready for attendance marking.</Text>
-                <DsmButton btnVariant={'dsmBtnPrimary'} size={'sm'} title={'Continue'} />
+                <Text style={dsmTypographyStyle.mDsmTitle3Bold}>Device Authenticated!</Text>
+                <Text style={[dsmTypographyStyle.mDsmMediumSemiBold, style={marginBottom: 5}]} >Thanks for completing device authentication. Kiosk is ready for attendance marking.</Text>
+                <DsmButton btnVariant={'dsmBtnPrimary'}  btnSize={'sm'}  title={'Continue'} />
             </View>
           </Modal.Body>
         </Modal.Content>
       </Modal>
-      <DsmButton btnVariant={'dsmBtnPrimary'} title={'Capture Selfie'} onPress={() => { setModalVisible(!modalVisible); }} />
+      <DsmButton btnVariant={'dsmBtnPrimary'}  btnSize={'md'} title={'Capture Selfie'} onPress={() => { setModalVisible(!modalVisible); }} />
     </>;
 }
 

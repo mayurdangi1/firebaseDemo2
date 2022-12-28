@@ -2,7 +2,9 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity} from 'react-native';
 import externalStyles from '../assets/stylesheets/externalStyle';
 
-import DsmIconButton from '../components/DsmComponent/DsmIconButtonComponent';
+// dsm Import
+import dsmTypographyStyle from '../assets/stylesheets/dsmStyles/dsmTypographyStyle';
+import DsmButton from '../components/DsmComponent/DsmButtonComponent';
 
 function HomeScreen({navigation}) {
   return (
@@ -32,17 +34,12 @@ function HomeScreen({navigation}) {
             />
             <View>
               <Text
-                style={[
-                  externalStyles.forRegistorBoxText,
-                  externalStyles.registerUserTitle,
-                ]}>
+                style={dsmTypographyStyle.mDsmMediumBold}>
+                
                 For Registered Users Only!
               </Text>
               <Text
-                style={[
-                  externalStyles.forRegistorBoxText,
-                  externalStyles.registerUserParagraph,
-                ]}>
+                style={dsmTypographyStyle.mDsmSmallNormal}>
                 If you don’t have QR code for activation, Please contact your
                 Admin or visit{' '}
                 <Text
@@ -58,8 +55,8 @@ function HomeScreen({navigation}) {
         </View>
       </View>
       <View style={externalStyles.scanButtonBox}>
-        <DsmIconButton btnVariant={'dsmBtnPrimary'} title={'Scan QR'} size={'lg'}
-        btnIconSource={require('../assets/icons/barcode.png')}
+        <DsmButton btnVariant={'dsmBtnPrimary'} title={'Scan QR'} btnSize={'lg'}
+        leftBtnIconSource={require('../assets/icons/barcode.png')}
         onPress={() => navigation.navigate('ConnectSuccessfully')}/>
       </View>
     </View>

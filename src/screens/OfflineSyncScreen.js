@@ -3,6 +3,7 @@ import { View, Text, TextInput, ScrollView, Image } from 'react-native'
 import { NativeBaseProvider} from 'native-base'
 
 import externalStyles from '../assets/stylesheets/externalStyle';
+import dsmTypographyStyle from '../assets/stylesheets/dsmStyles/dsmTypographyStyle';
 
 const OfflineSyncScreen = () => {
     return (
@@ -32,68 +33,68 @@ const OfflineSyncScreen = () => {
               <View style={externalStyles.offSyncDateCard}>
                 <View style={externalStyles.offSyncDateCardHeader}>
                   <Image source={require('../assets/icons/selected_date.png')} style={{ marginRight: 4 }} />
-                  <Text style={externalStyles.offSyncDateCardHeading}>13 October 2022</Text>
+                  <Text style={dsmTypographyStyle.mDsmMediumSemiBold}>13 October 2022</Text>
                 </View>
                 <View style={externalStyles.offSyncDateCardEmpDetails}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                     <Text style={externalStyles.settingsEmpNameFirstText}>J</Text>
                     <View style={{ marginLeft: 12 }}>
-                      <Text style={externalStyles.settingsEmpName}>John Doe</Text>
+                      <Text style={dsmTypographyStyle.mDsmMediumNormal}>John Doe</Text>
                       <Text style={externalStyles.settingsEmpId}>ID: 1212121</Text>
                     </View>
                   </View>
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                     <Text style={externalStyles.inText}>In</Text>
                     <Image source={require('../assets/icons/clock.png')} style={{ marginRight: 4 }} />
-                    <Text style={externalStyles.settingsEmpUpdatedDay}>10:00am, 22 Sep</Text>
+                    <Text style={dsmTypographyStyle.mDsmTinyNormal}>10:00am, 22 Sep</Text>
                   </View>
                 </View>
               </View>
               <View style={externalStyles.offSyncDateCard}>
                 <View style={externalStyles.offSyncDateCardHeader}>
                   <Image source={require('../assets/icons/selected_date.png')} style={{ marginRight: 4 }} />
-                  <Text style={externalStyles.offSyncDateCardHeading}>14 October 2022</Text>
+                  <Text style={dsmTypographyStyle.mDsmMediumSemiBold}>14 October 2022</Text>
                 </View>
                 <View style={externalStyles.offSyncDateCardEmpDetails}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                     <Text style={externalStyles.settingsEmpNameFirstText}>J</Text>
                     <View style={{ marginLeft: 12 }}>
-                      <Text style={externalStyles.settingsEmpName}>John Doe</Text>
+                      <Text style={dsmTypographyStyle.mDsmMediumNormal}>John Doe</Text>
                       <Text style={externalStyles.settingsEmpId}>ID: 1212121</Text>
                     </View>
                   </View>
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                     <Text style={externalStyles.outText}>Out</Text>
                     <Image source={require('../assets/icons/clock.png')} style={{ marginRight: 4 }} />
-                    <Text style={externalStyles.settingsEmpUpdatedDay}>10:00am, 22 Sep</Text>
+                    <Text style={dsmTypographyStyle.mDsmTinyNormal}>10:00am, 22 Sep</Text>
                   </View>
                 </View>
                 <View style={externalStyles.offSyncDateCardEmpDetails}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                     <Text style={externalStyles.settingsEmpNameFirstText}>J</Text>
                     <View style={{ marginLeft: 12 }}>
-                      <Text style={externalStyles.settingsEmpName}>John Doe</Text>
+                      <Text style={dsmTypographyStyle.mDsmMediumNormal}>John Doe</Text>
                       <Text style={externalStyles.settingsEmpId}>ID: 1212121</Text>
                     </View>
                   </View>
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                     <Text style={externalStyles.inText}>In</Text>
                     <Image source={require('../assets/icons/clock.png')} style={{ marginRight: 4 }} />
-                    <Text style={externalStyles.settingsEmpUpdatedDay}>10:00am, 22 Sep</Text>
+                    <Text style={dsmTypographyStyle.mDsmMediumSemiBold}>10:00am, 22 Sep</Text>
                   </View>
                 </View>
                 <View style={externalStyles.offSyncDateCardEmpDetails}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                     <Text style={externalStyles.settingsEmpNameFirstText}>J</Text>
                     <View style={{ marginLeft: 12 }}>
-                      <Text style={externalStyles.settingsEmpName}>John Doe</Text>
+                      <Text style={dsmTypographyStyle.mDsmMediumNormal}>John Doe</Text>
                       <Text style={externalStyles.settingsEmpId}>ID: 1212121</Text>
                     </View>
                   </View>
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                     <Text style={externalStyles.inText}>In</Text>
                     <Image source={require('../assets/icons/clock.png')} style={{ marginRight: 4 }} />
-                    <Text style={externalStyles.settingsEmpUpdatedDay}>10:00am, 22 Sep</Text>
+                    <Text style={dsmTypographyStyle.mDsmTinyNormal}>10:00am, 22 Sep</Text>
                   </View>
                 </View>
               </View>
@@ -101,48 +102,34 @@ const OfflineSyncScreen = () => {
               <View style={externalStyles.offSyncDateCard}>
                 <View style={externalStyles.offSyncDateCardHeader}>
                   <Image source={require('../assets/icons/selected_date.png')} style={{ marginRight: 4 }} />
-                  <Text style={externalStyles.offSyncDateCardHeading}>15 October 2022</Text>
+                  <Text style={dsmTypographyStyle.mDsmMediumSemiBold}>15 October 2022</Text>
                 </View>
                 <View style={externalStyles.offSyncDateCardEmpDetails}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                     <Text style={externalStyles.settingsEmpNameFirstText}>J</Text>
                     <View style={{ marginLeft: 12 }}>
-                      <Text style={externalStyles.settingsEmpName}>John Doe</Text>
+                      <Text style={dsmTypographyStyle.mDsmMediumNormal}>John Doe</Text>
                       <Text style={externalStyles.settingsEmpId}>ID: 1212121</Text>
                     </View>
                   </View>
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                     <Text style={externalStyles.outText}>Out</Text>
                     <Image source={require('../assets/icons/clock.png')} style={{ marginRight: 4 }} />
-                    <Text style={externalStyles.settingsEmpUpdatedDay}>10:00am, 22 Sep</Text>
+                    <Text style={dsmTypographyStyle.mDsmTinyNormal}>10:00am, 22 Sep</Text>
                   </View>
                 </View>
                 <View style={externalStyles.offSyncDateCardEmpDetails}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                     <Text style={externalStyles.settingsEmpNameFirstText}>J</Text>
                     <View style={{ marginLeft: 12 }}>
-                      <Text style={externalStyles.settingsEmpName}>John Doe</Text>
+                      <Text style={dsmTypographyStyle.mDsmMediumNormal}>John Doe</Text>
                       <Text style={externalStyles.settingsEmpId}>ID: 1212121</Text>
                     </View>
                   </View>
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                     <Text style={externalStyles.inText}>In</Text>
                     <Image source={require('../assets/icons/clock.png')} style={{ marginRight: 4 }} />
-                    <Text style={externalStyles.settingsEmpUpdatedDay}>10:00am, 22 Sep</Text>
-                  </View>
-                </View>
-                <View style={externalStyles.offSyncDateCardEmpDetails}>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={externalStyles.settingsEmpNameFirstText}>J</Text>
-                    <View style={{ marginLeft: 12 }}>
-                      <Text style={externalStyles.settingsEmpName}>John Doe</Text>
-                      <Text style={externalStyles.settingsEmpId}>ID: 1212121</Text>
-                    </View>
-                  </View>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={externalStyles.outText}>Out</Text>
-                    <Image source={require('../assets/icons/clock.png')} style={{ marginRight: 4 }} />
-                    <Text style={externalStyles.settingsEmpUpdatedDay}>10:00am, 22 Sep</Text>
+                    <Text style={dsmTypographyStyle.mDsmTinyNormal}>10:00am, 22 Sep</Text>
                   </View>
                 </View>
               </View>

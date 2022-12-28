@@ -36,16 +36,6 @@ const externalStyles = StyleSheet.create({
     alignItems: 'flex-start',
     marginBottom: 5
   },
-  forRegistorBoxText: {
-    color: '#171717',
-  },
-  registerUserTitle: {
-    fontStyle: 'normal',
-    fontWeight: "500",
-    fontSize: 16,
-    marginBottom: 5,
-    fontFamily: 'Inter'
-  },
   registerUserParagraph: {
     fontStyle: 'normal',
     fontWeight: "400",
@@ -237,13 +227,6 @@ const externalStyles = StyleSheet.create({
     paddingVertical: 15,
     justifyContent: 'space-between'
   },
-  settingsHeaderText:{
-    fontSize: 18,
-    color: '#000000',
-    fontWeight: '500',
-    marginLeft: 10,
-    fontFamily: 'Inter'
-  },
   checkOptions: {
     marginLeft: 25
   },
@@ -281,14 +264,6 @@ const externalStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between'
   },
-  settingsEmpNameHeading:{
-    fontSize: 16,
-    fontWeight: '500',
-    color: '#000000',
-    fontStyle: 'normal',
-    lineHeight: 22,
-    fontFamily: 'Inter'
-  },
   settingsEmpLastUpdatedText:{
     fontSize : 12,
     color: '#A19F9D',
@@ -325,15 +300,6 @@ const externalStyles = StyleSheet.create({
     fontWeight: '500'
 
   },
-  settingsEmpName:{
-    color: '#090A0A',
-    lineHeight: 20,
-    fontWeight: '400',
-    fontStyle: 'normal',
-    lineHeight: 20,
-    fontSize: 16,
-    fontFamily: 'Inter'
-  },
   settingsEmpId:{
     color: '#A19F9D',
     lineHeight: 20,
@@ -341,15 +307,6 @@ const externalStyles = StyleSheet.create({
     fontStyle: 'normal',
     lineHeight: 20,
     fontSize: 14
-  },
-  settingsEmpUpdatedDay:{
-    color: '#090A0A',
-    lineHeight: 20,
-    fontWeight: '400',
-    fontStyle: 'normal',
-    lineHeight: 20,
-    fontSize: 12,
-    fontFamily: 'Inter'
   },
   // Settings EmployeeList Screen End
 
@@ -385,14 +342,6 @@ const externalStyles = StyleSheet.create({
     alignItems: 'center',
     borderBottomColor: '#E1DFDD',
     borderBottomWidth: 1
-  },
-  offSyncDateCardHeading:{
-    fontSize: 16,
-    fontWeight: '500',
-    color: '#000000',
-    fontStyle: 'normal',
-    lineHeight: 22,
-    fontFamily: 'Inter'
   },
   offSyncDateCardEmpDetails:{
     flexDirection: 'row',
