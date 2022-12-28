@@ -7,22 +7,17 @@ const dsmButtonStyle = StyleSheet.create({
         paddingHorizontal: 16,
         borderRadius: 8,
         borderWidth: 1,
-        width:"100%"
-    },
-    dsmBtnIcon:{
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
+        width:"100%",
+        justifyContent: 'center'
     },
-    dsmBtnDefault:{
-        textAlign: 'center'
-    },
-    dsmBtnTitle:{
+    dsmBtnText:{
         fontFamily: 'Inter',
         fontWeight: '500',
         fontSize: 18,
         lineHeight: 24,
-        textAlign: 'center'
+        textAlign: "center"
     },
 })
 

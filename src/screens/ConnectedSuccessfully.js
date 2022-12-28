@@ -4,7 +4,7 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import externalStyles from '../assets/stylesheets/externalStyle';
 
 import DsmButton from '../components/DsmComponent/DsmButtonComponent';
-import dsmFontStyle from '../assets/stylesheets/dsmStyles/dsmFontStyle';
+import dsmTypographyStyle from '../assets/stylesheets/dsmStyles/dsmTypographyStyle';
 
 function ConnectedSuccessfully({ navigation }) {
     return (
@@ -35,17 +35,17 @@ function ConnectedSuccessfully({ navigation }) {
                                 />
                                 <View>
                                     <Text
-                                        style={dsmFontStyle.mDsmTitle3}>
+                                        style={dsmTypographyStyle.mDsmMediumBold}>
                                         Connected Successfully
                                     </Text>
                                     <Text
-                                        style={[dsmFontStyle.mDsmMediumText, style={marginBottom: 5}]} >
+                                        style={[dsmTypographyStyle.mDsmSmallNormal, style={marginBottom: 5}]} >
                                         Your device is now assigned to dunzo front
                                         gate device.
                                     </Text>
                                 </View>
                             </View>
-                            <DsmButton btnVariant={'dsmBtnPrimary'} size={'sm'} title={'Continue with Selfie'} onPress={() => navigation.navigate('ConnectingScreen')} />
+                            <DsmButton btnVariant={'dsmBtnPrimary'} btnSize={'sm'} title={'Continue with Selfie'} onPress={() => navigation.navigate('ConnectingScreen')} />
                         </View>
                     </View>
                 </View>
