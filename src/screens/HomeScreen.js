@@ -1,18 +1,18 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity} from 'react-native';
-import externalStyles from '../assets/stylesheets/externalStyle';
+import React from "react";
+import { View, Text, Image, TouchableOpacity } from "react-native";
+import externalStyles from "../assets/stylesheets/externalStyle";
 
-function HomeScreen({navigation}) {
+function HomeScreen({ navigation }) {
   return (
     <View style={externalStyles.homeBody}>
       <View style={externalStyles.homeWelcomeImg}>
         <Image
-          source={require('../assets/icons/home1.png')}
-          style={{width: '100%'}}
+          source={require("../assets/icons/home1.png")}
+          style={{ width: "100%" }}
         />
         <Image
-          source={require('../assets/icons/mewurk_name.png')}
-          style={{marginTop: 20}}
+          source={require("../assets/icons/mewurk_name.png")}
+          style={{ marginTop: 20 }}
         />
       </View>
 
@@ -25,29 +25,32 @@ function HomeScreen({navigation}) {
         <View style={externalStyles.helpMandatorySection}>
           <View style={externalStyles.forRegistorUser}>
             <Image
-              source={require('../assets/icons/madatory.png')}
-              style={{marginRight: 8, marginTop: 3}}
+              source={require("../assets/icons/madatory.png")}
+              style={{ marginRight: 8, marginTop: 3 }}
             />
             <View>
               <Text
                 style={[
                   externalStyles.forRegistorBoxText,
                   externalStyles.registerUserTitle,
-                ]}>
+                ]}
+              >
                 For Registered Users Only!
               </Text>
               <Text
                 style={[
                   externalStyles.forRegistorBoxText,
                   externalStyles.registerUserParagraph,
-                ]}>
+                ]}
+              >
                 If you don’t have QR code for activation, Please contact your
-                Admin or visit{' '}
+                Admin or visit{" "}
                 <Text
                   style={{
-                    color: '#0069DB',
-                    textDecorationLines: 'underline',
-                  }}>
+                    color: "#0069DB",
+                    textDecorationLines: "underline",
+                  }}
+                >
                   Help.
                 </Text>
               </Text>
@@ -58,10 +61,11 @@ function HomeScreen({navigation}) {
       <View style={externalStyles.scanButtonBox}>
         <TouchableOpacity
           style={externalStyles.homeButtonWraper}
-          onPress={() => navigation.navigate('ConnectSuccessfully')}>
+          onPress={() => navigation.navigate("QRCodeScanner")}
+        >
           <Image
-            source={require('../assets/icons/barcode.png')}
-            style={{marginRight: 5}}
+            source={require("../assets/icons/barcode.png")}
+            style={{ marginRight: 5 }}
           />
           <Text style={externalStyles.primaryButton}>Scan QR</Text>
         </TouchableOpacity>
@@ -69,4 +73,4 @@ function HomeScreen({navigation}) {
     </View>
   );
 }
-export default HomeScreen
+export default HomeScreen;
