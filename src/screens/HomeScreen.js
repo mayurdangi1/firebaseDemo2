@@ -2,6 +2,10 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import externalStyles from "../assets/stylesheets/externalStyle";
 
+// dsm Import
+import dsmTypographyStyle from "../assets/stylesheets/dsmStyles/dsmTypographyStyle";
+import DsmButton from "../components/DsmComponent/DsmButtonComponent";
+
 function HomeScreen({ navigation }) {
   return (
     <View style={externalStyles.homeBody}>
@@ -29,20 +33,10 @@ function HomeScreen({ navigation }) {
               style={{ marginRight: 8, marginTop: 3 }}
             />
             <View>
-              <Text
-                style={[
-                  externalStyles.forRegistorBoxText,
-                  externalStyles.registerUserTitle,
-                ]}
-              >
+              <Text style={dsmTypographyStyle.mDsmMediumBold}>
                 For Registered Users Only!
               </Text>
-              <Text
-                style={[
-                  externalStyles.forRegistorBoxText,
-                  externalStyles.registerUserParagraph,
-                ]}
-              >
+              <Text style={dsmTypographyStyle.mDsmSmallNormal}>
                 If you don’t have QR code for activation, Please contact your
                 Admin or visit{" "}
                 <Text
@@ -59,16 +53,13 @@ function HomeScreen({ navigation }) {
         </View>
       </View>
       <View style={externalStyles.scanButtonBox}>
-        <TouchableOpacity
-          style={externalStyles.homeButtonWraper}
+        <DsmButton
+          btnVariant={"dsmBtnPrimary"}
+          title={"Scan QR"}
+          btnSize={"lg"}
+          leftBtnIconSource={require("../assets/icons/barcode.png")}
           onPress={() => navigation.navigate("QRCodeScanner")}
-        >
-          <Image
-            source={require("../assets/icons/barcode.png")}
-            style={{ marginRight: 5 }}
-          />
-          <Text style={externalStyles.primaryButton}>Scan QR</Text>
-        </TouchableOpacity>
+        />
       </View>
     </View>
   );

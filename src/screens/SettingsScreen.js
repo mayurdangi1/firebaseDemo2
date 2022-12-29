@@ -6,6 +6,7 @@ import { NativeBaseProvider, Divider} from 'native-base'
 import externalStyles from '../assets/stylesheets/externalStyle';
 import EntryModeOption from '../components/Settings/EntryModeOption';
 import CameraDirectionOption from '../components/Settings/CameraDirecionOption'
+import dsmTypographyStyle from '../assets/stylesheets/dsmStyles/dsmTypographyStyle';
 
 import {
   GET_KIOSK_SETTINGS
@@ -32,8 +33,8 @@ const SettingsScreen = () => {
       { kioskSettingsData ? <View style={externalStyles.settingsContainer}>
           <View style={externalStyles.settingsItem}>
             <View style={externalStyles.settingsItemHeader}>
-              <Image source={require("../assets/icons/entry_mode.png")} />
-              <Text style={externalStyles.settingsHeaderText}>Entery Mode</Text>
+              <Image source={require("../assets/icons/entry_mode.png")} style={{marginRight:8}} />
+              <Text style={dsmTypographyStyle.mDsmLargeSemiBold}>Entery Mode</Text>
             </View>
            <View style={externalStyles.checkOptions}>
                <EntryModeOption option={kioskSettingsData.entryMode}  /> 
@@ -44,8 +45,8 @@ const SettingsScreen = () => {
 
           <View style={externalStyles.settingsItem}>
             <View style={externalStyles.settingsItemHeader}>
-              <Image source={require("../assets/icons/camera_detection.png")} />
-              <Text style={externalStyles.settingsHeaderText}>Camera Direction</Text>
+              <Image source={require("../assets/icons/camera_detection.png")} style={{marginRight:8}} />
+              <Text style={dsmTypographyStyle.mDsmLargeSemiBold}>Camera Direction</Text>
             </View>
             <View style={externalStyles.checkOptions}>
              <CameraDirectionOption option={kioskSettingsData.cameraDirection} /> 
@@ -56,8 +57,8 @@ const SettingsScreen = () => {
 
           <View style={[externalStyles.SwitchWraper]}>
             <View style={externalStyles.settingsItemHeader}>
-              <Image source={require("../assets/icons/offline_mode.png")} />
-              <Text style={externalStyles.settingsHeaderText}>Offline mode</Text>
+              <Image source={require("../assets/icons/offline_mode.png")} style={{marginRight:8}} />
+              <Text style={dsmTypographyStyle.mDsmLargeSemiBold}>Offline mode</Text>
             </View>
             <Switch disabled
               trackColor={{ false: "#767577", true: "#81b0ff" }}
@@ -69,8 +70,8 @@ const SettingsScreen = () => {
           </View>
           <View style={[externalStyles.SwitchWraper]}>
             <View style={externalStyles.settingsItemHeader}>
-              <Image source={require("../assets/icons/gps.png")} />
-              <Text style={externalStyles.settingsHeaderText}>Device GPS tracking</Text>
+              <Image source={require("../assets/icons/gps.png")} style={{marginRight:8}} />
+              <Text style={dsmTypographyStyle.mDsmLargeSemiBold}>Device GPS tracking</Text>
             </View>
             <Switch disabled
               trackColor={{ false: "#767577", true: "#81b0ff" }}
@@ -82,8 +83,8 @@ const SettingsScreen = () => {
           </View>
           <View style={[externalStyles.SwitchWraper]}>
             <View style={externalStyles.settingsItemHeader}>
-              <Image source={require("../assets/icons/screen_pinning.png")} />
-              <Text style={externalStyles.settingsHeaderText}>Sceen Pinning</Text>
+              <Image source={require("../assets/icons/screen_pinning.png")} style={{marginRight:8}} />
+              <Text style={dsmTypographyStyle.mDsmLargeSemiBold}>Sceen Pinning</Text>
             </View>
             <Switch disabled
               trackColor={{ false: "#767577", true: "#81b0ff" }}

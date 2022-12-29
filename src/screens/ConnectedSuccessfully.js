@@ -3,6 +3,9 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import externalStyles from '../assets/stylesheets/externalStyle';
 
+import DsmButton from '../components/DsmComponent/DsmButtonComponent';
+import dsmTypographyStyle from '../assets/stylesheets/dsmStyles/dsmTypographyStyle';
+
 function ConnectedSuccessfully({ navigation }) {
     return (
         <NativeBaseProvider>
@@ -32,33 +35,17 @@ function ConnectedSuccessfully({ navigation }) {
                                 />
                                 <View>
                                     <Text
-                                        style={[
-                                            externalStyles.forRegistorBoxText,
-                                            externalStyles.registerUserTitle,
-                                        ]}>
+                                        style={dsmTypographyStyle.mDsmMediumBold}>
                                         Connected Successfully
                                     </Text>
                                     <Text
-                                        style={[
-                                            externalStyles.forRegistorBoxText,
-                                            externalStyles.registerUserParagraph,
-                                        ]}>
+                                        style={[dsmTypographyStyle.mDsmSmallNormal, style={marginBottom: 5}]} >
                                         Your device is now assigned to dunzo front
-                                    </Text>
-                                    <Text
-                                        style={[
-                                            externalStyles.forRegistorBoxText,
-                                            externalStyles.registerUserParagraph,
-                                        ]}>
                                         gate device.
                                     </Text>
                                 </View>
                             </View>
-                            <TouchableOpacity style={externalStyles.homeButtonWraper} onPress={() => navigation.navigate('ConnectingScreen')}>
-                                <Text style={externalStyles.primaryButton}>
-                                    Continue with Selfie
-                                </Text>
-                            </TouchableOpacity>
+                            <DsmButton btnVariant={'dsmBtnPrimary'} btnSize={'sm'} title={'Continue with Selfie'} onPress={() => navigation.navigate('ConnectingScreen')} />
                         </View>
                     </View>
                 </View>
