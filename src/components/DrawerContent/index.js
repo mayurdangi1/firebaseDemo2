@@ -14,13 +14,13 @@ import {
 import axios from 'axios'
 import sidebarStyle from '../../assets/stylesheets/sidebarStyle';
 import { LOGOUT_FROM_DEVICE } from '../../services/CONSTANT';
-import { LOGOUT_FROM_DEVICE_ID } from '../../config/CONSTANT';
+import { LOGOUT_DEVICE_ID } from '../../config/CONSTANT';
 const DrawerContent = ({navigation, ...props}) => {
   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
 
   const logoutFromDevice = () => {
-    axios.put(`${LOGOUT_FROM_DEVICE(LOGOUT_FROM_DEVICE_ID)}`).then((response) => {
+    axios.put(`${LOGOUT_FROM_DEVICE(LOGOUT_DEVICE_ID)}`).then((response) => {
       if(response.data.isSuccess) {
         navigation.navigate('Home');
       }
