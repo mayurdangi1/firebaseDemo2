@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useIsFocused } from "@react-navigation/native";
 import { View, Text, Image, Switch } from 'react-native'
 import axios from 'axios'
 
@@ -14,13 +15,15 @@ import {
 import { DEVICE_ID } from '../config/CONSTANT';
 
 const SettingsScreen = () => {
-
+  const isFocused = useIsFocused();
     // const [isDisabled, setIsDisabled] = useState(false);
     // const toggleSwitch = () => setIsDisabled(!isDisabled);
     const [kioskSettingsData, setKioskSettingsData] = useState(null);
     useEffect(() => {
-      getKioskSettingsData();
-    }, []);
+      if(isFocused){ 
+        getKioskSettingsData();
+      }
+    }, [isFocused]);
 
     const getKioskSettingsData = () => {
       axios.get(`${GET_KIOSK_SETTINGS(DEVICE_ID)}`).then((response) => {

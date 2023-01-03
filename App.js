@@ -21,15 +21,9 @@ const App = () => {
       >
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="QRCodeScanner" component={QRCodeScanner} />
-        <Stack.Screen
-          name="ConnectSuccessfully"
-          component={ConnectedSuccessfully}
-        />
+        <Stack.Screen name="ConnectSuccessfully" component={ConnectedSuccessfully} />
         <Stack.Screen name="DeviceAuth" component={DeviceAuthenticated} />
-        <Stack.Screen
-          name="ConnectingScreen"
-          component={DeviceConnectLoadingScreen}
-        />
+        <Stack.Screen name="ConnectingScreen" component={DeviceConnectLoadingScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
