@@ -106,7 +106,6 @@ const QRCodeScanner = ({ navigation }) => {
     })
       .then((response) => {
         const { values } = response; // Array of detected QR code values. Empty if nothing found.
-        console.log(response);
         isEmpty(content) && setContent(values[0]);
       })
       .catch((error) => console.log("Cannot detect QR code in image", error));

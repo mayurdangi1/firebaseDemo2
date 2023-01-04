@@ -6,9 +6,11 @@ import RNFS from "react-native-fs";
 import useMutation from "../../hooks/useMutation";
 import { PUT_FACE_CAPTURE } from "../../services/CONSTANT";
 import DsmButton from "../DsmComponent/DsmButtonComponent";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { API } from "../../services/https";
 import DeviceAuthenticationModal from "../Modals/DeviceAuthenticationModal";
+import { LOCAL_STORAGE } from "../../services/https";
 
 const FaceCapture = ({ navigation }) => {
   const camera = useRef(null);
@@ -31,8 +33,12 @@ const FaceCapture = ({ navigation }) => {
         flash: "off",
       });
       const base64Url = await RNFS.readFile(photo.path, "base64");
+      const deviceDetailsJSON = await AsyncStorage.getItem(
+        LOCAL_STORAGE.deviceDetails
+      );
+      const deviceDetails = JSON.parse(deviceDetailsJSON);
       const payload = {
-        deviceId: 98,
+        deviceId: deviceDetails.device.id,
         selfieImageName: "Static",
         selfieImageInByte: base64Url,
       };
