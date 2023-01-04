@@ -22,7 +22,7 @@ function ConnectedSuccessfully({ navigation, route: { params } }) {
               {params.companyName}
             </Text>
             <Image
-              style={{ width: "100%", height: 100, resizeMode: "contain" }}
+              style={externalStyles.companyLogo}
               source={{
                 uri: params.logoUrl,
               }}
@@ -36,7 +36,7 @@ function ConnectedSuccessfully({ navigation, route: { params } }) {
               <View style={externalStyles.forRegistorUser}>
                 <Image
                   source={require("../assets/icons/success_icon.png")}
-                  style={{ marginRight: 8, marginTop: 3 }}
+                  style={externalStyles.succesIcon}
                 />
                 <View>
                   <Text style={dsmTypographyStyle.mDsmMediumBold}>

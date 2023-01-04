@@ -14,7 +14,7 @@ import flash from "../../assets/icons/flash.png";
 import gallery from "../../assets/icons/gallery.png";
 import { isEmpty } from "../../helper/common/util.js";
 import useMutation from "../../hooks/useMutation.js";
-import { API, LOCAL_STORAGE } from "../../services/https.js";
+import { API, LOCAL_STORAGE } from "../../config/CONSTANT";
 import { POST_DEVICE_DEATILS } from "../../services/CONSTANT.js";
 
 const QRCodeScanner = ({ navigation }) => {

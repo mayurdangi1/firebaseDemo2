@@ -22,6 +22,7 @@ export default FaceCapture = StyleSheet.create({
     paddingLeft: 8,
     paddingTop: 4,
     paddingBottom: 4,
+    color: "#605E5C",
   },
   buttonContainer: {
     position: "absolute",

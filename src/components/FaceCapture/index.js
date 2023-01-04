@@ -8,9 +8,8 @@ import { PUT_FACE_CAPTURE } from "../../services/CONSTANT";
 import DsmButton from "../DsmComponent/DsmButtonComponent";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { API } from "../../services/https";
+import { API, LOCAL_STORAGE } from "../../config/CONSTANT";
 import DeviceAuthenticationModal from "../Modals/DeviceAuthenticationModal";
-import { LOCAL_STORAGE } from "../../services/https";
 
 const FaceCapture = ({ navigation }) => {
   const camera = useRef(null);
