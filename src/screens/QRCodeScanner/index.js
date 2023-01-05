@@ -9,9 +9,12 @@ import DeviceInfo from "react-native-device-info";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { QrCodeScannerStyles as Styles } from "./style.js";
-import rightArrow from "../../assets/icons/right_arrow.png";
-import flash from "../../assets/icons/flash.png";
-import gallery from "../../assets/icons/gallery.png";
+
+import {
+  gallery,
+  flash,
+  right_arrow as rightArrow,
+} from "../../assets/index.js";
 import { isEmpty } from "../../helper/common/util.js";
 import useMutation from "../../hooks/useMutation.js";
 import { API, LOCAL_STORAGE } from "../../config/CONSTANT";

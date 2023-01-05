@@ -1,15 +1,16 @@
 import React, { useRef, useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import Styles from "./styles";
 import { Camera, useCameraDevices } from "react-native-vision-camera";
 import RNFS from "react-native-fs";
 import useMutation from "../../hooks/useMutation";
 import { PUT_FACE_CAPTURE } from "../../services/CONSTANT";
-import DsmButton from "../DsmComponent/DsmButtonComponent";
+import DsmButton from "../../components/DsmComponent/DsmButtonComponent";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import { mewurk_name } from "../../assets/index";
 import { API, LOCAL_STORAGE } from "../../config/CONSTANT";
-import DeviceAuthenticationModal from "../Modals/DeviceAuthenticationModal";
+import DeviceAuthenticationModal from "../../components/Modals/DeviceAuthenticationModal";
+import { NativeBaseProvider } from "native-base";
 
 const FaceCapture = ({ navigation }) => {
   const camera = useRef(null);
@@ -35,12 +36,14 @@ const FaceCapture = ({ navigation }) => {
       const deviceDetailsJSON = await AsyncStorage.getItem(
         LOCAL_STORAGE.deviceDetails
       );
+
       const deviceDetails = JSON.parse(deviceDetailsJSON);
       const payload = {
         deviceId: deviceDetails.device.id,
         selfieImageName: "Static",
         selfieImageInByte: base64Url,
       };
+
       await postUploadSelfieMutation.mutate(payload);
       setIsLoading(false);
     } catch (error) {
@@ -50,7 +53,7 @@ const FaceCapture = ({ navigation }) => {
   };
 
   return (
-    <>
+    <NativeBaseProvider>
       <View style={Styles.mainContainer}>
         {device?.id ? (
           <Camera
@@ -70,8 +73,9 @@ const FaceCapture = ({ navigation }) => {
           disabled={isLoading}
           style={Styles.buttonContainer}
         />
-        <View style={Styles.logoStyles}>
+        <View style={Styles.logoContainer}>
           <Text style={Styles.logoTextStyles}>Powered by</Text>
+          <Image source={mewurk_name} style={Styles.logoIconStylesBottom} />
         </View>
       </View>
       <DeviceAuthenticationModal
@@ -79,7 +83,7 @@ const FaceCapture = ({ navigation }) => {
         isOpen={isOpen}
         hide={() => setIsOpen(false)}
       />
-    </>
+    </NativeBaseProvider>
   );
 };
 
