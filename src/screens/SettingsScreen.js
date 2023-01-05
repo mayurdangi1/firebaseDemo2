@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useIsFocused } from "@react-navigation/native";
 import { View, Text, Image, Switch } from 'react-native'
-import axios from 'axios'
 
 import { NativeBaseProvider, Divider} from 'native-base'
 import externalStyles from '../assets/stylesheets/externalStyle';
@@ -9,9 +8,10 @@ import EntryModeOption from '../components/Settings/EntryModeOption';
 import CameraDirectionOption from '../components/Settings/CameraDirecionOption'
 import dsmTypographyStyle from '../assets/stylesheets/dsmStyles/dsmTypographyStyle';
 
-import {
-  GET_KIOSK_SETTINGS
-} from "../services/CONSTANT"
+import useMutation from "../hooks/useMutation";
+import { API, LOCAL_STORAGE } from "../config/CONSTANT";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { GET_KIOSK_SETTINGS } from "../services/CONSTANT"
 import { DEVICE_ID } from '../config/CONSTANT';
 
 const SettingsScreen = () => {
@@ -19,16 +19,29 @@ const SettingsScreen = () => {
     // const [isDisabled, setIsDisabled] = useState(false);
     // const toggleSwitch = () => setIsDisabled(!isDisabled);
     const [kioskSettingsData, setKioskSettingsData] = useState(null);
+
+    // const deviceDetailsJSON = await AsyncStorage.getItem(
+    //   LOCAL_STORAGE.deviceDetails
+    // );
+    // const deviceDetails = JSON.parse(deviceDetailsJSON);
+    // const deviceId = deviceDetails.device.id;
+
+    const putGetkioskSettingsMutation = useMutation({
+      url: GET_KIOSK_SETTINGS(DEVICE_ID),
+      method: API.GET,
+      onSuccess: (res) => {
+        setKioskSettingsData(res.data.data);
+      },
+    });
+
     useEffect(() => {
       if(isFocused){ 
         getKioskSettingsData();
       }
     }, [isFocused]);
 
-    const getKioskSettingsData = () => {
-      axios.get(`${GET_KIOSK_SETTINGS(DEVICE_ID)}`).then((response) => {
-        setKioskSettingsData(response.data.data);
-      });
+    const getKioskSettingsData = async () => {
+      await putGetkioskSettingsMutation.mutate();
     };
 
     return (
