@@ -12,9 +12,14 @@ import {
   camera_detection,
   offline_mode,
   gps,
+  screen_pinning
 } from "../assets/index";
-import { GET_KIOSK_SETTINGS } from "../services/CONSTANT";
-import { DEVICE_ID } from "../config/CONSTANT";
+
+import useMutation from "../hooks/useMutation";
+import { API, LOCAL_STORAGE } from "../config/CONSTANT";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { GET_KIOSK_SETTINGS } from "../services/CONSTANT"
+import { DEVICE_ID } from '../config/CONSTANT';
 
 const SettingsScreen = () => {
   const isFocused = useIsFocused();
