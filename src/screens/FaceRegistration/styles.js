@@ -1,0 +1,151 @@
+import { StyleSheet, Dimensions } from "react-native";
+
+const windowHeight = Dimensions.get("window").height;
+
+export default FaceRegStyles = StyleSheet.create({
+  mainContainer: {
+    height: "100%",
+    width: "100%",
+  },
+  headerContainer: {
+    height: 68,
+    width: "100%",
+  },
+  headerMenuIconStyles: {
+    width: 18,
+    height: 12,
+    position: "absolute",
+    bottom: 23,
+    left: 26,
+  },
+  headerTextStyles: {
+    width: 138,
+    height: 22,
+    position: "absolute",
+    left: 107,
+    bottom: 18,
+    fontSize: 16,
+    fontWeight: "500",
+  },
+  headerLogoStyles: {
+    width: 40,
+    height: 40,
+    position: "absolute",
+    bottom: 9,
+    left: 57,
+    resizeMode: "contain",
+  },
+  bodyContainer: {
+    height: windowHeight - 68,
+    width: "100%",
+  },
+
+  cameraContainer: {
+    flex: 1,
+  },
+  cameraView: {
+    flex: 1,
+  },
+  buttonsContainer: {
+    position: "absolute",
+    bottom: 59,
+    alignSelf: "center",
+    width: 167 * 2,
+    height: 72,
+    flexDirection: "row",
+  },
+  leftButton: {
+    width: 167,
+    height: 72,
+    backgroundColor: "#323130",
+    borderBottomLeftRadius: 8,
+    borderTopLeftRadius: 8,
+    borderRightWidth: 0.5,
+  },
+  itemContainerLeftButton: {
+    width: 146,
+    height: 42,
+    position: "absolute",
+    left: 10.5,
+    top: 15,
+    flexDirection: "row",
+  },
+  timeTextStyles: {
+    fontSize: 22,
+    color: "#F0F5FF",
+    width: 87,
+    height: 26,
+  },
+  clockIconStyles: {
+    width: 40,
+    height: 40,
+    marginLeft: 6,
+    marginTop: 1,
+  },
+  dateTextStyles: {
+    fontSize: 14,
+    color: "#E5F1FF",
+    width: 85,
+    height: 17,
+    paddingLeft: 5,
+  },
+  leftButtonTextContainer: {
+    position: "absolute",
+    left: 54,
+  },
+  rightButton: {
+    width: 167,
+    height: 72,
+    backgroundColor: "#323130",
+    borderBottomRightRadius: 8,
+    borderTopRightRadius: 8,
+    borderLeftWidth: 0.5,
+    justifyContent: "center",
+  },
+  ItemContainerRightButton: {
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+  },
+  rightbuttonIconStyles: {
+    height: 32.93,
+    width: 38,
+    resizeMode: "contain",
+  },
+  rightButtonTextStyles: {
+    fontSize: 18,
+    color: "#E5F1FF",
+    width: 71,
+    height: 21,
+    paddingLeft: 6.07,
+  },
+  logoContainer: {
+    position: "absolute",
+    width: 149,
+    height: 20,
+    bottom: 23,
+    alignSelf: "center",
+    backgroundColor: "#FFFFFF",
+    borderRadius: 16,
+  },
+  logoTextStyles: {
+    position: "absolute",
+    color: "#605E5C",
+    fontSize: 10,
+    width: 68,
+    height: 15,
+    fontWeight: "500",
+    top: 4,
+    left: 8,
+    paddingRight: 4,
+  },
+  logoIconStylesBottom: {
+    width: 70,
+    height: 11.98,
+    resizeMode: "contain",
+    position: "absolute",
+    paddingLeft: 6,
+    right: 8,
+    top: 4,
+  },
+});

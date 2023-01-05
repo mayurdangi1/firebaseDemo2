@@ -1,7 +1,7 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image } from "react-native";
 import externalStyles from "../assets/stylesheets/externalStyle";
-
+import { home1, mewurk_name, madatory, barcode } from "../assets/index";
 // dsm Import
 import dsmTypographyStyle from "../assets/stylesheets/dsmStyles/dsmTypographyStyle";
 import DsmButton from "../components/DsmComponent/DsmButtonComponent";
@@ -10,14 +10,8 @@ function HomeScreen({ navigation }) {
   return (
     <View style={externalStyles.homeBody}>
       <View style={externalStyles.homeWelcomeImg}>
-        <Image
-          source={require("../assets/icons/home1.png")}
-          style={{ width: "100%" }}
-        />
-        <Image
-          source={require("../assets/icons/mewurk_name.png")}
-          style={{ marginTop: 20 }}
-        />
+        <Image source={home1} style={{ width: "100%" }} />
+        <Image source={mewurk_name} style={{ marginTop: 20 }} />
       </View>
 
       <View style={externalStyles.kisokActivation}>
@@ -28,10 +22,7 @@ function HomeScreen({ navigation }) {
         </View>
         <View style={externalStyles.helpMandatorySection}>
           <View style={externalStyles.forRegistorUser}>
-            <Image
-              source={require("../assets/icons/madatory.png")}
-              style={{ marginRight: 8, marginTop: 3 }}
-            />
+            <Image source={madatory} style={{ marginRight: 8, marginTop: 3 }} />
             <View>
               <Text style={dsmTypographyStyle.mDsmMediumBold}>
                 For Registered Users Only!
@@ -57,7 +48,7 @@ function HomeScreen({ navigation }) {
           btnVariant={"dsmBtnPrimary"}
           title={"Scan QR"}
           btnSize={"lg"}
-          leftBtnIconSource={require("../assets/icons/barcode.png")}
+          leftBtnIconSource={barcode}
           onPress={() => navigation.navigate("QRCodeScanner")}
         />
       </View>
