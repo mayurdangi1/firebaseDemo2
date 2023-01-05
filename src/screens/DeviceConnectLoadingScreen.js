@@ -1,7 +1,7 @@
 import { NativeBaseProvider } from "native-base";
 import React, { useEffect } from "react";
 import { View, Text, Image, ActivityIndicator } from "react-native";
-
+import { home1, setting_grey } from "../assets/index";
 import externalStyles from "../assets/stylesheets/externalStyle";
 import dsmTypographyStyle from "../assets/stylesheets/dsmStyles/dsmTypographyStyle";
 
@@ -19,10 +19,7 @@ const DeviceConnectLoadingScreen = ({ navigation, route: { params } }) => {
     <NativeBaseProvider>
       <View style={externalStyles.connectLoadingScreen}>
         <View style={externalStyles.homeWelcomeImg}>
-          <Image
-            source={require("../assets/icons/home1.png")}
-            style={{ width: "100%" }}
-          />
+          <Image source={home1} style={{ width: "100%" }} />
         </View>
         <View style={externalStyles.kioskRegisteredDevice}>
           <View style={externalStyles.kisokSuccess}>
@@ -45,26 +42,12 @@ const DeviceConnectLoadingScreen = ({ navigation, route: { params } }) => {
             <ActivityIndicator size="large" color="#0069DB" />
           </View>
           <View style={externalStyles.loaderTextBox}>
-            <Image
-              source={require("../assets/icons/setting_grey.png")}
-              style={{ marginRight: 8 }}
-            />
+            <Image source={setting_grey} style={{ marginRight: 8 }} />
             <Text style={dsmTypographyStyle.mDsmMediumNormal}>
               Kiosk config. in progress
             </Text>
           </View>
         </View>
-        {/* <View style={{ marginVertical: 12, paddingHorizontal: 20 }}>
-          <DeviceAuthenticationModal />
-        </View> */}
-        {/* <View style={{ marginVertical: 12, paddingHorizontal: 20 }}>
-          <DsmButton
-            btnVariant={"dsmBtnSecondary"}
-            btnSize={"md"}
-            title={"Settings Home"}
-            onPress={() => navigation.navigate("DeviceAuthenticated")}
-          />
-        </View> */}
       </View>
     </NativeBaseProvider>
   );

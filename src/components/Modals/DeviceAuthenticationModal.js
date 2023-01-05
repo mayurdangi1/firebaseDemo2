@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal } from "native-base";
 import { Image, View, Text } from "react-native";
-
+import { success_circle_png } from "../../assets/index";
 import externalStyles from "../../assets/stylesheets/externalStyle";
 import DsmButton from "../DsmComponent/DsmButtonComponent";
 import dsmTypographyStyle from "../../assets/stylesheets/dsmStyles/dsmTypographyStyle";
@@ -20,10 +20,7 @@ const DeviceAuthenticationModal = ({ navigation, isOpen, hide }) => {
         <Modal.Content>
           <Modal.Body>
             <View style={externalStyles.deviceAuthenticationMessagePopup}>
-              <Image
-                source={require("../../assets/icons/success_circle.png")}
-                style={{ marginBottom: 5 }}
-              />
+              <Image source={success_circle_png} style={{ marginBottom: 5 }} />
               <Text style={dsmTypographyStyle.mDsmTitle3Bold}>
                 Device Authenticated!
               </Text>
@@ -40,7 +37,7 @@ const DeviceAuthenticationModal = ({ navigation, isOpen, hide }) => {
                 btnVariant={"dsmBtnPrimary"}
                 btnSize={"sm"}
                 title={"Continue"}
-                onPress={() => navigation.navigate("DeviceAuthenticated")}
+                onPress={() => navigation.navigate("FaceRegistration")}
               />
             </View>
           </Modal.Body>

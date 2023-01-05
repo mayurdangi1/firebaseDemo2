@@ -2,19 +2,16 @@ import { NativeBaseProvider } from "native-base";
 import React from "react";
 import { View, Text, Image } from "react-native";
 import externalStyles from "../assets/stylesheets/externalStyle";
-
 import DsmButton from "../components/DsmComponent/DsmButtonComponent";
 import dsmTypographyStyle from "../assets/stylesheets/dsmStyles/dsmTypographyStyle";
+import { success_icon, success_home } from "../assets/index";
 
 function ConnectedSuccessfully({ navigation, route: { params } }) {
   return (
     <NativeBaseProvider>
       <View style={externalStyles.greenScreenHome}>
         <View style={externalStyles.homeWelcomeImg}>
-          <Image
-            source={require("../assets/icons/success_home.png")}
-            style={{ width: "100%" }}
-          />
+          <Image source={success_home} style={{ width: "100%" }} />
         </View>
         <View style={externalStyles.kioskRegisteredDevice}>
           <View style={externalStyles.kisokSuccess}>
@@ -35,7 +32,7 @@ function ConnectedSuccessfully({ navigation, route: { params } }) {
             <View style={externalStyles.connectedSuccessTextbox}>
               <View style={externalStyles.forRegistorUser}>
                 <Image
-                  source={require("../assets/icons/success_icon.png")}
+                  source={success_icon}
                   style={externalStyles.succesIcon}
                 />
                 <View>
