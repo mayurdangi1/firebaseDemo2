@@ -41,18 +41,15 @@ const FaceRegistration = () => {
         {device?.id ? (
           <Camera device={device} isActive={true} style={Styles.cameraView} />
         ) : (
-          <View style={{ flex: 1 }} />
+          <View style={Styles.cameraView} />
         )}
 
         <View style={Styles.buttonsContainer}>
           <TouchableOpacity>
             <View style={Styles.leftButton}>
               <View style={Styles.itemContainerLeftButton}>
-                <Image
-                  source={clock}
-                  style={{ width: 40, height: 40, marginLeft: 6, marginTop: 1 }}
-                />
-                <View style={{ position: "absolute", left: 54 }}>
+                <Image source={clock} style={Styles.clockIconStyles} />
+                <View style={Styles.leftButtonTextContainer}>
                   <Text style={Styles.timeTextStyles}>12:13pm</Text>
                   <Text style={Styles.dateTextStyles}>24 Aug 2022</Text>
                 </View>

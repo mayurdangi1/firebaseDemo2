@@ -76,12 +76,22 @@ export default FaceRegStyles = StyleSheet.create({
     width: 87,
     height: 26,
   },
+  clockIconStyles: {
+    width: 40,
+    height: 40,
+    marginLeft: 6,
+    marginTop: 1,
+  },
   dateTextStyles: {
     fontSize: 14,
     color: "#E5F1FF",
     width: 85,
     height: 17,
     paddingLeft: 5,
+  },
+  leftButtonTextContainer: {
+    position: "absolute",
+    left: 54,
   },
   rightButton: {
     width: 167,
