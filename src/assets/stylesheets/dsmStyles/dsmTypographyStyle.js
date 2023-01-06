@@ -1,14 +1,7 @@
 import { StyleSheet, Dimensions } from "react-native";
 
 const dsmTypographyStyle = StyleSheet.create({
-    mDsmTitle1:{
-        fontWeight: '600',
-        fontSize: 28,
-        lineHeight : 56,
-        fontStyle : 'normal',
-        color: '#090A0A',
-        fontFamily:'Inter'
-    },
+    // Title Text
     mDsmTitle2:{
         fontWeight: '600',
         fontSize: 24,
@@ -33,26 +26,33 @@ const dsmTypographyStyle = StyleSheet.create({
         color: '#090A0A',
         fontFamily:'Inter'
     },
-    mDsmTitle3UnderlineBold:{
+    // Title Primary start
+    mDsmTitle3PrimaryBold:{
         fontWeight: '700',
         fontSize: 20,
         lineHeight : 32,
         fontStyle : 'normal',
-        color: '#090A0A',
-        fontFamily:'Inter',
-        textDecorationLine: 'underline',
-        textDecorationColor: '#090A0A'
+        color: '#003BAF',
+        fontFamily:'Inter'
     },
-    mDsmTitle3UnderlineNormal:{
+    mDsmTitle3PrimarySemiBold:{
         fontWeight: '500',
         fontSize: 20,
         lineHeight : 32,
         fontStyle : 'normal',
-        color: '#090A0A',
-        fontFamily:'Inter',
-        textDecorationLine: 'underline',
-        textDecorationColor: '#090A0A'
+        color: '#003BAF',
+        fontFamily:'Inter'
     },
+    mDsmTitle3PrimaryNormal:{
+        fontWeight: '400',
+        fontSize: 20,
+        lineHeight : 32,
+        fontStyle : 'normal',
+        color: '#003BAF',
+        fontFamily:'Inter'
+    },
+    // Title Primary end
+    // Large Text
     mDsmLargeBold:{
         fontWeight: '700',
         fontSize: 18,
@@ -107,30 +107,7 @@ const dsmTypographyStyle = StyleSheet.create({
         textDecorationLine: 'underline',
         textDecorationColor: '#090A0A'
     },
-    mDsmLargeShrunkBold:{
-        fontWeight: '700',
-        fontSize: 18,
-        lineHeight : 20,
-        fontStyle : 'normal',
-        color: '#090A0A',
-        fontFamily:'Inter'
-    },
-    mDsmLargeShrunkSemiBold:{
-        fontWeight: '500',
-        fontSize: 18,
-        lineHeight : 20,
-        fontStyle : 'normal',
-        color: '#090A0A',
-        fontFamily:'Inter'
-    },
-    mDsmLargeShrunkNormal:{
-        fontWeight: '400',
-        fontSize: 20,
-        lineHeight : 24,
-        fontStyle : 'normal',
-        color: '#090A0A',
-        fontFamily:'Inter',
-    },
+    // Medium Text
     mDsmMediumBold:{
         fontWeight: '700',
         fontSize: 16,
@@ -185,30 +162,7 @@ const dsmTypographyStyle = StyleSheet.create({
         textDecorationLine: 'underline',
         textDecorationColor: '#090A0A'
     },
-    mDsmMediumShrunkBold:{
-        fontWeight: '700',
-        fontSize: 16,
-        lineHeight : 20,
-        fontStyle : 'normal',
-        color: '#090A0A',
-        fontFamily:'Inter'
-    },
-    mDsmMediumShrunkSemiBold:{
-        fontWeight: '500',
-        fontSize: 16,
-        lineHeight : 20,
-        fontStyle : 'normal',
-        color: '#090A0A',
-        fontFamily:'Inter'
-    },
-    mDsmMediumShrunkNormal:{
-        fontWeight: '400',
-        fontSize: 16,
-        lineHeight : 20,
-        fontStyle : 'normal',
-        color: '#090A0A',
-        fontFamily:'Inter'
-    },
+    // Small Text
     mDsmSmallBold:{
         fontWeight: '700',
         fontSize: 14,
@@ -233,30 +187,7 @@ const dsmTypographyStyle = StyleSheet.create({
         color: '#090A0A',
         fontFamily:'Inter'
     },
-    mDsmSmallShrunkBold:{
-        fontWeight: '700',
-        fontSize: 14,
-        lineHeight : 16,
-        fontStyle : 'normal',
-        color: '#090A0A',
-        fontFamily:'Inter'
-    },
-    mDsmSmallShrunkSemiBold:{
-        fontWeight: '500',
-        fontSize: 14,
-        lineHeight : 16,
-        fontStyle : 'normal',
-        color: '#090A0A',
-        fontFamily:'Inter'
-    },
-    mDsmSmallShrunkNormal:{
-        fontWeight: '400',
-        fontSize: 14,
-        lineHeight : 16,
-        fontStyle : 'normal',
-        color: '#090A0A',
-        fontFamily:'Inter'
-    },
+    // Tiny Text
     mDsmTinyBold:{
         fontWeight: '700',
         fontSize: 12,
@@ -281,7 +212,30 @@ const dsmTypographyStyle = StyleSheet.create({
         color: '#090A0A',
         fontFamily:'Inter'
     },
-    
+    // error Msg
+    mDsmDangerTextLarge:{
+        color: '#DC2626',
+        fontWeight: '400',
+        fontSize: 16,
+        lineHeight: 24,
+        fontStyle : 'normal',
+        fontFamily:'Inter'
+    },
+    mDsmDangerTextMedium:{
+        color: '#DC2626',
+        fontWeight: '400',
+        fontSize: 12,
+        lineHeight: 16,
+        fontStyle : 'normal',
+        fontFamily:'Inter'
+    },
+    // Link Text Style
+    mDsmLinkText: {
+        color: '#004AD7',
+        fontStyle : 'normal',
+        fontFamily:'Inter',
+        textDecorationColor: '#004AD7'
+    }
 })
 
 export default dsmTypographyStyle

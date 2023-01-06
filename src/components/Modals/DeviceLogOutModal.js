@@ -3,8 +3,9 @@ import { Modal } from "native-base";
 import { Image, View, Text } from "react-native";
 
 import externalStyles from "../../assets/stylesheets/externalStyle";
-import DsmButton from "../DsmComponent/DsmButtonComponent";
 import dsmTypographyStyle from "../../assets/stylesheets/dsmStyles/dsmTypographyStyle";
+
+import DsmButton from "../DsmComponent/DsmButtonComponent";
 
 import useMutation from "../../hooks/useMutation";
 import { API, LOCAL_STORAGE } from "../../config/CONSTANT";
@@ -30,13 +31,13 @@ const DeviceLogOutModal = ({ navigation, isOpen, hide }) => {
       logOutSuccess();
     },
   });
-  
+
   const logOutSuccess = () => {
     AsyncStorage.clear();
     hide();
     navigation.navigate('Home');
   };
-  
+
   const logoutFromDevice = async () => {
     await putLogOutFromDeviceMutation.mutate();
   };
@@ -58,21 +59,19 @@ const DeviceLogOutModal = ({ navigation, isOpen, hide }) => {
               <Text style={dsmTypographyStyle.mDsmTitle3Bold}>
                 Log Out!
               </Text>
-              <Text
-                style={[
-                  dsmTypographyStyle.mDsmMediumSemiBold,
-                  (style = { marginBottom: 5 }),
-                ]}
-              >
-                Would you like to unpair the connected device? You need to scan QR code again for Kiosk Activation. 
-              </Text>
+              <View style={externalStyles.logoutModalBody}>
+                <Text style={dsmTypographyStyle.mDsmMediumSemiBold}>Would you like to unpair the</Text>
+                <Text style={dsmTypographyStyle.mDsmMediumSemiBold}>connected device?</Text>
+                <Text style={dsmTypographyStyle.mDsmMediumSemiBold}>You need to scan QR code again</Text>
+                <Text style={dsmTypographyStyle.mDsmMediumSemiBold}>for Kiosk Activation.</Text>
+              </View>
               <DsmButton
-                btnVariant={"dsmBtnPrimary"}
-                btnSize={"sm"}
-                title={"Log Out"}
-                onPress={() => logoutFromDevice()}
+                  btnVariant={"dsmBtnDangerPrimary"}
+                  btnSize={"sm"}
+                  title={"Log Out"}
+                  onPress={() => logoutFromDevice()}
               />
-               <DsmButton
+              <DsmButton
                 btnVariant={"dsmBtnPrimary"}
                 btnSize={"sm"}
                 title={"Cancel"}
