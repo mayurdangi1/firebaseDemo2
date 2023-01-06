@@ -49,7 +49,7 @@ function HomeScreen({ navigation }) {
           title={"Scan QR"}
           btnSize={"lg"}
           leftBtnIconSource={barcode}
-          onPress={() => navigation.navigate("FaceRegistration")}
+          onPress={() => navigation.navigate("QRCodeScanner")}
         />
       </View>
     </View>
