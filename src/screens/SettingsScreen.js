@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useIsFocused } from "@react-navigation/native";
-import { View, Text, Image, Switch } from "react-native";
-import axios from "axios";
+import { View, Text, Image, Switch } from 'react-native'
 
 import { NativeBaseProvider, Divider } from "native-base";
 import externalStyles from "../assets/stylesheets/externalStyle";
@@ -13,26 +12,44 @@ import {
   camera_detection,
   offline_mode,
   gps,
+  screen_pinning
 } from "../assets/index";
-import { GET_KIOSK_SETTINGS } from "../services/CONSTANT";
-import { DEVICE_ID } from "../config/CONSTANT";
+
+import useMutation from "../hooks/useMutation";
+import { API, LOCAL_STORAGE } from "../config/CONSTANT";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { GET_KIOSK_SETTINGS } from "../services/CONSTANT"
+import { DEVICE_ID } from '../config/CONSTANT';
 
 const SettingsScreen = () => {
   const isFocused = useIsFocused();
-  // const [isDisabled, setIsDisabled] = useState(false);
-  // const toggleSwitch = () => setIsDisabled(!isDisabled);
-  const [kioskSettingsData, setKioskSettingsData] = useState(null);
-  useEffect(() => {
-    if (isFocused) {
-      getKioskSettingsData();
-    }
-  }, [isFocused]);
+    // const [isDisabled, setIsDisabled] = useState(false);
+    // const toggleSwitch = () => setIsDisabled(!isDisabled);
+    const [kioskSettingsData, setKioskSettingsData] = useState(null);
 
-  const getKioskSettingsData = () => {
-    axios.get(`${GET_KIOSK_SETTINGS(DEVICE_ID)}`).then((response) => {
-      setKioskSettingsData(response.data.data);
+    // const deviceDetailsJSON = await AsyncStorage.getItem(
+    //   LOCAL_STORAGE.deviceDetails
+    // );
+    // const deviceDetails = JSON.parse(deviceDetailsJSON);
+    // const deviceId = deviceDetails.device.id;
+
+    const putGetkioskSettingsMutation = useMutation({
+      url: GET_KIOSK_SETTINGS(DEVICE_ID),
+      method: API.GET,
+      onSuccess: (res) => {
+        setKioskSettingsData(res.data.data);
+      },
     });
-  };
+
+    useEffect(() => {
+      if(isFocused){ 
+        getKioskSettingsData();
+      }
+    }, [isFocused]);
+
+    const getKioskSettingsData = async () => {
+      await putGetkioskSettingsMutation.mutate();
+    };
 
   return (
     <NativeBaseProvider>

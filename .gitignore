@@ -47,4 +47,4 @@ android/app/libs
 android/keystores/debug.keystore
 
 #lock files
-package-lock.json
+/package-lock.json
