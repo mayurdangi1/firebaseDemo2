@@ -78,6 +78,12 @@ const QRCodeScanner = ({ navigation }) => {
                   LOCAL_STORAGE.deviceDetails,
                   JSON.stringify(res.data.data)
                 );
+                await AsyncStorage.setItem(
+                  LOCAL_STORAGE.deviceSetting,
+                  JSON.stringify({
+                    cameraDirection: res.data.data.device.cameraDirection,
+                  })
+                );
                 navigation.navigate("ConnectingScreen", {
                   kioskName: res.data.data.device.kioskName,
                   companyName: res.data.data.tenant.companyName,

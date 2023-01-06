@@ -52,6 +52,11 @@ const FaceCapture = ({ navigation }) => {
     }
   };
 
+  const handleContinue = () => {
+    setIsOpen(false);
+    navigation.navigate("DeviceAuthenticated");
+  };
+
   return (
     <NativeBaseProvider>
       <View style={Styles.mainContainer}>
@@ -79,7 +84,7 @@ const FaceCapture = ({ navigation }) => {
         </View>
       </View>
       <DeviceAuthenticationModal
-        navigation={navigation}
+        handleContinue={handleContinue}
         isOpen={isOpen}
         hide={() => setIsOpen(false)}
       />

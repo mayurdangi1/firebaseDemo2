@@ -14,4 +14,5 @@ export const API = {
 
 export const LOCAL_STORAGE = {
   deviceDetails: "DEVICE_DETAILS",
+  deviceSetting: "DEVICE_SETTINGS",
 };

@@ -3,47 +3,40 @@ import Styles from "./styles.js";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { Camera, useCameraDevices } from "react-native-vision-camera";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { bars, clock, inMode, mewurk_name } from "../../assets/index.js";
+import { clock, inMode, mewurk_name } from "../../assets/index.js";
 import { LOCAL_STORAGE } from "../../config/CONSTANT.js";
+import { useIsFocused } from "@react-navigation/native";
 
-const FaceRegistration = () => {
-  const [deviceDetails, useDeviceDetails] = useState({});
+const CAMERA_DIRECTION = {
+  Rear: "back",
+  Front: "front",
+};
+const FaceRegistration = ({ navigation }) => {
+  const isFocused = useIsFocused();
+  const [deviceSetting, useDeviceDetails] = useState({});
   const devices = useCameraDevices();
-  const device = devices?.back;
+  const device =
+    devices[
+      CAMERA_DIRECTION[deviceSetting?.cameraDirection || CAMERA_DIRECTION.Rear]
+    ];
   useEffect(() => {
     (async function () {
       const requestResult = await Camera.requestCameraPermission();
-    })();
-  }, []);
-
-  useEffect(() => {
-    (async function () {
-      const deviceDetailsJSON = await AsyncStorage.getItem(
-        LOCAL_STORAGE.deviceDetails
+      const deviceSettingsJSON = await AsyncStorage.getItem(
+        LOCAL_STORAGE.deviceSetting
       );
-      useDeviceDetails(JSON.parse(deviceDetailsJSON));
+      useDeviceDetails(JSON.parse(deviceSettingsJSON));
     })();
-  }, []);
+  }, [isFocused]);
 
   return (
     <View style={Styles.mainContainer}>
-      <View style={Styles.headerContainer}>
-        <Image source={bars} style={Styles.headerMenuIconStyles} />
-        <Image
-          source={{ uri: deviceDetails?.tenant?.logoUrl }}
-          style={Styles.headerLogoStyles}
-        />
-        <Text style={Styles.headerTextStyles}>
-          {deviceDetails?.tenant?.companyName}
-        </Text>
-      </View>
       <View style={Styles.bodyContainer}>
-        {device?.id ? (
+        {device?.id && deviceSetting?.cameraDirection ? (
           <Camera device={device} isActive={true} style={Styles.cameraView} />
         ) : (
           <View style={Styles.cameraView} />
         )}
-
         <View style={Styles.buttonsContainer}>
           <TouchableOpacity>
             <View style={Styles.leftButton}>
