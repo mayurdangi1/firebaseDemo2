@@ -50,8 +50,6 @@ export default FaceRegStyles = StyleSheet.create({
     position: "absolute",
     bottom: 59,
     alignSelf: "center",
-    width: 167 * 2,
-    height: 72,
     flexDirection: "row",
   },
   leftButton: {
@@ -61,63 +59,52 @@ export default FaceRegStyles = StyleSheet.create({
     borderBottomLeftRadius: 8,
     borderTopLeftRadius: 8,
     borderRightWidth: 0.5,
-  },
-  itemContainerLeftButton: {
-    width: 146,
-    height: 42,
-    position: "absolute",
-    left: 10.5,
-    top: 15,
-    flexDirection: "row",
-  },
-  timeTextStyles: {
-    fontSize: 22,
-    color: "#F0F5FF",
-    width: 87,
-    height: 26,
-  },
-  clockIconStyles: {
-    width: 40,
-    height: 40,
-    marginLeft: 6,
-    marginTop: 1,
-  },
-  dateTextStyles: {
-    fontSize: 14,
-    color: "#E5F1FF",
-    width: 85,
-    height: 17,
-    paddingLeft: 5,
-  },
-  leftButtonTextContainer: {
-    position: "absolute",
-    left: 54,
+    padding: 16,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   rightButton: {
-    width: 167,
+    width: 192,
     height: 72,
+    flexDirection: 'row',
     backgroundColor: "#323130",
     borderBottomRightRadius: 8,
     borderTopRightRadius: 8,
     borderLeftWidth: 0.5,
     justifyContent: "center",
+    alignItems: 'center',
+    padding: 16,
   },
-  ItemContainerRightButton: {
-    alignItems: "center",
-    justifyContent: "center",
+  itemContainerLeftButton: {
+    alignItems: 'center',
+    justifyContent: 'flex-start',
     flexDirection: "row",
   },
-  rightbuttonIconStyles: {
-    height: 32.93,
-    width: 38,
-    resizeMode: "contain",
+  IconStyles: {
+    marginRight: 8
+  },
+  timeTextStyles: {
+    fontSize: 22,
+    color: "#F0F5FF",
+    fontWeight: "500",
+    fontFamily: 'Inter',
+    lineHeight: 26,
+  },
+  dateTextStyles: {
+    fontSize: 14,
+    color: "#E5F1FF",
+    fontWeight: "500",
+    fontFamily: 'Inter',
+    lineHeight: 17,
+    marginLeft: 2
+
   },
   rightButtonTextStyles: {
     fontSize: 18,
     color: "#E5F1FF",
-    width: 71,
-    height: 21,
-    paddingLeft: 6.07,
+    lineHeight: 21,
+    fontWeight: "500",
+    fontFamily: 'Inter'
   },
   logoContainer: {
     position: "absolute",
@@ -127,25 +114,21 @@ export default FaceRegStyles = StyleSheet.create({
     alignSelf: "center",
     backgroundColor: "#FFFFFF",
     borderRadius: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 8,
+    paddingVertical: 4
   },
   logoTextStyles: {
-    position: "absolute",
     color: "#605E5C",
     fontSize: 10,
-    width: 68,
-    height: 15,
     fontWeight: "500",
-    top: 4,
-    left: 8,
-    paddingRight: 4,
+    fontFamily: "Inter"
   },
   logoIconStylesBottom: {
     width: 70,
-    height: 11.98,
+    height: 12,
     resizeMode: "contain",
-    position: "absolute",
-    paddingLeft: 6,
-    right: 8,
-    top: 4,
+    marginLeft: 6
   },
 });
