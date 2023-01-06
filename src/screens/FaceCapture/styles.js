@@ -39,7 +39,7 @@ export default FaceCapture = StyleSheet.create({
   },
   buttonContainer: {
     position: "absolute",
-    bottom: 61,
+    bottom: 60,
     height: 50,
     width: 329,
     alignSelf: "center",

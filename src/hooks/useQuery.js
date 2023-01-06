@@ -12,7 +12,7 @@ const useQuery = ({
   const axios = useAxios({ url, method, body, onError, onSuccess });
   useEffect(() => {
     axios.mutate();
-  }, [axios, ...dependencies]);
+  }, [...dependencies]);
   return { ...axios };
 };
 

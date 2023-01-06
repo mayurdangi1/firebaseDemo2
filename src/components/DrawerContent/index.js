@@ -1,28 +1,27 @@
 import React from "react";
 import { View, Image, TouchableOpacity } from "react-native";
-import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import { emo_list, settings, offline, logout } from "../../assets/index";
-import {
-  Avatar,
-  Title,
-  Caption,
-  Paragraph,
-  Drawer,
-  Text,
-  TouchableRipple,
-  Switch,
-} from "react-native-paper";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { DrawerContentScrollView } from "@react-navigation/drawer";
+import { Caption, Text } from "react-native-paper";
 import sidebarStyle from "../../assets/stylesheets/sidebarStyle";
 import DeviceLogOutModal from "../Modals/DeviceLogOutModal";
+import { LOCAL_STORAGE } from "../../config/CONSTANT";
+
 const DrawerContent = ({ navigation, ...props }) => {
   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
-  const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
+  const [deviceId, setDeviceId] = React.useState(false);
 
-  const openLogoutModal = () => {
+  const openLogoutModal = async () => {
+    const deviceDetailsJSON = await AsyncStorage.getItem(
+      LOCAL_STORAGE.deviceDetails
+    );
+    const deviceDetails = JSON.parse(deviceDetailsJSON);
+    const deviceId = deviceDetails.device.id;
+    setDeviceId(deviceId);
     setIsOpen(true);
   };
-
   return (
     <View style={{ flex: 1 }}>
       <DrawerContentScrollView {...props}>
@@ -79,6 +78,7 @@ const DrawerContent = ({ navigation, ...props }) => {
         navigation={navigation}
         isOpen={isOpen}
         hide={() => setIsOpen(false)}
+        deviceId={deviceId}
       />
     </View>
   );
