@@ -87,6 +87,7 @@ export default FaceRegStyles = StyleSheet.create({
     fontSize: 22,
     color: "#F0F5FF",
     fontWeight: "500",
+    fontFamily: 'Inter',
     lineHeight: 26,
   },
   dateTextStyles: {
