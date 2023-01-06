@@ -381,6 +381,15 @@ const externalStyles = StyleSheet.create({
     alignItems: "center",
     padding: 8,
   },
+  // logout modal
+  logoutModalBody: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    marginBottom: 24,
+    marginTop: 8
+  }
+  // logout modal
 });
 
 export default externalStyles;
