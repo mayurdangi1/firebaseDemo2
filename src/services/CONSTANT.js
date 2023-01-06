@@ -10,7 +10,7 @@ export const LOGOUT_FROM_DEVICE = (id) => {
 };
 
 export const POST_DEVICE_DEATILS = () => {
-  return `${BASE_ATTENDANCE_SERVICE}device/details`;
+  return `${BASE_ATTENDANCE_SERVICE}device/register`;
 };
 export const PUT_FACE_CAPTURE = () => {
   return `${BASE_ATTENDANCE_SERVICE}device/upload/image`;
