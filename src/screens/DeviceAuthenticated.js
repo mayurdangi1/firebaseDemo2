@@ -19,7 +19,6 @@ const DeviceAuthenticated = () => {
       <Drawer.Screen
         name={"FaceRegistration"}
         options={{
-          drawerLabel: "HeyS",
           headerTitle: () => <FaceRegistrationHeader />,
         }}
         component={FaceRegistration}
