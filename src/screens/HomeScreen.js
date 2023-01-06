@@ -5,6 +5,7 @@ import { home1, mewurk_name, madatory, barcode } from "../assets/index";
 // dsm Import
 import dsmTypographyStyle from "../assets/stylesheets/dsmStyles/dsmTypographyStyle";
 import DsmButton from "../components/DsmComponent/DsmButtonComponent";
+import DsmLinkText from "../components/DsmComponent/DsmLinkTextComponent";
 
 function HomeScreen({ navigation }) {
   return (
@@ -22,7 +23,7 @@ function HomeScreen({ navigation }) {
         </View>
         <View style={externalStyles.helpMandatorySection}>
           <View style={externalStyles.forRegistorUser}>
-            <Image source={madatory} style={{ marginRight: 8, marginTop: 3 }} />
+            <Image source={madatory} style={{ marginRight: 8, marginTop: 6 }} />
             <View>
               <Text style={dsmTypographyStyle.mDsmMediumBold}>
                 For Registered Users Only!
@@ -30,14 +31,7 @@ function HomeScreen({ navigation }) {
               <Text style={dsmTypographyStyle.mDsmSmallNormal}>
                 If you don’t have QR code for activation, Please contact your
                 Admin or visit{" "}
-                <Text
-                  style={{
-                    color: "#0069DB",
-                    textDecorationLines: "underline",
-                  }}
-                >
-                  Help.
-                </Text>
+                <DsmLinkText linkText={'Help'} size={'sm'} textStyle={'textUnderline'} />
               </Text>
             </View>
           </View>
@@ -49,7 +43,7 @@ function HomeScreen({ navigation }) {
           title={"Scan QR"}
           btnSize={"lg"}
           leftBtnIconSource={barcode}
-          onPress={() => navigation.navigate("QRCodeScanner")}
+          onPress={() => navigation.navigate("FaceCapture")}
         />
       </View>
     </View>
