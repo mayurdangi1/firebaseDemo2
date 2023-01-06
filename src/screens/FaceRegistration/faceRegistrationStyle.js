@@ -95,7 +95,9 @@ export default FaceRegStyles = StyleSheet.create({
     color: "#E5F1FF",
     fontWeight: "500",
     fontFamily: 'Inter',
-    lineHeight: 17
+    lineHeight: 17,
+    marginLeft: 2
+
   },
   rightButtonTextStyles: {
     fontSize: 18,
