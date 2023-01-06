@@ -16,40 +16,42 @@ import {
 } from "../assets/index";
 
 import useMutation from "../hooks/useMutation";
+import useQuery from "../hooks/useQuery";
 import { API, LOCAL_STORAGE } from "../config/CONSTANT";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { GET_KIOSK_SETTINGS } from "../services/CONSTANT"
-import { DEVICE_ID } from '../config/CONSTANT';
 
 const SettingsScreen = () => {
   const isFocused = useIsFocused();
-    // const [isDisabled, setIsDisabled] = useState(false);
-    // const toggleSwitch = () => setIsDisabled(!isDisabled);
-    const [kioskSettingsData, setKioskSettingsData] = useState(null);
+  // const [isDisabled, setIsDisabled] = useState(false);
+  // const toggleSwitch = () => setIsDisabled(!isDisabled);
+  const [kioskSettingsData, setKioskSettingsData] = useState(null);
+  const [deviceId, setDeviceId] = useState(null);
 
-    // const deviceDetailsJSON = await AsyncStorage.getItem(
-    //   LOCAL_STORAGE.deviceDetails
-    // );
-    // const deviceDetails = JSON.parse(deviceDetailsJSON);
-    // const deviceId = deviceDetails.device.id;
+  const putGetkioskSettingsMutation = useQuery({
+    url: GET_KIOSK_SETTINGS(deviceId),
+    method: API.GET,
+    onSuccess: (res) => {
+      setKioskSettingsData(res.data.data);
+    },
+    dependencies: [deviceId]
+  });
 
-    const putGetkioskSettingsMutation = useMutation({
-      url: GET_KIOSK_SETTINGS(DEVICE_ID),
-      method: API.GET,
-      onSuccess: (res) => {
-        setKioskSettingsData(res.data.data);
-      },
-    });
+  useEffect(() => {
+    (async function () {
+      const deviceDetailsJSON = await AsyncStorage.getItem(LOCAL_STORAGE.deviceDetails);
+      const deviceDetails = JSON.parse(deviceDetailsJSON);
+      let deviceID = deviceDetails.device.id;
+      setDeviceId(deviceID)
+    })()
+    if(isFocused){ 
+      getKioskSettingsData();
+    }
+  }, [isFocused]);
 
-    useEffect(() => {
-      if(isFocused){ 
-        getKioskSettingsData();
-      }
-    }, [isFocused]);
-
-    const getKioskSettingsData = async () => {
-      await putGetkioskSettingsMutation.mutate();
-    };
+  const getKioskSettingsData = async () => {
+    await putGetkioskSettingsMutation.mutate();
+  };
 
   return (
     <NativeBaseProvider>
