@@ -6,7 +6,7 @@ import externalStyles from "../../assets/stylesheets/externalStyle";
 import DsmButton from "../DsmComponent/DsmButtonComponent";
 import dsmTypographyStyle from "../../assets/stylesheets/dsmStyles/dsmTypographyStyle";
 
-const DeviceAuthenticationModal = ({ navigation, isOpen, hide }) => {
+const DeviceAuthenticationModal = ({ isOpen, hide, handleContinue }) => {
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
   return (
@@ -37,7 +37,7 @@ const DeviceAuthenticationModal = ({ navigation, isOpen, hide }) => {
                 btnVariant={"dsmBtnPrimary"}
                 btnSize={"sm"}
                 title={"Continue"}
-                onPress={() => navigation.navigate("FaceRegistration")}
+                onPress={handleContinue}
               />
             </View>
           </Modal.Body>
