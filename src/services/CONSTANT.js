@@ -15,3 +15,7 @@ export const POST_DEVICE_DEATILS = () => {
 export const PUT_FACE_CAPTURE = () => {
   return `${BASE_ATTENDANCE_SERVICE}device/upload/image`;
 };
+
+export const PUT_STATUS_UPDATE = () => {
+  return `${BASE_ATTENDANCE_SERVICE}/device/updatestatus`;
+};

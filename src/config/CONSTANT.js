@@ -2,6 +2,8 @@
 export const BASE_ATTENDANCE_SERVICE =
   "https://mewurk-attendance.azurewebsites.net/api/v1/attendanceservice/";
 
+export const UPDATE_STATUS_INTERVAL = 5 * 60 * 1000;
+
 export const API = {
   POST: "post",
   GET: "get",
