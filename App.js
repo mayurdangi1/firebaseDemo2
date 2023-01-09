@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import FaceRegistration from "./src/screens/FaceRegistration/index";
 import { createStackNavigator } from "@react-navigation/stack";
 
+// screens Import
 import HomeScreen from "./src/screens/HomeScreen";
 import ConnectedSuccessfully from "./src/screens/ConnectedSuccessfully";
 import DeviceAuthenticated from "./src/screens/DeviceAuthenticated";
@@ -11,6 +12,7 @@ import QRCodeScanner from "./src/screens/QRCodeScanner/index";
 import { useNavigation } from "@react-navigation/native";
 import { useAuthenticated } from "./src/hooks/useAuthenticated";
 import { usePermission } from "./src/hooks/usePermmision";
+import { useUpdateStatusIntervaly } from "./src/hooks/useUpdateStatusIntervaly";
 
 const Stack = createStackNavigator();
 
@@ -18,6 +20,7 @@ const App = () => {
   const { navigate } = useNavigation();
   const isAuthenticated = useAuthenticated();
   usePermission();
+  useUpdateStatusIntervaly();
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -27,7 +30,7 @@ const App = () => {
 
   return (
     <Stack.Navigator
-      initialRouteName={"Home"}
+      initialRouteName="Home"
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="Home" component={HomeScreen} />
