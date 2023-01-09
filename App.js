@@ -21,7 +21,7 @@ const App = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("FaceRegistration");
+      navigate("DeviceAuthenticated");
     }
   }, [isAuthenticated]);
 
