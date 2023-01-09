@@ -65,7 +65,7 @@ const DeviceLogOutModal =  ({ navigation, isOpen, hide, deviceId }) => {
                   onPress={() => logoutFromDevice()}
               />
               <DsmButton
-                btnVariant={"dsmBtnPrimary"}
+                btnVariant={"dsmBtnSecondary"}
                 btnSize={"sm"}
                 title={"Cancel"}
                 onPress={() => hide()}
