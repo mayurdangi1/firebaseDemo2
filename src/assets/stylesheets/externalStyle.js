@@ -388,6 +388,9 @@ const externalStyles = StyleSheet.create({
     flexDirection: 'column',
     marginBottom: 24,
     marginTop: 8
+  },
+  logoutPopupMessage: {
+    justifyContent: 'center',
   }
   // logout modal
 });

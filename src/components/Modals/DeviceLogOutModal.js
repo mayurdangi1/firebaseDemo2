@@ -13,7 +13,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { LOGOUT_FROM_DEVICE } from '../../services/CONSTANT';
 
-const DeviceLogOutModal =  ({ navigation, isOpen, hide, deviceId }) => {
+const DeviceLogOutModal = ({ navigation, isOpen, hide, deviceId }) => {
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
 
@@ -53,16 +53,16 @@ const DeviceLogOutModal =  ({ navigation, isOpen, hide, deviceId }) => {
                 Log Out!
               </Text>
               <View style={externalStyles.logoutModalBody}>
-                <Text style={dsmTypographyStyle.mDsmMediumSemiBold}>Would you like to unpair the</Text>
-                <Text style={dsmTypographyStyle.mDsmMediumSemiBold}>connected device?</Text>
-                <Text style={dsmTypographyStyle.mDsmMediumSemiBold}>You need to scan QR code again</Text>
-                <Text style={dsmTypographyStyle.mDsmMediumSemiBold}>for Kiosk Activation.</Text>
+                <View style={externalStyles.logoutPopupMessage}>
+                  <Text style={dsmTypographyStyle.mDsmMediumSemiBold}>Would you like to unpair the connected device?</Text>
+                  <Text style={dsmTypographyStyle.mDsmMediumSemiBold}>You need to scan QR code again for Kiosk Activation.</Text>
+                </View>
               </View>
               <DsmButton
-                  btnVariant={"dsmBtnDangerPrimary"}
-                  btnSize={"sm"}
-                  title={"Log Out"}
-                  onPress={() => logoutFromDevice()}
+                btnVariant={"dsmBtnDangerPrimary"}
+                btnSize={"sm"}
+                title={"Log Out"}
+                onPress={() => logoutFromDevice()}
               />
               <DsmButton
                 btnVariant={"dsmBtnSecondary"}
