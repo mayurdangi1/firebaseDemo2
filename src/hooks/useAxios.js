@@ -25,6 +25,7 @@ const useAxios = ({ url, method, defaultPayload = {}, onError, onSuccess }) => {
         optionalProps.onSuccessFunction(response);
       }
     } catch (error) {
+      console.log(error);
       await setApi((prev) => ({ ...prev, isLoading: false, error: error }));
       isFunction(onError) && onError(error);
       if (isFunction(optionalProps?.onErrorFunction)) {

@@ -1,5 +1,5 @@
 import { BASE_ATTENDANCE_SERVICE } from "../config/CONSTANT";
-
+import { BASE_EMPLOYEE_SERVICE } from "../config/CONSTANT";
 // Attendance
 export const GET_KIOSK_SETTINGS = (id) => {
   return `${BASE_ATTENDANCE_SERVICE}kiosk/getkiosksettings/${id}`;
@@ -18,4 +18,7 @@ export const PUT_FACE_CAPTURE = () => {
 
 export const PUT_STATUS_UPDATE = () => {
   return `${BASE_ATTENDANCE_SERVICE}/device/updatestatus`;
+};
+export const GET_EMPLOYEE_LIST = (tenantId) => {
+  return `${BASE_EMPLOYEE_SERVICE}kiosk/syncemployeeinfo/${tenantId}`;
 };

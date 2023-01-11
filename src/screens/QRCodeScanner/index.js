@@ -85,6 +85,8 @@ const QRCodeScanner = ({ navigation }) => {
                   })
                 );
                 navigation.navigate("ConnectingScreen", {
+                  tenantId: res.data.data.tenant.tenantCode,
+                  deviceId: res.data.data.device.id,
                   kioskName: res.data.data.device.kioskName,
                   companyName: res.data.data.tenant.companyName,
                   logoUrl: res.data.data.tenant.logoUrl,

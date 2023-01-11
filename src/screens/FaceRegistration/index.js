@@ -11,7 +11,8 @@ const CAMERA_DIRECTION = {
   Rear: "back",
   Front: "front",
 };
-const FaceRegistration = ({ navigation }) => {
+
+const FaceRegistration = () => {
   const isFocused = useIsFocused();
   const [deviceSetting, useDeviceDetails] = useState({});
   const devices = useCameraDevices();
@@ -51,8 +52,8 @@ const FaceRegistration = ({ navigation }) => {
           </TouchableOpacity>
           <TouchableOpacity>
             <View style={Styles.rightButton}>
-                <Image source={inMode} style={Styles.IconStyles} />
-                <Text style={Styles.rightButtonTextStyles}>In Mode</Text>
+              <Image source={inMode} style={Styles.IconStyles} />
+              <Text style={Styles.rightButtonTextStyles}>In Mode</Text>
             </View>
           </TouchableOpacity>
         </View>
