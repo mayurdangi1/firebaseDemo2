@@ -2,38 +2,42 @@ import React, { useEffect, useState } from "react";
 import Styles from "./faceRegistrationStyle.js";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { Camera, useCameraDevices } from "react-native-vision-camera";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { clock, inMode, mewurk_name } from "../../assets/index.js";
-import { LOCAL_STORAGE } from "../../config/CONSTANT.js";
+import { getAsyncStorageItem } from "../../helper/asyncStorage/index.js";
 import { useIsFocused } from "@react-navigation/native";
+import { LOCAL_STORAGE } from "../../config/CONSTANT.js";
 
 const CAMERA_DIRECTION = {
   Rear: "back",
   Front: "front",
 };
 
-const FaceRegistration = () => {
+const FaceRegistration = (props) => {
   const isFocused = useIsFocused();
-  const [deviceSetting, useDeviceDetails] = useState({});
   const devices = useCameraDevices();
-  const device =
+  const [deviceSetting, setDeviceSetting] = useState(props?.params?.device);
+  console.log(
+    "==========================================FaceRegistration==============================="
+  );
+  console.log(deviceSetting?.cameraDirection);
+  let device =
     devices[
-      CAMERA_DIRECTION[deviceSetting?.cameraDirection || CAMERA_DIRECTION.Rear]
+      CAMERA_DIRECTION[deviceSetting?.cameraDirection] || CAMERA_DIRECTION.Rear
     ];
   useEffect(() => {
     (async function () {
-      const requestResult = await Camera.requestCameraPermission();
-      const deviceSettingsJSON = await AsyncStorage.getItem(
+      await Camera.requestCameraPermission();
+      const deviceSettingsClone = await getAsyncStorageItem(
         LOCAL_STORAGE.deviceSetting
       );
-      useDeviceDetails(JSON.parse(deviceSettingsJSON));
+      setDeviceSetting(deviceSettingsClone);
     })();
   }, [isFocused]);
 
   return (
     <View style={Styles.mainContainer}>
       <View style={Styles.bodyContainer}>
-        {device?.id && deviceSetting?.cameraDirection ? (
+        {device && deviceSetting?.cameraDirection ? (
           <Camera device={device} isActive={true} style={Styles.cameraView} />
         ) : (
           <View style={Styles.cameraView} />

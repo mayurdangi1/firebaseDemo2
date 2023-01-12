@@ -24,7 +24,7 @@ const App = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("DeviceAuthenticated");
+      navigate("DeviceAuthenticated", { ...isAuthenticated });
     }
   }, [isAuthenticated]);
 

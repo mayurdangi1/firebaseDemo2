@@ -13,7 +13,7 @@ import FaceRegistrationHeader from "../components/FaceRegisttrationHeader";
 
 const Drawer = createDrawerNavigator();
 
-const DeviceAuthenticated = () => {
+const DeviceAuthenticated = (props) => {
   return (
     <Drawer.Navigator drawerContent={(props) => <DrawerContent {...props} />}>
       <Drawer.Screen
@@ -21,7 +21,7 @@ const DeviceAuthenticated = () => {
         options={{
           headerTitle: () => <FaceRegistrationHeader />,
         }}
-        component={FaceRegistration}
+        children={() => <FaceRegistration params={props.route.params} />}
         headerMode="none"
       />
       <Drawer.Screen name="Settings" component={SettingsScreen} />

@@ -22,3 +22,14 @@ export const converBase64 = (file) => {
     };
   });
 };
+
+export function consoleAPIError(error, url) {
+  console.log(
+    "======================================ERROR=============================="
+  );
+  console.log(error);
+  console.log(
+    "======================================API================================="
+  );
+  console.log(url);
+}

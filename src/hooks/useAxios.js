@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axiosClient from "../services/axiosConfig";
-import { isFunction } from "../helper/common/util";
+import { consoleAPIError, isFunction } from "../helper/common/util";
 
 const useAxios = ({ url, method, defaultPayload = {}, onError, onSuccess }) => {
   const [api, setApi] = useState({
@@ -25,7 +25,7 @@ const useAxios = ({ url, method, defaultPayload = {}, onError, onSuccess }) => {
         optionalProps.onSuccessFunction(response);
       }
     } catch (error) {
-      console.log(error);
+      consoleAPIError(error, url);
       await setApi((prev) => ({ ...prev, isLoading: false, error: error }));
       isFunction(onError) && onError(error);
       if (isFunction(optionalProps?.onErrorFunction)) {
