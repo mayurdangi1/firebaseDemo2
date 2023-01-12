@@ -1,19 +1,22 @@
-import { API, UPDATE_STATUS_INTERVAL } from "../config/CONSTANT";
+import { API, LOCAL_STORAGE, UPDATE_STATUS_INTERVAL } from "../config/CONSTANT";
+import { getAsyncStorageItem } from "../helper/asyncStorage";
 import { PUT_STATUS_UPDATE } from "../services/CONSTANT";
-import { useAuthenticated } from "./useAuthenticated";
 import useMutation from "./useMutation";
 import useTimeInterval from "./useTimeInterval";
 
 export const useUpdateStatusIntervaly = () => {
-  const isAuthenticated = useAuthenticated();
   const putUpdateStatusMutation = useMutation({
     url: PUT_STATUS_UPDATE(),
     method: API.PUT,
   });
   async function updateStatusIntervaly() {
-    if (isAuthenticated) {
+    const deviceDetails = await getAsyncStorageItem(
+      LOCAL_STORAGE.deviceDetails
+    );
+
+    if (deviceDetails) {
       putUpdateStatusMutation.mutate({
-        deviceId: isAuthenticated.device.id,
+        deviceId: deviceDetails.device.id,
         connectionDateTime: new Date(),
       });
     }

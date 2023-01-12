@@ -1,22 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import radioButtonStyle from "../../assets/stylesheets/radioButtonStyle";
 import { LOCAL_STORAGE } from "../../config/CONSTANT";
+import {
+  getAsyncStorageItem,
+  mergeAsyncStorageItem,
+} from "../../helper/asyncStorage";
 
 const CameraDirecionOption = ({ option }) => {
   const [cameraDirection, setCameraDirection] = useState(option);
   const cameraDirections = ["Front", "Rear"];
+
   useEffect(() => {
-    try {
-      AsyncStorage.setItem(
-        LOCAL_STORAGE.deviceSetting,
-        JSON.stringify({ cameraDirection: cameraDirection })
-      );
-    } catch (error) {
-      console.log(error);
-    }
+    (async function () {
+      try {
+        const deviceSetting = await getAsyncStorageItem(
+          LOCAL_STORAGE.deviceSetting
+        );
+        const updateDeviceSetting = {
+          ...deviceSetting,
+          cameraDirection: cameraDirection,
+        };
+        mergeAsyncStorageItem(LOCAL_STORAGE.deviceSetting, updateDeviceSetting);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
   }, [cameraDirection]);
   const handleCameraDirection = (entry) => {
     setCameraDirection(entry);

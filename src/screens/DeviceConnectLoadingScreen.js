@@ -4,17 +4,35 @@ import { View, Text, Image, ActivityIndicator } from "react-native";
 import { home1, setting_grey } from "../assets/index";
 import externalStyles from "../assets/stylesheets/externalStyle";
 import dsmTypographyStyle from "../assets/stylesheets/dsmStyles/dsmTypographyStyle";
+import { GET_EMPLOYEE_LIST, GET_KIOSK_SETTINGS } from "../services/CONSTANT";
+import useQuery from "../hooks/useQuery";
+import { API, LOCAL_STORAGE } from "../config/CONSTANT";
+import { setAsyncStorageItem } from "../helper/asyncStorage";
 
 const DeviceConnectLoadingScreen = ({ navigation, route: { params } }) => {
+  const getEmloyeeList = useQuery({
+    url: GET_EMPLOYEE_LIST(params.tenantId),
+    method: API.GET,
+    onSuccess: (res) => {
+      setAsyncStorageItem(LOCAL_STORAGE.employeeList, res.data.data);
+    },
+    dependencies: [params.tenantId],
+  });
+  const getKioskSettings = useQuery({
+    url: GET_KIOSK_SETTINGS(params.deviceId),
+    method: API.GET,
+    onSuccess: (res) => {
+      setAsyncStorageItem(LOCAL_STORAGE.deviceSetting, res.data.data);
+    },
+    dependencies: [params.deviceId],
+  });
+
   useEffect(() => {
-    const timeOut = setTimeout(
-      () => navigation.navigate("ConnectSuccessfully", { ...params }),
-      5 * 1000
-    );
-    return () => {
-      clearTimeout(timeOut);
-    };
-  }, []);
+    if (getEmloyeeList.response && getKioskSettings.response) {
+      navigation.navigate("ConnectSuccessfully", { ...params });
+    }
+  }, [getEmloyeeList, getKioskSettings]);
+
   return (
     <NativeBaseProvider>
       <View style={externalStyles.connectLoadingScreen}>

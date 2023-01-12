@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useIsFocused } from "@react-navigation/native";
 import { View, Text, Image, Switch } from "react-native";
 
 import { NativeBaseProvider, Divider } from "native-base";
@@ -16,42 +15,20 @@ import {
   screen_pinning,
 } from "../assets/index";
 
-import useQuery from "../hooks/useQuery";
-import { API, LOCAL_STORAGE } from "../config/CONSTANT";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { GET_KIOSK_SETTINGS } from "../services/CONSTANT";
+import { LOCAL_STORAGE } from "../config/CONSTANT";
+import { getAsyncStorageItem } from "../helper/asyncStorage";
 
 const SettingsScreen = () => {
-  const isFocused = useIsFocused();
   const [kioskSettingsData, setKioskSettingsData] = useState(null);
-  const [deviceId, setDeviceId] = useState(null);
-
-  const putGetkioskSettingsMutation = useQuery({
-    url: GET_KIOSK_SETTINGS(deviceId),
-    method: API.GET,
-    onSuccess: (res) => {
-      setKioskSettingsData(res.data.data);
-    },
-    dependencies: [deviceId],
-  });
 
   useEffect(() => {
     (async function () {
-      const deviceDetailsJSON = await AsyncStorage.getItem(
-        LOCAL_STORAGE.deviceDetails
+      const deviceSetting = await getAsyncStorageItem(
+        LOCAL_STORAGE.deviceSetting
       );
-      const deviceDetails = JSON.parse(deviceDetailsJSON);
-      let deviceID = deviceDetails.device.id;
-      setDeviceId(deviceID);
+      setKioskSettingsData(deviceSetting);
     })();
-    if (isFocused) {
-      getKioskSettingsData();
-    }
-  }, [isFocused]);
-
-  const getKioskSettingsData = async () => {
-    await putGetkioskSettingsMutation.mutate();
-  };
+  }, []);
 
   return (
     <NativeBaseProvider>
