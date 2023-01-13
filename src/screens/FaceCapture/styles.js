@@ -3,19 +3,23 @@ export default FaceCapture = StyleSheet.create({
   mainContainer: {
     height: "100%",
     width: "100%",
-    position: "absolute",
   },
   cameraView: {
     flex: 1,
   },
-  logoContainer: {
+  bodyContainer: {
     position: "absolute",
+    width: "100%",
+    height: "100%",
+    justifyContent: "flex-end",
+  },
+  logoContainer: {
     width: 149,
     height: 20,
-    bottom: 23,
     alignSelf: "center",
     backgroundColor: "#FFFFFF",
     borderRadius: 16,
+    marginBottom: 23,
   },
   logoTextStyles: {
     position: "absolute",
@@ -38,12 +42,11 @@ export default FaceCapture = StyleSheet.create({
     top: 4,
   },
   buttonContainer: {
-    position: "absolute",
-    bottom: 60,
     height: 50,
     width: 329,
     alignSelf: "center",
     alignItems: "center",
+    marginBottom: 16,
     justifyContent: "center",
   },
   buttonCommonStyles: {
@@ -59,5 +62,25 @@ export default FaceCapture = StyleSheet.create({
     borderTopLeftRadius: 8,
     borderBottomLeftRadius: 8,
     borderRightWidth: 1,
+  },
+  warningButton: {
+    height: 50,
+    width: 329,
+    backgroundColor: "#B3CDFF",
+    alignSelf: "center",
+    marginBottom: 16,
+    borderRadius: 8,
+    flexDirection: "row",
+  },
+  warningTextStyles: {
+    fontStyle: "normal",
+    fontWeight: "500",
+    fontSize: 16,
+    position: "absolute",
+    width: 255,
+    height: 25,
+    left: 56,
+    color: "#303437",
+    top: 12,
   },
 });
