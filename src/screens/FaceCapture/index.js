@@ -6,11 +6,11 @@ import RNFS from "react-native-fs";
 import useMutation from "../../hooks/useMutation";
 import { PUT_FACE_CAPTURE } from "../../services/CONSTANT";
 import DsmButton from "../../components/DsmComponent/DsmButtonComponent";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { mewurk_name } from "../../assets/index";
 import { API, LOCAL_STORAGE } from "../../config/CONSTANT";
 import DeviceAuthenticationModal from "../../components/Modals/DeviceAuthenticationModal";
 import { NativeBaseProvider } from "native-base";
+import { getAsyncStorageItem } from "../../helper/asyncStorage";
 
 const FaceCapture = ({ navigation }) => {
   const camera = useRef(null);
@@ -18,7 +18,6 @@ const FaceCapture = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState();
   const [isOpen, setIsOpen] = useState(false);
   const [photoState, setPhotoState] = useState("");
-
   const device = devices?.front;
   const postUploadSelfieMutation = useMutation({
     url: PUT_FACE_CAPTURE(),
@@ -35,21 +34,16 @@ const FaceCapture = ({ navigation }) => {
       const photo = await camera.current.takePhoto({
         flash: "off",
       });
-
       setPhotoState("file://" + photo.path);
       const base64Url = await RNFS.readFile(photo.path, "base64");
-
-      const deviceDetailsJSON = await AsyncStorage.getItem(
+      const deviceDetails = await getAsyncStorageItem(
         LOCAL_STORAGE.deviceDetails
       );
-
-      const deviceDetails = JSON.parse(deviceDetailsJSON);
       const payload = {
         deviceId: deviceDetails.device.id,
         selfieImageName: "Static",
         selfieImageInByte: base64Url,
       };
-
       await postUploadSelfieMutation.mutate(payload);
       setIsLoading(false);
     } catch (error) {
