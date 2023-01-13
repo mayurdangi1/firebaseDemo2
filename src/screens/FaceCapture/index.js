@@ -17,12 +17,15 @@ const FaceCapture = ({ navigation }) => {
   const devices = useCameraDevices();
   const [isLoading, setIsLoading] = useState();
   const [isOpen, setIsOpen] = useState(false);
+  const [photoState, setPhotoState] = useState("");
+
   const device = devices?.front;
   const postUploadSelfieMutation = useMutation({
     url: PUT_FACE_CAPTURE(),
     method: API.POST,
     onSuccess: () => {
       setIsOpen(true);
+      setIsLoading(false);
     },
   });
 
@@ -32,7 +35,10 @@ const FaceCapture = ({ navigation }) => {
       const photo = await camera.current.takePhoto({
         flash: "off",
       });
+
+      setPhotoState("file://" + photo.path);
       const base64Url = await RNFS.readFile(photo.path, "base64");
+
       const deviceDetailsJSON = await AsyncStorage.getItem(
         LOCAL_STORAGE.deviceDetails
       );
@@ -61,26 +67,39 @@ const FaceCapture = ({ navigation }) => {
     <NativeBaseProvider>
       <View style={Styles.mainContainer}>
         {device?.id ? (
-          <Camera
-            ref={camera}
-            device={device}
-            isActive={true}
-            style={Styles.cameraView}
-            photo={true}
-          />
+          photoState ? (
+            <Image source={{ uri: photoState }} style={Styles.cameraView} />
+          ) : (
+            <Camera
+              ref={camera}
+              device={device}
+              isActive={true}
+              style={Styles.cameraView}
+              photo={true}
+            />
+          )
         ) : (
           <View style={Styles.cameraView} />
         )}
-        <DsmButton
-          btnVariant={"dsmBtnPrimary"}
-          title={isLoading ? "Loading..." : "Capture Selfie"}
-          onPress={captureSelfie}
-          disabled={isLoading}
-          style={Styles.buttonContainer}
-        />
-        <View style={Styles.logoContainer}>
-          <Text style={Styles.logoTextStyles}>Powered by</Text>
-          <Image source={mewurk_name} style={Styles.logoIconStylesBottom} />
+        <View style={Styles.bodyContainer}>
+          {isLoading ? (
+            <View style={Styles.warningButton}>
+              <Text style={Styles.warningTextStyles}>
+                Please wait, we are processing...
+              </Text>
+            </View>
+          ) : null}
+          <DsmButton
+            btnVariant={"dsmBtnPrimary"}
+            title={"Capture Selfie"}
+            onPress={captureSelfie}
+            disabled={isLoading}
+            style={Styles.buttonContainer}
+          />
+          <View style={Styles.logoContainer}>
+            <Text style={Styles.logoTextStyles}>Powered by</Text>
+            <Image source={mewurk_name} style={Styles.logoIconStylesBottom} />
+          </View>
         </View>
       </View>
       <DeviceAuthenticationModal
