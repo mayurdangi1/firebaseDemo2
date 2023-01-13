@@ -76,7 +76,7 @@ const FaceCapture = ({ navigation }) => {
           <View style={Styles.cameraView} />
         )}
         <View style={Styles.bodyContainer}>
-          {isLoading ? (
+          {postUploadSelfieMutation.isLoading ? (
             <View style={Styles.warningButton}>
               <Text style={Styles.warningTextStyles}>
                 Please wait, we are processing...
