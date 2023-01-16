@@ -1,9 +1,7 @@
 import React from "react";
-
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import DrawerContent from "../components/DrawerContent";
-
 import SettingsScreen from "./SettingsScreen";
 import OfflineSyncScreen from "./OfflineSyncScreen";
 import EmployeeListScreen from "./EmployeeListScreen";
@@ -21,7 +19,9 @@ const DeviceAuthenticated = (props) => {
         options={{
           headerTitle: () => <FaceRegistrationHeader />,
         }}
-        children={() => <FaceRegistration params={props.route.params} />}
+        children={(props) => (
+          <FaceRegistration {...props} params={props.route.params} />
+        )}
         headerMode="none"
       />
       <Drawer.Screen name="Settings" component={SettingsScreen} />

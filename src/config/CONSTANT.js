@@ -19,3 +19,8 @@ export const LOCAL_STORAGE = {
   deviceSetting: "DEVICE_SETTINGS",
   employeeList: "EMPLOYEE_LIST",
 };
+
+export const EVENTS = {
+  BACK_PRESS: "hardwareBackPress",
+  REMOVE_BEFORE: "beforeRemove",
+};

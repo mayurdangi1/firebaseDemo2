@@ -39,7 +39,6 @@ const App = () => {
         name="ConnectSuccessfully"
         component={ConnectedSuccessfully}
       />
-      <Stack.Screen name="DeviceAuth" component={DeviceAuthenticated} />
       <Stack.Screen
         name="ConnectingScreen"
         component={DeviceConnectLoadingScreen}
