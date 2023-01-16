@@ -1,38 +1,21 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Modal } from "native-base";
 import { Image, View, Text } from "react-native";
 
 import externalStyles from "../../assets/stylesheets/externalStyle";
 import dsmTypographyStyle from "../../assets/stylesheets/dsmStyles/dsmTypographyStyle";
-
 import DsmButton from "../DsmComponent/DsmButtonComponent";
+import { useCloseApp } from "../../hooks/useCloseApp";
 
-import useMutation from "../../hooks/useMutation";
-import { API } from "../../config/CONSTANT";
-import { LOGOUT_FROM_DEVICE } from "../../services/CONSTANT";
-import { clearAll } from "../../helper/asyncStorage";
+export const DeviceExitModal = ({ isOpen, hide }) => {
+  const initialRef = useRef(null);
+  const finalRef = useRef(null);
+  const exitApp = useCloseApp();
 
-const DeviceLogOutModal = ({ navigation, isOpen, hide, deviceId }) => {
-  const initialRef = React.useRef(null);
-  const finalRef = React.useRef(null);
-
-  const putLogOutFromDeviceMutation = useMutation({
-    url: LOGOUT_FROM_DEVICE(deviceId),
-    method: API.PUT,
-    onSuccess: () => {
-      logOutSuccess();
-    },
-  });
-
-  const logOutSuccess = async () => {
-    hide();
-    const resp = await clearAll();
-    navigation.navigate("Home");
+  const handleExit = () => {
+    exitApp();
   };
 
-  const logoutFromDevice = async () => {
-    await putLogOutFromDeviceMutation.mutate();
-  };
   return (
     <>
       <Modal
@@ -48,22 +31,24 @@ const DeviceLogOutModal = ({ navigation, isOpen, hide, deviceId }) => {
                 source={require("../../assets/icons/logout_circle.png")}
                 style={{ marginBottom: 5 }}
               />
-              <Text style={dsmTypographyStyle.mDsmTitle3Bold}>Log Out!</Text>
+              <Text style={dsmTypographyStyle.mDsmTitle3Bold}>
+                Exit Application
+              </Text>
               <View style={externalStyles.logoutModalBody}>
                 <View style={externalStyles.logoutPopupMessage}>
                   <Text style={dsmTypographyStyle.mDsmMediumSemiBold}>
-                    Would you like to unpair the connected device?
+                    You can re-open the application to
                   </Text>
                   <Text style={dsmTypographyStyle.mDsmMediumSemiBold}>
-                    You need to scan QR code again for Kiosk Activation.
+                    continue capturing the attendance.
                   </Text>
                 </View>
               </View>
               <DsmButton
-                btnVariant={"dsmBtnDangerPrimary"}
+                btnVariant={"dsmBtnPrimary"}
                 btnSize={"sm"}
-                title={"Log Out"}
-                onPress={() => logoutFromDevice()}
+                title={"Exit"}
+                onPress={() => handleExit()}
               />
               <DsmButton
                 btnVariant={"dsmBtnSecondary"}
@@ -78,5 +63,3 @@ const DeviceLogOutModal = ({ navigation, isOpen, hide, deviceId }) => {
     </>
   );
 };
-
-export default DeviceLogOutModal;

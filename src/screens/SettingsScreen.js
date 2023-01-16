@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, Image, Switch } from "react-native";
 
-import { NativeBaseProvider, Divider } from "native-base";
+import { Divider } from "native-base";
 import externalStyles from "../assets/stylesheets/externalStyle";
 import EntryModeOption from "../components/Settings/EntryModeOption";
 import CameraDirectionOption from "../components/Settings/CameraDirecionOption";
@@ -18,7 +18,7 @@ import {
 import { LOCAL_STORAGE } from "../config/CONSTANT";
 import { getAsyncStorageItem } from "../helper/asyncStorage";
 
-const SettingsScreen = () => {
+const SettingsScreen = (props) => {
   const [kioskSettingsData, setKioskSettingsData] = useState(null);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const SettingsScreen = () => {
   }, []);
 
   return (
-    <NativeBaseProvider>
+    <>
       {kioskSettingsData ? (
         <View style={externalStyles.settingsContainer}>
           <View style={externalStyles.settingsItem}>
@@ -127,7 +127,7 @@ const SettingsScreen = () => {
           <Text> Lodding... </Text>
         </View>
       )}
-    </NativeBaseProvider>
+    </>
   );
 };
 
