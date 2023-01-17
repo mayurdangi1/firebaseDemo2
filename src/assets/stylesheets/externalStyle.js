@@ -391,6 +391,7 @@ const externalStyles = StyleSheet.create({
   },
   logoutPopupMessage: {
     justifyContent: 'center',
+    alignItems: 'center'
   }
   // logout modal
 });

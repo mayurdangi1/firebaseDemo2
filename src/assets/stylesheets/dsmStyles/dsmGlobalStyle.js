@@ -11,7 +11,8 @@ const dsmGlobalStyle = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        width:"100%"
+        justifyContent: 'center',
+        width:"100%",
     },
     dsmBtnText:{
         fontFamily: 'Inter',
