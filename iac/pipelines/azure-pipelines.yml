@@ -1,0 +1,155 @@
+# Kiosk app CI pipeline to generate .Apk file
+# File: azure-pipelines.yml
+
+trigger:
+  branches:
+    include:
+    - master
+    - develop
+
+pr:
+  branches:
+    include:
+    - master
+    - develop
+
+name: '$(BuildDefinitionName)-$(SourceBranchName)-$(Date:yyyyMMdd)$(Rev:.r)'
+
+variables:
+
+- name: vmImageName
+  value: ubuntu-latest
+
+- name: buildConfiguration
+  value: 'Release'
+
+- name: isDevelop
+  value: $[eq(variables['Build.SourceBranch'], 'refs/heads/develop')]
+
+  # Tagging for Master and Other Branches(Dev/PR)
+- name: tag
+  ${{ if eq(variables['Build.SourceBranchName'], 'master') }}: 
+    value: "$(MajorMinorPatch)" 
+  ${{ if ne(variables['Build.SourceBranchName'], 'master') }}: 
+    value: "$(MajorMinorPatch)-preview-$(Build.BuildId)" 
+
+- name: GRADLE_USER_HOME
+  value: $(Pipeline.Workspace)/.gradle
+
+stages:
+
+  - stage: BuildCIPipeline
+    jobs:
+      - job: buildJob
+        displayName: "Build pipeline for kioskapp"
+        pool:
+          vmImage: $(vmImageName)
+
+        steps:
+        - script: |
+            echo Build Release pipeline for kioskapp on $(Build.SourceBranchName) branch
+            #echo build.artifactstagingdirectory and build.buildnumber are as follows.
+            #echo $(build.artifactstagingdirectory) $(build.buildnumber)
+            #echo $(projects)
+            echo 'MyPackageVersion is $(MyPackageVersion)'
+            echo $(BuildConfiguration)
+            echo '$(Build.BuildNumber)'
+            echo "This is the build pipe line. This produces the necessary artifacts for subsequent release pipeline."
+          displayName: 'Command Line Script to write out some vars'
+
+        - powershell: |
+            Write-Host "This is from power shell command task"
+            Write-Host "This writes out the env vars"
+            get-childitem -path env:*
+          displayName: 'PowerShell script to write out env vars'
+
+          # Setup GitVersion tool for versioning
+        - task: gitversion/setup@0
+          displayName: gitversion/setup
+          inputs:
+            versionSpec: '5.x'
+
+        - checkout: self
+          fetchDepth: 0
+
+          # Execute GitVersion for determining the new version
+        - task: gitversion/execute@0
+          displayName: gitversion/execute
+          inputs:
+            useConfigFile: true
+            configFilePath: '$(BUILD.SOURCESDIRECTORY)/iac/pipelines/Gitversion.yml'
+            
+        - bash: |
+              echo "##vso[task.setvariable variable=tag;isOutput=true;]$(tag)"
+              echo "variable value is $(tag)"
+          name: setTag
+
+        - task: Cache@2
+          inputs:
+            key: 'gradle | "$(Agent.OS)" | **/package.json'
+            restoreKeys: |
+              gradle | "$(Agent.OS)"
+              gradle
+            path: $(GRADLE_USER_HOME)
+          displayName: Configure gradle caching
+
+        - script: yarn install
+          displayName: install dependency
+
+        - task: Gradle@2
+          condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables.isDevelop, 'true'))
+          inputs:
+            gradleWrapperFile: 'android/gradlew'
+            workingDirectory: 'android/'
+            testResultsFiles: '**/TEST-*.xml'
+            options: '-PversionName=$(Build.BuildNumber) -PversionCode=$(Build.BuildId)'
+            tasks: 'assembleRelease'
+            publishJUnitResults: false
+            javaHomeOption: 'JDKVersion'
+            gradleOptions: '-Xmx3072m'
+
+        # - task: AzureFileCopy@5
+        #   name: AzureFileCopy
+        #   inputs:
+        #     SourcePath: '$(BUILD.SOURCESDIRECTORY)/android/**/*.apk'
+        #     azureSubscription: 'Microsoft Azure Sponsorship(12b01360-f122-4223-bcf0-b1704509de3c)'
+        #     Destination: 'AzureBlob'
+        #     storage: 'mewurkservicestorage'
+        #     ContainerName: 'temp-files'
+
+        # # Copying .apk file to folder
+        # - task: CopyFiles@2
+        #   condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables.isDevelop, 'true'))
+        #   displayName: Copying .apk to folder
+        #   inputs:
+        #     contents: '**/*.apk'
+        #     targetFolder: '$(BUILD.SOURCESDIRECTORY)/kiosk-apk'
+
+        - task: CopyFiles@2
+          condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables.isDevelop, 'true'))
+          displayName: Copy
+          inputs:
+            contents: '$(BUILD.SOURCESDIRECTORY)/android/app/build/outputs/apk/release/app-release.apk'
+            targetFolder: '$(build.artifactStagingDirectory)/ApkFolder'
+
+
+        - task: PublishBuildArtifacts@1
+          condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables.isDevelop, 'true'))
+          inputs:
+            pathToPublish: '$(build.artifactStagingDirectory)/ApkFolder'
+            artifactName: 'drop'
+
+        - task: UniversalPackages@0
+          condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables.isDevelop, 'true'))
+          displayName: Universal package
+          inputs:
+            command: 'publish'
+            publishDirectory: '$(Build.ArtifactStagingDirectory)/ApkFolder'
+            feedsToUsePublish: 'internal'
+            vstsFeedPublish: 'ee907b19-cf14-41bd-8e6d-297bf6b89f72'
+            vstsFeedPackagePublish: "kiosk_apk"
+            versionOption: 'custom'
+            versionPublish: '$(tag)'
+
+
+
