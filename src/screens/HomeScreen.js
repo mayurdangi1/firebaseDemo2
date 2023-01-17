@@ -31,7 +31,11 @@ function HomeScreen({ navigation }) {
               <Text style={dsmTypographyStyle.mDsmSmallNormal}>
                 If you don’t have QR code for activation, Please contact your
                 Admin or visit{" "}
-                <DsmLinkText linkText={'Help'} size={'sm'} textStyle={'textUnderline'} />
+                <DsmLinkText
+                  linkText={"Help"}
+                  size={"sm"}
+                  textStyle={"textUnderline"}
+                />
               </Text>
             </View>
           </View>

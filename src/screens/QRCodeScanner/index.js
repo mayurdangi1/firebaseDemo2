@@ -7,7 +7,7 @@ import { useScanBarcodes, BarcodeFormat } from "vision-camera-code-scanner";
 import Geolocation from "@react-native-community/geolocation";
 import DeviceInfo from "react-native-device-info";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import Loading from "../../components/Loading/Loading.js";
 import { QrCodeScannerStyles as Styles } from "./style.js";
 
 import {
@@ -28,6 +28,7 @@ const QRCodeScanner = ({ navigation }) => {
     }
   );
   const [torch, setTorch] = useState("off");
+  const [isLoading, setIsLoading] = useState(false);
   const [content, setContent] = useState();
   const [location, setLocation] = useState({ longitude: "", latitude: "" });
   const device = useCameraDevices().back;
@@ -39,6 +40,7 @@ const QRCodeScanner = ({ navigation }) => {
   useEffect(() => {
     if (!isEmpty(barcodes) && isEmpty(content)) {
       setContent(barcodes[0].content.data);
+      setIsLoading(true);
     }
   }, [barcodes]);
 
@@ -85,8 +87,10 @@ const QRCodeScanner = ({ navigation }) => {
                   companyName: res.data.data.tenant.companyName,
                   logoUrl: res.data.data.tenant.logoUrl,
                 });
+                setIsLoading(false);
               } catch (error) {
                 console.log(error);
+                setIsLoading(false);
               }
             })();
             setContent();
@@ -106,6 +110,7 @@ const QRCodeScanner = ({ navigation }) => {
       selectionLimit: 1,
       saveToPhotos: true,
     });
+    setIsLoading(true);
     RNQRGenerator.detect({
       uri: resultImage.assets[0].uri,
     })
@@ -113,7 +118,10 @@ const QRCodeScanner = ({ navigation }) => {
         const { values } = response; // Array of detected QR code values. Empty if nothing found.
         isEmpty(content) && setContent(values[0]);
       })
-      .catch((error) => console.log("Cannot detect QR code in image", error));
+      .catch(
+        (error) => console.log("Cannot detect QR code in image", error),
+        setIsLoading(false)
+      );
   };
 
   return (
@@ -132,55 +140,62 @@ const QRCodeScanner = ({ navigation }) => {
 
       {/* {isEmpty(content) ? ( */}
       <View style={Styles.bodyContainer}>
-        <View style={Styles.mainContainer}>
-          <View style={Styles.cameraContainer}>
-            {device?.id ? (
-              <Camera
-                device={device}
-                isActive={true}
-                style={Styles.cameraView}
-                torch={torch}
-                frameProcessor={frameProcessor}
-                frameProcessorFps={5}
-              />
-            ) : (
-              <View style={Styles.cameraView} />
-            )}
-          </View>
-          <View style={Styles.rightSideFrame} />
-          <View style={Styles.leftSideFrames} />
-          <View style={Styles.topFrame} />
-          <View style={Styles.midFrame}></View>
-          <View style={Styles.bottomFrame}>
-            <Text style={Styles.qrText}>
-              Please align the QR within the scanner!
-            </Text>
-            <View style={Styles.cameraOptions}>
-              <View style={Styles.optionContainer}>
-                <TouchableOpacity style={Styles.options} onPress={handleFalsh}>
-                  <Image source={flash} />
-                </TouchableOpacity>
-                <View style={Styles.optionHelper}>
-                  <Text style={Styles.optionHelperText}>Turn On Flash</Text>
+        {!isLoading ? (
+          <View style={Styles.mainContainer}>
+            <View style={Styles.cameraContainer}>
+              {device?.id ? (
+                <Camera
+                  device={device}
+                  isActive={true}
+                  style={Styles.cameraView}
+                  torch={torch}
+                  frameProcessor={frameProcessor}
+                  frameProcessorFps={5}
+                />
+              ) : (
+                <View style={Styles.cameraView} />
+              )}
+            </View>
+            <View style={Styles.rightSideFrame} />
+            <View style={Styles.leftSideFrames} />
+            <View style={Styles.topFrame} />
+            <View style={Styles.midFrame}></View>
+            <View style={Styles.bottomFrame}>
+              <Text style={Styles.qrText}>
+                Please align the QR within the scanner!
+              </Text>
+              <View style={Styles.cameraOptions}>
+                <View style={Styles.optionContainer}>
+                  <TouchableOpacity
+                    style={Styles.options}
+                    onPress={handleFalsh}
+                  >
+                    <Image source={flash} />
+                  </TouchableOpacity>
+                  <View style={Styles.optionHelper}>
+                    <Text style={Styles.optionHelperText}>Turn On Flash</Text>
+                  </View>
                 </View>
-              </View>
-              <View style={Styles.optionContainer}>
-                <TouchableOpacity
-                  style={Styles.options}
-                  onPress={handleImagePicker}
-                >
-                  <Image source={gallery} />
-                </TouchableOpacity>
-                <View style={Styles.optionHelper}>
-                  <Text style={Styles.optionHelperText}>
-                    Upload from Gallery
-                  </Text>
+                <View style={Styles.optionContainer}>
+                  <TouchableOpacity
+                    style={Styles.options}
+                    onPress={handleImagePicker}
+                  >
+                    <Image source={gallery} />
+                  </TouchableOpacity>
+                  <View style={Styles.optionHelper}>
+                    <Text style={Styles.optionHelperText}>
+                      Upload from Gallery
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
+            <View style={Styles.transparentCamera} />
           </View>
-          <View style={Styles.transparentCamera} />
-        </View>
+        ) : (
+          <Loading />
+        )}
       </View>
     </View>
   );
