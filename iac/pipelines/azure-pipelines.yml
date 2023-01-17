@@ -97,7 +97,7 @@ stages:
           displayName: install dependency
 
         - task: Gradle@2
-          condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables.isDevelop, 'true'))
+          #condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables.isDevelop, 'true'))
           inputs:
             gradleWrapperFile: 'android/gradlew'
             workingDirectory: 'android/'
@@ -117,16 +117,16 @@ stages:
         #     storage: 'mewurkservicestorage'
         #     ContainerName: 'temp-files'
 
-        # Copying .apk file to folder
-        - task: CopyFiles@2
-          condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables.isDevelop, 'true'))
-          displayName: Copying .apk to folder
-          inputs:
-            contents: '**/*.apk'
-            targetFolder: '$(BUILD.SOURCESDIRECTORY)/kiosk-apk'
+        # # Copying .apk file to folder
+        # - task: CopyFiles@2
+        #   condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables.isDevelop, 'true'))
+        #   displayName: Copying .apk to folder
+        #   inputs:
+        #     contents: '**/*.apk'
+        #     targetFolder: '$(BUILD.SOURCESDIRECTORY)/kiosk-apk'
 
         - task: CopyFiles@2
-          condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables.isDevelop, 'true'))
+          #condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables.isDevelop, 'true'))
           displayName: Copy
           inputs:
             contents: '$(BUILD.SOURCESDIRECTORY)/android/app/build/outputs/apk/release/app-release.apk'
@@ -134,13 +134,13 @@ stages:
 
 
         - task: PublishBuildArtifacts@1
-          condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables.isDevelop, 'true'))
+          #condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables.isDevelop, 'true'))
           inputs:
             pathToPublish: '$(build.artifactStagingDirectory)/ApkFolder'
             artifactName: 'drop'
 
         - task: UniversalPackages@0
-          condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables.isDevelop, 'true'))
+          #condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables.isDevelop, 'true'))
           displayName: Universal package
           inputs:
             command: 'publish'
