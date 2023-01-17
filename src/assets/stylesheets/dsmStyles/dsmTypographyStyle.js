@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native";
+import DsmColor from "./dsmColors";
 
 const dsmTypographyStyle = StyleSheet.create({
     // Title Text
@@ -7,7 +8,7 @@ const dsmTypographyStyle = StyleSheet.create({
         fontSize: 24,
         lineHeight : 36,
         fontStyle : 'normal',
-        color: '#090A0A',
+        color: DsmColor.darkInkDarkest,
         fontFamily:'Inter'
     },
     mDsmTitle3Bold:{
@@ -15,7 +16,7 @@ const dsmTypographyStyle = StyleSheet.create({
         fontSize: 20,
         lineHeight : 32,
         fontStyle : 'normal',
-        color: '#090A0A',
+        color: DsmColor.darkInkDarkest,
         fontFamily:'Inter'
     },
     mDsmTitle3Normal:{
@@ -23,7 +24,7 @@ const dsmTypographyStyle = StyleSheet.create({
         fontSize: 20,
         lineHeight : 32,
         fontStyle : 'normal',
-        color: '#090A0A',
+        color: DsmColor.darkInkDarkest,
         fontFamily:'Inter'
     },
     // Title Primary start
@@ -32,7 +33,7 @@ const dsmTypographyStyle = StyleSheet.create({
         fontSize: 20,
         lineHeight : 32,
         fontStyle : 'normal',
-        color: '#003BAF',
+        color: DsmColor.primaryDarkest,
         fontFamily:'Inter'
     },
     mDsmTitle3PrimarySemiBold:{
@@ -40,7 +41,7 @@ const dsmTypographyStyle = StyleSheet.create({
         fontSize: 20,
         lineHeight : 32,
         fontStyle : 'normal',
-        color: '#003BAF',
+        color: DsmColor.primaryDarkest,
         fontFamily:'Inter'
     },
     mDsmTitle3PrimaryNormal:{
@@ -48,7 +49,7 @@ const dsmTypographyStyle = StyleSheet.create({
         fontSize: 20,
         lineHeight : 32,
         fontStyle : 'normal',
-        color: '#003BAF',
+        color: DsmColor.primaryDarkest,
         fontFamily:'Inter'
     },
     // Title Primary end
@@ -58,7 +59,7 @@ const dsmTypographyStyle = StyleSheet.create({
         fontSize: 18,
         lineHeight : 24,
         fontStyle : 'normal',
-        color: '#090A0A',
+        color: DsmColor.darkInkDarkest,
         fontFamily:'Inter',
     },
     mDsmLargeSemiBold:{
@@ -66,15 +67,15 @@ const dsmTypographyStyle = StyleSheet.create({
         fontSize: 18,
         lineHeight : 24,
         fontStyle : 'normal',
-        color: '#090A0A',
+        color: DsmColor.darkInkDarkest,
         fontFamily:'Inter',
     },
     mDsmLargeNormal:{
-        fontWeight: '500',
+        fontWeight: '400',
         fontSize: 18,
         lineHeight : 24,
         fontStyle : 'normal',
-        color: '#090A0A',
+        color: DsmColor.darkInkDarkest,
         fontFamily:'Inter',
     },
     mDsmLargeUnderlineBold:{
@@ -82,30 +83,30 @@ const dsmTypographyStyle = StyleSheet.create({
         fontSize: 18,
         lineHeight : 24,
         fontStyle : 'normal',
-        color: '#090A0A',
+        color: DsmColor.darkInkDarkest,
         fontFamily:'Inter',
         textDecorationLine: 'underline',
-        textDecorationColor: '#090A0A'
+        textDecorationColor: DsmColor.darkInkDarkest
     },
     mDsmLargeUnderlineSemiBold:{
         fontWeight: '500',
         fontSize: 18,
         lineHeight : 24,
         fontStyle : 'normal',
-        color: '#090A0A',
+        color: DsmColor.darkInkDarkest,
         fontFamily:'Inter',
         textDecorationLine: 'underline',
-        textDecorationColor: '#090A0A'
+        textDecorationColor: DsmColor.darkInkDarkest
     },
     mDsmLargeUnderlineNormal:{
         fontWeight: '400',
         fontSize: 18,
         lineHeight : 24,
         fontStyle : 'normal',
-        color: '#090A0A',
+        color: DsmColor.darkInkDarkest,
         fontFamily:'Inter',
         textDecorationLine: 'underline',
-        textDecorationColor: '#090A0A'
+        textDecorationColor: DsmColor.darkInkDarkest
     },
     // Medium Text
     mDsmMediumBold:{
@@ -113,7 +114,7 @@ const dsmTypographyStyle = StyleSheet.create({
         fontSize: 16,
         lineHeight : 24,
         fontStyle : 'normal',
-        color: '#090A0A',
+        color: DsmColor.darkInkDarkest,
         fontFamily:'Inter',
     },
     mDsmMediumSemiBold:{
@@ -121,7 +122,7 @@ const dsmTypographyStyle = StyleSheet.create({
         fontSize: 16,
         lineHeight : 24,
         fontStyle : 'normal',
-        color: '#090A0A',
+        color: DsmColor.darkInkDarkest,
         fontFamily:'Inter',
     },
     mDsmMediumNormal:{
@@ -129,7 +130,7 @@ const dsmTypographyStyle = StyleSheet.create({
         fontSize: 16,
         lineHeight : 24,
         fontStyle : 'normal',
-        color: '#090A0A',
+        color: DsmColor.darkInkDarkest,
         fontFamily:'Inter',
     },
     mDsmMediumUnderlineBold:{
@@ -137,30 +138,30 @@ const dsmTypographyStyle = StyleSheet.create({
         fontSize: 16,
         lineHeight : 24,
         fontStyle : 'normal',
-        color: '#090A0A',
+        color: DsmColor.darkInkDarkest,
         fontFamily:'Inter',
         textDecorationLine: 'underline',
-        textDecorationColor: '#090A0A'
+        textDecorationColor: DsmColor.darkInkDarkest
     },
     mDsmMediumUnderlineSemiBold:{
         fontWeight: '500',
         fontSize: 16,
         lineHeight : 24,
         fontStyle : 'normal',
-        color: '#090A0A',
+        color: DsmColor.darkInkDarkest,
         fontFamily:'Inter',
         textDecorationLine: 'underline',
-        textDecorationColor: '#090A0A'
+        textDecorationColor: DsmColor.darkInkDarkest
     },
     mDsmMediumUnderlineNormal:{
         fontWeight: '400',
         fontSize: 16,
         lineHeight : 24,
         fontStyle : 'normal',
-        color: '#090A0A',
+        color: DsmColor.darkInkDarkest,
         fontFamily:'Inter',
         textDecorationLine: 'underline',
-        textDecorationColor: '#090A0A'
+        textDecorationColor: DsmColor.darkInkDarkest
     },
     // Small Text
     mDsmSmallBold:{
@@ -168,7 +169,7 @@ const dsmTypographyStyle = StyleSheet.create({
         fontSize: 14,
         lineHeight : 20,
         fontStyle : 'normal',
-        color: '#090A0A',
+        color: DsmColor.darkInkDarkest,
         fontFamily:'Inter'
     },
     mDsmSmallSemiBold:{
@@ -176,7 +177,7 @@ const dsmTypographyStyle = StyleSheet.create({
         fontSize: 14,
         lineHeight : 20,
         fontStyle : 'normal',
-        color: '#090A0A',
+        color: DsmColor.darkInkDarkest,
         fontFamily:'Inter'
     },
     mDsmSmallNormal:{
@@ -184,7 +185,7 @@ const dsmTypographyStyle = StyleSheet.create({
         fontSize: 14,
         lineHeight : 20,
         fontStyle : 'normal',
-        color: '#090A0A',
+        color: DsmColor.darkInkDarkest,
         fontFamily:'Inter'
     },
     // Tiny Text
@@ -193,7 +194,7 @@ const dsmTypographyStyle = StyleSheet.create({
         fontSize: 12,
         lineHeight : 16,
         fontStyle : 'normal',
-        color: '#090A0A',
+        color: DsmColor.darkInkDarkest,
         fontFamily:'Inter'
     },
     mDsmTinySemiBold:{
@@ -201,7 +202,7 @@ const dsmTypographyStyle = StyleSheet.create({
         fontSize: 12,
         lineHeight : 16,
         fontStyle : 'normal',
-        color: '#090A0A',
+        color: DsmColor.darkInkDarkest,
         fontFamily:'Inter'
     },
     mDsmTinyNormal:{
@@ -209,12 +210,12 @@ const dsmTypographyStyle = StyleSheet.create({
         fontSize: 12,
         lineHeight : 16,
         fontStyle : 'normal',
-        color: '#090A0A',
+        color: DsmColor.darkInkDarkest,
         fontFamily:'Inter'
     },
     // error Msg
     mDsmDangerTextLarge:{
-        color: '#DC2626',
+        color: DsmColor.errorsText,
         fontWeight: '400',
         fontSize: 16,
         lineHeight: 24,
@@ -222,7 +223,7 @@ const dsmTypographyStyle = StyleSheet.create({
         fontFamily:'Inter'
     },
     mDsmDangerTextMedium:{
-        color: '#DC2626',
+        color: DsmColor.errorsText,
         fontWeight: '400',
         fontSize: 12,
         lineHeight: 16,
@@ -231,10 +232,10 @@ const dsmTypographyStyle = StyleSheet.create({
     },
     // Link Text Style
     mDsmLinkText: {
-        color: '#004AD7',
+        color: DsmColor.primaryBase,
         fontStyle : 'normal',
         fontFamily:'Inter',
-        textDecorationColor: '#004AD7'
+        textDecorationColor: DsmColor.primaryBase
     }
 })
 

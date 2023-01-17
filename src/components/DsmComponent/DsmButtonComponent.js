@@ -2,6 +2,7 @@ import { Text, TouchableOpacity, Image } from "react-native";
 import React from "react";
 
 import dsmGlobalStyle from "../../assets/stylesheets/dsmStyles/dsmGlobalStyle";
+import DsmColor from "../../assets/stylesheets/dsmStyles/dsmColors";
 
 const DsmButton = ({
   onPress,
@@ -15,6 +16,7 @@ const DsmButton = ({
   iconBtnSource,
   fabBtnSize,
   style,
+  btnMargin
 }) => {
   return (
     <TouchableOpacity
@@ -22,6 +24,19 @@ const DsmButton = ({
       onPress={onPress}
       style={[
         dsmGlobalStyle.dsmBtn,
+        // Button margins
+        btnMargin === "leftMr" && {
+          marginLeft: 8,
+        },
+        btnMargin === "rightMr" && {
+          marginRight: 8,
+        },
+        btnMargin === "topMr" && {
+          marginTop: 8,
+        },
+        btnMargin === "bottomMr" && {
+          marginBottom: 8,
+        },
         // Normal Buttons Sizes
         btnSize === "sm" && {
           paddingHorizontal: 16,
@@ -71,42 +86,34 @@ const DsmButton = ({
         },
         // Btn Variant with background
         btnVariant === "dsmBtnPrimary" && {
-          backgroundColor: "#004AD7",
-          borderColor: "#FAFAFA",
-        },
-        btnVariant === "dsmBtnDangerPrimary" && {
-          backgroundColor: "#DA1414",
-          borderColor: "#DA1414",
+          backgroundColor: DsmColor.primaryBase,
+          borderColor: DsmColor.primaryBase,
         },
         btnVariant === "dsmBtnSecondary" && {
-          backgroundColor: "#EFEFEF",
-          borderColor: "#003BAF",
+          backgroundColor: DsmColor.lightInkLightest,
+          borderColor: DsmColor.primaryDarkest
         },
         btnVariant === "dsmBtnLink" && {
-          backgroundColor: "transparent",
-          borderColor: "transparent",
+          backgroundColor: 'transparent',
+          borderColor: 'transparent',
         },
         btnVariant === "dsmBtnIconPrimary" && {
-          backgroundColor: "#004AD7",
-          borderColor: "#004AD7",
+          backgroundColor: DsmColor.primaryBase,
+          borderColor: DsmColor.primaryBase,
         },
         btnVariant === "dsmBtnIconSecondary" && {
-          backgroundColor: "#EFEFEF",
-          borderColor: "#004AD7",
+          backgroundColor: DsmColor.lightInkLightest,
+          borderColor: DsmColor.primaryBase,
         },
         btnVariant === "dsmBtnIconLink" && {
-          backgroundColor: "transparent",
-          borderColor: "transparent",
+          backgroundColor: 'transparent',
+          borderColor: 'transparent',
         },
         btnVariant === "dsmBtnFab" && {
-          backgroundColor: "#004AD7",
-          borderColor: "#004AD7",
+          backgroundColor: DsmColor.primaryBase,
+          borderColor: DsmColor.primaryBase,
         },
-        {
-          ...style,
-        },
-      ]}
-    >
+        ]}>
       {leftBtnIconSource ? (
         <Image source={leftBtnIconSource} style={{ marginRight: 8 }} />
       ) : null}
@@ -123,11 +130,11 @@ const DsmButton = ({
             btnSize === "sm" && { fontSize: 16, lineHeight: 24 },
             btnSize === "lg" && { fontSize: 20, lineHeight: 32 },
             // Btn Text color, for all buttons
-            btnVariant === "dsmBtnPrimary" && { color: "#FAFAFA" },
             btnVariant === "dsmBtnDangerPrimary" && { color: "#FAFAFA" },
-            btnVariant === "dsmBtnSecondary" && { color: "#003BAF" },
-            btnVariant === "dsmBtnLink" && { color: "#003BAF" },
-            btnVariant === "dsmBtnFab" && { color: "#E3E5E5" },
+            btnVariant === "dsmBtnPrimary" && { color: DsmColor.lightInkLightest },
+            btnVariant === "dsmBtnSecondary" && { color: DsmColor.primaryDarkest },
+            btnVariant === "dsmBtnLink" && { color: DsmColor.primaryDarkest },
+            btnVariant === "dsmBtnFab" && { color: DsmColor.lightInkLight }
           ]}
         >
           {title}

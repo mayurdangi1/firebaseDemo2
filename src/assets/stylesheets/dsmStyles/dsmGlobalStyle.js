@@ -1,4 +1,5 @@
 import { StyleSheet} from "react-native";
+import DsmColor from "./dsmColors";
 
 const dsmGlobalStyle = StyleSheet.create({
     // Dsm Button Style Start
@@ -12,8 +13,6 @@ const dsmGlobalStyle = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width:"100%",
-        marginBottom: 8,
-        fontWeight:500
     },
     dsmBtnText:{
         fontFamily: 'Inter',
@@ -29,7 +28,7 @@ const dsmGlobalStyle = StyleSheet.create({
     },
     dsmInputBoxLabel: {
         fontWeight: '400',
-        color: "#605E5C",
+        color: DsmColor.darkInkLight,
         fontFamily: "Inter",
         marginBottom: 5
     },
@@ -37,19 +36,19 @@ const dsmGlobalStyle = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        backgroundColor: "#fff",
+        backgroundColor: DsmColor.bgLight,
         width: "100%",
-        color: "#1D1D1D",
-        borderColor: '#D4D4D4',
+        color: DsmColor.darkInkDark,
+        borderColor: DsmColor.mutedLighter,
         borderWidth: 1,
         borderRadius: 4,
     },
     dsmInputBoxFocus: {
-        borderColor: '#004AD7',
+        borderColor: DsmColor.primaryBase,
     },
     disabledInput:{
-        borderColor: '#F7F8F9',
-        backgroundColor: "#F7F8F9"
+        borderColor: DsmColor.mutedLightest,
+        backgroundColor: DsmColor.mutedLightest
     },
     passImage: {
         padding: 10,
@@ -72,12 +71,12 @@ const dsmGlobalStyle = StyleSheet.create({
         lineHeight: 38,
         fontSize: 24,
         borderWidth: 1,
-        borderColor: '#605E5C',
+        borderColor: DsmColor.darkInkLight,
         textAlign: 'center',
         borderRadius: 8
       },
       focusOtpBox: {
-        borderColor: '#80ACFF',
+        borderColor: DsmColor.primaryLight,
       },
     // Dsm Otp Box Style End
 
@@ -89,23 +88,23 @@ const dsmGlobalStyle = StyleSheet.create({
     dsmRadioButton: {
         height: 20,
         width: 20,
-        backgroundColor: "#ffffff",
+        backgroundColor: DsmColor.bgLight,
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: "#A19F9D",
+        borderColor: DsmColor.darkInkLighter,
         alignItems: "center",
         justifyContent: "center"
     },
     dsmRadioButtonInner: {
         height: 10,
         width: 10,
-        backgroundColor: "#004AD7",
+        backgroundColor: DsmColor.primaryBase,
         borderRadius: 10,
     },
     dsmRadioButtonLabel: {
         fontSize: 18,
         marginLeft: 10,
-        color: '#171717',
+        color: DsmColor.darkInkDarkest,
         lineHeight: 24
     },
     // Dsm Radio Button Style End
@@ -115,8 +114,29 @@ const dsmGlobalStyle = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         padding: 8
-      }
+      },
     // Dsm Modal Popup Style End
+    
+    // Bottom Nav Style Start
+    dsmBottomNavBox:{
+        position: 'absoulte',
+        let: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: DsmColor.bgLight,
+        height: 72
+    },
+    dsmBottomNavItem: {
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        paddingVertical: 10
+    },
+    // Bottom Nav Style End
+    // Home Header 
+    homepageHeader: {
+        backgroundColor: DsmColor.primaryLightest
+    }
+    // Home Header 
 })
 
 export default dsmGlobalStyle

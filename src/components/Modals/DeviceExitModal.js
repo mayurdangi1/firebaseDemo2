@@ -29,7 +29,7 @@ export const DeviceExitModal = ({ isOpen, hide }) => {
           <Modal.Body>
             <View style={externalStyles.deviceAuthenticationMessagePopup}>
               <Image
-                source={require("../../assets/icons/logout_circle.png")}
+                source={require("../../assets/icons/exit.png")}
                 style={{ marginBottom: 5 }}
               />
               <Text style={dsmTypographyStyle.mDsmTitle3Bold}>
@@ -38,10 +38,7 @@ export const DeviceExitModal = ({ isOpen, hide }) => {
               <View style={externalStyles.logoutModalBody}>
                 <View style={externalStyles.logoutPopupMessage}>
                   <Text style={dsmTypographyStyle.mDsmMediumSemiBold}>
-                    You can re-open the application to
-                  </Text>
-                  <Text style={dsmTypographyStyle.mDsmMediumSemiBold}>
-                    continue capturing the attendance.
+                    You can re-open the application to continue capturing the attendance.
                   </Text>
                 </View>
               </View>
@@ -55,6 +52,7 @@ export const DeviceExitModal = ({ isOpen, hide }) => {
                 btnVariant={"dsmBtnSecondary"}
                 btnSize={"sm"}
                 title={"Cancel"}
+                btnMargin = {"topMr"}
                 onPress={() => hide()}
               />
             </View>

@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native";
+import DsmColor from '../../assets/stylesheets/dsmStyles/dsmColors'
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 const frameHeight = Math.round(windowHeight / 3.7);
@@ -18,7 +19,7 @@ export const QrCodeScannerStyles = StyleSheet.create({
     height: 50,
     left: 0,
     top: 0,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: DsmColor.bgLight,
     flexDirection: "row",
     alignItems: "center",
     padding: 10,
@@ -111,8 +112,7 @@ export const QrCodeScannerStyles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
-    gap: 10,
-    justifyContent: "space-evenly",
+    justifyContent: 'space-evenly',
   },
   optionContainer: {
     alignItems: "center",
@@ -124,12 +124,12 @@ export const QrCodeScannerStyles = StyleSheet.create({
     backgroundColor: "rgba(0, 0, 0, 0.5)",
     borderRadius: 24,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: 'center',
     marginBottom: 10,
   },
   optionHelper: {
     backgroundColor: "rgba(0, 0, 0, 0.5)",
-    width: 96,
+    width: 105,
     borderRadius: 4,
     padding: 8,
     alignItems: "center",
@@ -138,6 +138,7 @@ export const QrCodeScannerStyles = StyleSheet.create({
     fontStyle: "normal",
     fontSize: 16,
     lineHeight: 18,
-    color: "#FFFFFF",
+    color: DsmColor.bgLight,
+    textAlign: 'center'
   },
 });

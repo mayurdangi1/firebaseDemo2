@@ -3,6 +3,7 @@ import { TextInput, Text, View, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import dsmTypographyStyle from "../../assets/stylesheets/dsmStyles/dsmTypographyStyle";
 import dsmGlobalStyle from '../../assets/stylesheets/dsmStyles/dsmGlobalStyle'
+import DsmColor from "../../assets/stylesheets/dsmStyles/dsmColors";
 
 const DsmInputBox = ({ inputPlaceholder, isSecure, inputKeyboard, inputLabel, inputLabelSize, inputTextSize, errorMsg, errorMsgSize, eyeIcon, editable=true }) => {
    
@@ -20,7 +21,7 @@ const DsmInputBox = ({ inputPlaceholder, isSecure, inputKeyboard, inputLabel, in
             inputTextSize === "sm" && { fontSize: 12, paddingHorizontal: 5, height:40, lineHeight:16},
             inputTextSize === "md" && { fontSize: 14, paddingHorizontal: 5, height:44, lineHeight:16 },
             inputTextSize === "lg" && { fontSize: 18, paddingHorizontal: 5, height:48, lineHeight:24 },
-            errorMsg && { borderColor: '#DC2626' }
+            errorMsg && { borderColor: DsmColor.errorsBase }
             ]} >
                 <TextInput
                     placeholder={inputPlaceholder}
