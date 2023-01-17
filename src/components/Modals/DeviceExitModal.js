@@ -14,6 +14,7 @@ export const DeviceExitModal = ({ isOpen, hide }) => {
 
   const handleExit = () => {
     exitApp();
+    hide();
   };
 
   return (
