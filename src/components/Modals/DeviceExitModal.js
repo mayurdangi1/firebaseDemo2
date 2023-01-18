@@ -30,7 +30,8 @@ export const DeviceExitModal = ({ isOpen, hide }) => {
             <View style={externalStyles.deviceAuthenticationMessagePopup}>
               <Image
                 source={require("../../assets/icons/exit.png")}
-                style={{ marginBottom: 5 }}
+                style={{ marginBottom: 5, height: 32, width: 32,}} 
+                resizeMode= "contain"
               />
               <Text style={dsmTypographyStyle.mDsmTitle3Bold}>
                 Exit Application
