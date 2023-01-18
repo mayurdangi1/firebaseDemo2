@@ -1,3 +1,6 @@
+import { Image } from "native-base";
+import { screen_pinning, error } from "../assets";
+
 // attendance-service base api
 export const BASE_ATTENDANCE_SERVICE =
   "https://mewurk-attendance.azurewebsites.net/api/v1/attendanceservice/";
@@ -23,4 +26,20 @@ export const LOCAL_STORAGE = {
 export const EVENTS = {
   BACK_PRESS: "hardwareBackPress",
   REMOVE_BEFORE: "beforeRemove",
+};
+
+export const NOTIFICATION_TYPE = {
+  ERROR: "error",
+  SUCCESS: "success",
+  INFO: "info",
+  WARNING: "warning",
+};
+
+export const NOTIFICATION_ICON = {
+  pinning: <Image source={screen_pinning} alt="pin" />,
+  error: <Image source={error} alt="error" />,
+};
+export const STATUS_CODE = {
+  200: 200,
+  400: 400,
 };
