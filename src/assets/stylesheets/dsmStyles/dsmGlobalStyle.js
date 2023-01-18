@@ -113,7 +113,8 @@ const dsmGlobalStyle = StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'column',
         alignItems: 'center',
-        padding: 8
+        padding: 8,
+        textAlign: 'justify'
       },
     // Dsm Modal Popup Style End
     
