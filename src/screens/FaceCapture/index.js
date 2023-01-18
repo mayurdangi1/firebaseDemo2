@@ -7,10 +7,11 @@ import useMutation from "../../hooks/useMutation";
 import { PUT_FACE_CAPTURE } from "../../services/CONSTANT";
 import DsmButton from "../../components/DsmComponent/DsmButtonComponent";
 import { mewurk_name } from "../../assets/index";
-import { API, LOCAL_STORAGE } from "../../config/CONSTANT";
+import { API, LOCAL_STORAGE, NOTIFICATION_TYPE } from "../../config/CONSTANT";
 import DeviceAuthenticationModal from "../../components/Modals/DeviceAuthenticationModal";
 import { NativeBaseProvider } from "native-base";
 import { getAsyncStorageItem } from "../../helper/asyncStorage";
+import NotificationCard from "../../components/NotificationCard";
 
 const FaceCapture = ({ navigation }) => {
   const camera = useRef(null);
@@ -77,11 +78,10 @@ const FaceCapture = ({ navigation }) => {
         )}
         <View style={Styles.bodyContainer}>
           {postUploadSelfieMutation.isLoading ? (
-            <View style={Styles.warningButton}>
-              <Text style={Styles.warningTextStyles}>
-                Please wait, we are processing...
-              </Text>
-            </View>
+            <NotificationCard
+              type={NOTIFICATION_TYPE.INFO}
+              message="Please wait, we are processing..."
+            />
           ) : null}
           <DsmButton
             btnVariant={"dsmBtnPrimary"}
