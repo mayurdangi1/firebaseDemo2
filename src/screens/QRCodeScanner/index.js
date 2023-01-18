@@ -54,8 +54,8 @@ const QRCodeScanner = ({ navigation }) => {
   useEffect(() => {
     const watchID = Geolocation.watchPosition((info) => {
       setLocation({
-        longitude: String(info.coords.latitude),
-        latitude: String(info.coords.longitude),
+        longitude: String(info.coords.longitude),
+        latitude: String(info.coords.latitude),
       });
       Geolocation.clearWatch(watchID);
     });
