@@ -35,11 +35,16 @@ export default FaceRegStyles = StyleSheet.create({
     left: 57,
     resizeMode: "contain",
   },
-  bodyContainer: {
-    height: windowHeight - 68,
+  body: {
+    height: "100%",
     width: "100%",
   },
-
+  bodyContainerAbsolute: {
+    height: "100%",
+    width: "100%",
+    position: "absolute",
+    justifyContent: "flex-end",
+  },
   cameraContainer: {
     flex: 1,
   },
@@ -47,10 +52,10 @@ export default FaceRegStyles = StyleSheet.create({
     flex: 1,
   },
   buttonsContainer: {
-    position: "absolute",
-    bottom: 59,
     alignSelf: "center",
     flexDirection: "row",
+    marginBottom: 16,
+    marginTop: 16,
   },
   leftButton: {
     width: 167,
@@ -60,75 +65,73 @@ export default FaceRegStyles = StyleSheet.create({
     borderTopLeftRadius: 8,
     borderRightWidth: 0.5,
     padding: 16,
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: "center",
+    justifyContent: "center",
   },
   rightButton: {
     width: 192,
     height: 72,
-    flexDirection: 'row',
+    flexDirection: "row",
     backgroundColor: "#323130",
     borderBottomRightRadius: 8,
     borderTopRightRadius: 8,
     borderLeftWidth: 0.5,
     justifyContent: "center",
-    alignItems: 'center',
+    alignItems: "center",
     padding: 16,
   },
   itemContainerLeftButton: {
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+    alignItems: "center",
+    justifyContent: "flex-start",
     flexDirection: "row",
   },
   IconStyles: {
-    marginRight: 8
+    marginRight: 8,
   },
   timeTextStyles: {
     fontSize: 22,
     color: "#F0F5FF",
     fontWeight: "500",
-    fontFamily: 'Inter',
+    fontFamily: "Inter",
     lineHeight: 26,
   },
   dateTextStyles: {
     fontSize: 14,
     color: "#E5F1FF",
     fontWeight: "500",
-    fontFamily: 'Inter',
+    fontFamily: "Inter",
     lineHeight: 17,
-    marginLeft: 2
-
+    marginLeft: 2,
   },
   rightButtonTextStyles: {
     fontSize: 18,
     color: "#E5F1FF",
     lineHeight: 21,
     fontWeight: "500",
-    fontFamily: 'Inter'
+    fontFamily: "Inter",
   },
   logoContainer: {
-    position: "absolute",
     width: 149,
     height: 20,
-    bottom: 23,
     alignSelf: "center",
     backgroundColor: "#FFFFFF",
     borderRadius: 16,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingHorizontal: 8,
-    paddingVertical: 4
+    paddingVertical: 4,
+    marginBottom: 16,
   },
   logoTextStyles: {
     color: "#605E5C",
     fontSize: 10,
     fontWeight: "500",
-    fontFamily: "Inter"
+    fontFamily: "Inter",
   },
   logoIconStylesBottom: {
     width: 70,
     height: 12,
     resizeMode: "contain",
-    marginLeft: 6
+    marginLeft: 6,
   },
 });

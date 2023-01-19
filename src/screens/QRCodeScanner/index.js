@@ -9,7 +9,7 @@ import DeviceInfo from "react-native-device-info";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Loading from "../../components/Loading/Loading.js";
 import { QrCodeScannerStyles as Styles } from "./style.js";
-
+import { STATUS_CODE } from "../../config/CONSTANT";
 import {
   gallery,
   flash,
@@ -17,8 +17,14 @@ import {
 } from "../../assets/index.js";
 import { isEmpty } from "../../helper/common/util.js";
 import useMutation from "../../hooks/useMutation.js";
-import { API, LOCAL_STORAGE } from "../../config/CONSTANT";
+import {
+  API,
+  LOCAL_STORAGE,
+  NOTIFICATION_ICON,
+  NOTIFICATION_TYPE,
+} from "../../config/CONSTANT";
 import { POST_DEVICE_DEATILS } from "../../services/CONSTANT.js";
+import NotificationCard from "../../components/NotificationCard/index.js";
 
 const QRCodeScanner = ({ navigation }) => {
   const [frameProcessor, barcodes] = useScanBarcodes(
@@ -29,8 +35,9 @@ const QRCodeScanner = ({ navigation }) => {
   );
   const [torch, setTorch] = useState("off");
   const [isLoading, setIsLoading] = useState(false);
-  const [content, setContent] = useState();
+  const [content, setContent] = useState(null);
   const [location, setLocation] = useState({ longitude: "", latitude: "" });
+  const [error, setError] = useState(null);
   const device = useCameraDevices().back;
   const putDeviceDeatilsMutation = useMutation({
     url: POST_DEVICE_DEATILS(),
@@ -47,13 +54,13 @@ const QRCodeScanner = ({ navigation }) => {
   useEffect(() => {
     const watchID = Geolocation.watchPosition((info) => {
       setLocation({
-        longitude: String(info.coords.latitude),
-        latitude: String(info.coords.longitude),
+        longitude: String(info.coords.longitude),
+        latitude: String(info.coords.latitude),
       });
       Geolocation.clearWatch(watchID);
     });
     return () => {
-      setContent();
+      setContent(null);
     };
   }, []);
 
@@ -93,7 +100,21 @@ const QRCodeScanner = ({ navigation }) => {
                 setIsLoading(false);
               }
             })();
-            setContent();
+            setContent(null);
+          },
+          onErrorFunction: (error) => {
+            setIsLoading(false);
+
+            if (error.response.status === STATUS_CODE[400]) {
+              setError({
+                message: error.response.data.message,
+              });
+            } else {
+              setError({
+                message: "Something went wrong",
+              });
+            }
+            setContent(null);
           },
         });
       }
@@ -192,6 +213,13 @@ const QRCodeScanner = ({ navigation }) => {
               </View>
             </View>
             <View style={Styles.transparentCamera} />
+            {!isEmpty(error) ? (
+              <NotificationCard
+                type={NOTIFICATION_TYPE.ERROR}
+                message={error.message}
+                CustomIcon={NOTIFICATION_ICON.error}
+              />
+            ) : null}
           </View>
         ) : (
           <Loading />

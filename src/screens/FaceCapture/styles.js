@@ -20,6 +20,7 @@ export default FaceCapture = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     borderRadius: 16,
     marginBottom: 23,
+    marginTop: 16,
   },
   logoTextStyles: {
     position: "absolute",
@@ -46,7 +47,6 @@ export default FaceCapture = StyleSheet.create({
     width: 329,
     alignSelf: "center",
     alignItems: "center",
-    marginBottom: 16,
     justifyContent: "center",
   },
   buttonCommonStyles: {

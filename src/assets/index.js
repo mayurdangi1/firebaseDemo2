@@ -28,3 +28,4 @@ export const success_circle_svg = require("./icons/success_circle.svg");
 export const success_home = require("./icons/success_home.png");
 export const success_icon = require("./icons/success_icon.png");
 export const bars = require("./icons/bars.png");
+export const error = require("./icons/error.png");
