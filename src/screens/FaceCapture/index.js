@@ -83,13 +83,15 @@ const FaceCapture = ({ navigation }) => {
               message="Please wait, we are processing..."
             />
           ) : null}
-          <DsmButton
-            btnVariant={"dsmBtnPrimary"}
-            title={"Capture Selfie"}
-            onPress={captureSelfie}
-            disabled={isLoading}
-            style={Styles.buttonContainer}
-          />
+          <View style={{marginHorizontal: 10}}>
+            <DsmButton
+              btnVariant={"dsmBtnPrimary"}
+              title={"Capture Selfie"}
+              onPress={captureSelfie}
+              disabled={isLoading}
+              style={Styles.buttonContainer}
+            />
+          </View>
           <View style={Styles.logoContainer}>
             <Text style={Styles.logoTextStyles}>Powered by</Text>
             <Image source={mewurk_name} style={Styles.logoIconStylesBottom} />

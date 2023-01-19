@@ -46,7 +46,8 @@ const DeviceLogOutModal = ({ navigation, isOpen, hide, deviceId }) => {
             <View style={externalStyles.deviceAuthenticationMessagePopup}>
               <Image
                 source={require("../../assets/icons/logout_circle.png")}
-                style={{ marginBottom: 5 }}
+                style={{ marginBottom: 5, width: 22, height: 24 }}
+                resizeMode= 'contain'
               />
               <Text style={dsmTypographyStyle.mDsmTitle3Bold}>Log Out!</Text>
               <View style={externalStyles.logoutModalBody}>
