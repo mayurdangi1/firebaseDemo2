@@ -24,12 +24,7 @@ const DeviceAuthenticationModal = ({ isOpen, hide, handleContinue }) => {
               <Text style={dsmTypographyStyle.mDsmTitle3Bold}>
                 Device Authenticated!
               </Text>
-              <Text
-                style={[
-                  dsmTypographyStyle.mDsmMediumSemiBold,
-                  (style = { marginBottom: 5 }),
-                ]}
-              >
+              <Text style={[dsmTypographyStyle.mDsmMediumSemiBold, externalStyles.logoutPopupMessage]}>
                 Thanks for completing device authentication. Kiosk is ready for
                 attendance marking.
               </Text>
@@ -38,6 +33,7 @@ const DeviceAuthenticationModal = ({ isOpen, hide, handleContinue }) => {
                 btnSize={"sm"}
                 title={"Continue"}
                 onPress={handleContinue}
+                btnMargin= {"topMr"}
               />
             </View>
           </Modal.Body>

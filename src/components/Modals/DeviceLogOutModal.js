@@ -50,20 +50,17 @@ const DeviceLogOutModal = ({ navigation, isOpen, hide, deviceId }) => {
               />
               <Text style={dsmTypographyStyle.mDsmTitle3Bold}>Log Out!</Text>
               <View style={externalStyles.logoutModalBody}>
-                <View style={externalStyles.logoutPopupMessage}>
-                  <Text style={dsmTypographyStyle.mDsmMediumSemiBold}>
+                  <Text style={[dsmTypographyStyle.mDsmMediumSemiBold, externalStyles.logoutPopupMessage]}>
                     Would you like to unpair the connected device?
-                  </Text>
-                  <Text style={dsmTypographyStyle.mDsmMediumSemiBold}>
                     You need to scan QR code again for Kiosk Activation.
                   </Text>
-                </View>
               </View>
               <DsmButton
                 btnVariant={"dsmBtnDangerPrimary"}
                 btnSize={"sm"}
                 title={"Log Out"}
                 onPress={() => logoutFromDevice()}
+                btnMargin ={"bottomMr"}
               />
               <DsmButton
                 btnVariant={"dsmBtnSecondary"}
