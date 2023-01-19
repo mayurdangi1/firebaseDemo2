@@ -93,6 +93,10 @@ const DsmButton = ({
           backgroundColor: DsmColor.lightInkLightest,
           borderColor: DsmColor.primaryDarkest
         },
+        btnVariant === "dsmBtnDangerPrimary" && {
+          backgroundColor: DsmColor.errorsBase,
+          borderColor: DsmColor.errorsBase
+        },
         btnVariant === "dsmBtnLink" && {
           backgroundColor: 'transparent',
           borderColor: 'transparent',

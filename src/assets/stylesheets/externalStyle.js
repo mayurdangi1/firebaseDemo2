@@ -390,8 +390,7 @@ const externalStyles = StyleSheet.create({
     marginTop: 8
   },
   logoutPopupMessage: {
-    justifyContent: 'center',
-    alignItems: 'center'
+    textAlign: 'center'
   }
   // logout modal
 });
