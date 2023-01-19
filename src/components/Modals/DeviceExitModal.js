@@ -34,7 +34,7 @@ export const DeviceExitModal = ({ isOpen, hide }) => {
                 resizeMode="contain"
               />
               <Text style={dsmTypographyStyle.mDsmTitle3Bold}>
-                Exit Application
+                Exit Application!
               </Text>
               <View style={externalStyles.logoutModalBody}>
                 <Text style={[dsmTypographyStyle.mDsmMediumSemiBold, externalStyles.logoutPopupMessage]}>
