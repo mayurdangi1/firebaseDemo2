@@ -264,6 +264,31 @@ dependencies {
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
+    // Remote binary dependency
+    implementation ('com.microsoft.azure.sdk.iot:iot-device-client:2.1.2') {
+        exclude module: 'slf4j-api'
+        exclude module: 'log4j-slf4j-impl'
+    }
+    implementation ('org.apache.commons:commons-lang3:3.6')
+    implementation ('javax.xml.stream:stax-api:1.0-2')
+    implementation 'org.slf4j:slf4j-android:1.7.29'
+
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.24'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+    implementation files('../../common/target/iot-e2e-common-0.26.0-tests.jar')
+
+    // This jar contains the dependencies of the test code. DeviceClient, for instance. This jar isn't in the m2 folder, but rather it is in this cloned repo after mvn install is run
+    implementation files('../../common/target/iot-e2e-common-0.26.0-with-deps.jar')
+
+    androidTestImplementation 'com.android.support:support-annotations:27.1.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'junit:junit:4.12'
+    
+
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'
     }
