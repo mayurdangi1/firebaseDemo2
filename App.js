@@ -13,10 +13,12 @@ import { useNavigation } from "@react-navigation/native";
 import { useAuthenticated } from "./src/hooks/useAuthenticated";
 import { usePermission } from "./src/hooks/usePermmision";
 import { useUpdateStatusIntervaly } from "./src/hooks/useUpdateStatusIntervaly";
+import { NativeModules } from "react-native";
+import { userData } from "./src/config/CONSTANT";
 
 const Stack = createStackNavigator();
-
 const App = () => {
+  const { IotConnectionDeviceModule } = NativeModules;
   const { navigate } = useNavigation();
   const isAuthenticated = useAuthenticated();
   usePermission();
@@ -25,6 +27,16 @@ const App = () => {
   useEffect(() => {
     if (isAuthenticated) {
       navigate("DeviceAuthenticated", { ...isAuthenticated });
+    }
+    try {
+      (async function call() {
+        await IotConnectionDeviceModule.openDeviceConnection(
+          userData.connString,
+          userData.protocol
+        );
+      })();
+    } catch (error) {
+      console.log(error);
     }
   }, [isAuthenticated]);
 

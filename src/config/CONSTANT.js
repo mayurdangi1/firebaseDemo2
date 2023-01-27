@@ -43,3 +43,9 @@ export const STATUS_CODE = {
   200: 200,
   400: 400,
 };
+
+export const userData = {
+  connString:
+    "HostName=attendance-devices-iothub.azure-devices.net;DeviceId=48d5ffcd2a;SharedAccessKey=JaCPsi/H6haXVKs+rLOOKwwPgDVEby202z7ReCR+j0E=",
+  protocol: "MQTT",
+};
