@@ -1,17 +1,17 @@
-import React from "react";
-import { View, Text, Image } from "react-native";
-import externalStyles from "../assets/stylesheets/externalStyle";
-import { home1, mewurk_name, madatory, barcode } from "../assets/index";
+import React from 'react'
+import { View, Text, Image } from 'react-native'
+import externalStyles from '../assets/stylesheets/externalStyle'
+import { home1, mewurk_name, madatory, barcode } from '../assets/index'
 // dsm Import
-import dsmTypographyStyle from "../assets/stylesheets/dsmStyles/dsmTypographyStyle";
-import DsmButton from "../components/DsmComponent/DsmButtonComponent";
-import DsmLinkText from "../components/DsmComponent/DsmLinkTextComponent";
+import dsmTypographyStyle from '../assets/stylesheets/dsmStyles/dsmTypographyStyle'
+import DsmButton from '../components/DsmComponent/DsmButtonComponent'
+import DsmLinkText from '../components/DsmComponent/DsmLinkTextComponent'
 
 function HomeScreen({ navigation }) {
   return (
     <View style={externalStyles.homeBody}>
       <View style={externalStyles.homeWelcomeImg}>
-        <Image source={home1} style={{ width: "100%" }} />
+        <Image source={home1} style={{ width: '100%' }} />
         <Image source={mewurk_name} style={{ marginTop: 20 }} />
       </View>
 
@@ -29,12 +29,12 @@ function HomeScreen({ navigation }) {
                 For Registered Users Only!
               </Text>
               <Text style={dsmTypographyStyle.mDsmSmallNormal}>
-                If you don’t have QR code for activation, Please contact your
-                Admin or visit{" "}
+                If you don’t have QR code for activation,Please contact your
+                admin or visit{' '}
                 <DsmLinkText
-                  linkText={"Help"}
-                  size={"sm"}
-                  textStyle={"textUnderline"}
+                  linkText={'Help'}
+                  size={'sm'}
+                  textStyle={'textUnderline'}
                 />
               </Text>
             </View>
@@ -43,14 +43,14 @@ function HomeScreen({ navigation }) {
       </View>
       <View style={externalStyles.scanButtonBox}>
         <DsmButton
-          btnVariant={"dsmBtnPrimary"}
-          title={"Scan QR"}
-          btnSize={"lg"}
+          btnVariant={'dsmBtnPrimary'}
+          title={'Scan QR'}
+          btnSize={'lg'}
           leftBtnIconSource={barcode}
-          onPress={() => navigation.navigate("QRCodeScanner")}
+          onPress={() => navigation.navigate('QRCodeScanner')}
         />
       </View>
     </View>
-  );
+  )
 }
-export default HomeScreen;
+export default HomeScreen
