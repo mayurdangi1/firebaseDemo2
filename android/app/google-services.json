@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "506363294299",
+    "project_id": "kioskapp2-dd08b",
+    "storage_bucket": "kioskapp2-dd08b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:506363294299:android:503f5619dd3a8da881857e",
+        "android_client_info": {
+          "package_name": "com.mewurkmobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "506363294299-cvmsm28i5eeb83qb5pbevn3ik3smlneq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRqCMmff5uenYLr7kR6w8ckbMBCc5mFT4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "506363294299-cvmsm28i5eeb83qb5pbevn3ik3smlneq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
